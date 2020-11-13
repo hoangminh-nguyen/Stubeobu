@@ -1,7 +1,10 @@
 package code;
 
-public class account {
-    public static void main(String[] args) {
-        System.out.println("Hello moi nguoi");
-    }
+public interface account {
+    void change_password();
+    void read_account_file();
+    void role_menu();
+    void main_menu();
+    void write_info();
+
 }
