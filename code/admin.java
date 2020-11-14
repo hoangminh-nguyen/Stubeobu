@@ -1,12 +1,6 @@
 package code;
 
-public class admin implements account{
-
-    @Override
-    public void change_password() {
-        
-
-    }
+public class admin extends account{
 
     @Override
     public void read_account_file() {
@@ -17,13 +11,7 @@ public class admin implements account{
     @Override
     public void role_menu() {
         // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void main_menu() {
-        // TODO Auto-generated method stub
-
+        System.out.println("day la admin");
     }
 
     @Override
@@ -31,5 +19,7 @@ public class admin implements account{
         // TODO Auto-generated method stub
 
     }
+
+    
     
 }
