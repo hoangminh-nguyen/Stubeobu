@@ -52,9 +52,9 @@ public abstract class account {
             String pass;
             while(true)
             {
-                System.out.print("Username: ");
+                System.out.print("Tài khoản: ");
                 name = s.nextLine();
-                System.out.print("Password: ");
+                System.out.print("Mật khẩu: ");
                 pass = s.nextLine();
                 if (sign_in(name, pass)) break;
                 else System.out.println("\nSai tài khoản hoặc mật khẩu.");

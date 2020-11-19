@@ -10,13 +10,13 @@ public class MySQLConnUtils {
     {
       // create our mysql database connection
       String myDriver = "com.mysql.cj.jdbc.Driver";
-      String myUrl = "jdbc:mysql://localhost/bibeobu";
+      String myUrl = "jdbc:mysql://localhost:3306/bibeobu";
       Class.forName(myDriver);
       Connection conn = DriverManager.getConnection(myUrl, "root", "1234");
       
       // our SQL SELECT query. 
       // if you only need a few columns, specify them by name instead of using "*"
-      String query = "SELECT * FROM NHANVIEN";
+      String query = "SELECT * FROM Student";
 
       // create the java statement
       Statement st = conn.createStatement();
@@ -27,10 +27,12 @@ public class MySQLConnUtils {
       // iterate through the java resultset
       while (rs.next())
       {
-        String ho = rs.getString("HoNV");
-        
+        String student_id = rs.getString("student_id");
+        String l_name = rs.getString("lastname");
+        String f_name = rs.getString("firstname");
+        String dob = rs.getString("dob");
         // print the results
-        System.out.format(ho);
+        System.out.format("%s %s %s %s\n", student_id, l_name, f_name, dob);
       }
       st.close();
     }
@@ -54,13 +56,9 @@ public class MySQLConnUtils {
  }
  
  public static Connection getMySQLConnection(String hostName, String dbName,
-         String userName, String password) throws SQLException,
-         ClassNotFoundException {
-     // Khai báo class Driver cho DB MySQL
-     // Việc này cần thiết với Java 5
-     // Java6 tự động tìm kiếm Driver thích hợp.
-     // Nếu bạn dùng Java6, thì ko cần dòng này cũng được.
-     Class.forName("com.mysql.jdbc.Driver");
+    String userName, String password) throws SQLException, ClassNotFoundException 
+    {
+     Class.forName("com.mysql.cj.jdbc.Driver");
  
      // Cấu trúc URL Connection dành cho Oracle
      // Ví dụ: jdbc:mysql://localhost:3306/simplehr
@@ -69,5 +67,5 @@ public class MySQLConnUtils {
      Connection conn = DriverManager.getConnection(connectionURL, userName,
              password);
      return conn;
- }
+  }
 }
