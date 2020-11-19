@@ -35,6 +35,8 @@ public class MySQLConnUtils {
         System.out.format("%s %s %s %s\n", student_id, l_name, f_name, dob);
       }
       st.close();
+      conn.close();
+      rs.close();
     }
     catch (Exception e)
     {
