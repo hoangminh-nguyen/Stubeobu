@@ -1,13 +1,16 @@
 package code;
 
 import java.io.*;
+
+import java.sql.*;
 import java.util.Scanner;
 
 public abstract class account {
-    protected String username;
+    protected String username; // id 
     protected String password;
     protected String f_name;
     protected String l_name;
+    protected String dob;
 
     account(){
         username="";
@@ -34,7 +37,6 @@ public abstract class account {
     }
 
     public abstract void read_account_file();
-
     public abstract void role_menu();
 
     public account main_menu() {
@@ -56,12 +58,17 @@ public abstract class account {
                 name = s.nextLine();
                 System.out.print("Mật khẩu: ");
                 pass = s.nextLine();
-                if (sign_in(name, pass)) break;
+                if (sign_in(name, pass)) {
+                    this.username = name;
+                    this.password = pass;
+                    break;
+                }
+                
                 else System.out.println("\nSai tài khoản hoặc mật khẩu.");
             }
             switch (name.charAt(0)) {
                 case 'S':
-                    account st = new student();
+                    account st = new student(this.username, this.password);
                     return st;
                 case 'T':
                     account pr = new professor();
@@ -78,40 +85,33 @@ public abstract class account {
     
 
     public boolean sign_in(String name, String pass) {
-        char type = name.charAt(0);
-        String path;
-        switch (type) {
-            case 'S':
-                path = "./code/student.csv";
-                break;
-            case 'T':
-                path = "./code/teacher.csv";
-                break;
-            case 'A':
-                path = "./code/admin.csv";
-                break;
-            default:
-                return false;
-        }
-        String []arg;
-        String s;
-        try (BufferedReader buf = new BufferedReader(new FileReader(path)))
-        {
-            s=buf.readLine(); //đọc dòng tiêu đề
-            while((s=buf.readLine())!=null){
-                arg = s.split(",");
-                if(name.equals(arg[0]) && pass.equals(arg[1])){
-                    this.username = name;
-                    this.password = pass;
-                    return true;
-                }
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "SELECT * FROM Account WHERE username = ? and pass = ?";
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, name);
+            stm.setString(2, pass);
+            rs = stm.executeQuery();
+            if(rs.next()){
+                return true;
             }
-            
-        } catch (IOException exc) {
-            System.out.println("I/O Error: " + exc);
+        } catch(SQLException exp) {
+            System.out.println("Sign in" + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (rs != null) rs.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
+            }
         }
         return false;
     }
+
     public abstract void write_info();
 
 }
