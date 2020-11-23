@@ -1,0 +1,194 @@
+alter user 'minh' IDENTIFIED BY '1234';
+drop database bibeobu;
+create database bibeobu;
+use bibeobu;
+create table Account
+(
+	username varchar(10),
+	pass varchar(20),
+	constraint PK_Ac primary key (username)
+);
+
+create table Student
+(
+	student_id char(9),
+	lastname nvarchar(30),
+	firstname nvarchar(15),
+    gender varchar(3),
+	dob char(10),
+	constraint PK_St primary key (student_id)
+);
+
+create table Teacher
+(
+	teacher_id char(4),
+	lastname nvarchar(30),
+	firstname nvarchar(15),
+    gender varchar(3),
+	dob char(10),
+	constraint PK_Te primary key (teacher_id)
+);
+create table Course_info
+(
+	course_id char(8),
+	course_name nvarchar(40),
+	constraint PK_Co_info primary key (course_id)
+);
+create table Course
+(
+	course_id char(8),
+	number int,
+	sem_id int,
+	room char(5),
+	teacher_id char(4),
+	constraint PK_Co primary key (course_id,number,sem_id)
+);
+create table Semester
+(
+	sem_id int,
+	semester int,
+	years int,
+	constraint PK_Se primary key (sem_id)
+);
+create table Student_Course
+(
+	student_id char(9),
+	course_id char(8),
+	number int,
+	sem_id int,
+	midterm double,
+	final double,
+	constraint PK_St_Co primary key (student_id, course_id,number,sem_id)
+);
+create table Timetable
+(
+	course_id char(8),
+	number int,
+	sem_id int,
+	week_day int, 
+	period_no int,
+	constraint PK_Ti primary key (course_id,number,sem_id,week_day,period_no)
+);
+
+alter table Student
+	add constraint FK_St_Ac foreign key (student_id) references Account(username);
+alter table Teacher
+	add constraint FK_Te_Ac foreign key (teacher_id) references Account(username);
+alter table Course
+	add constraint FK_Co_Se foreign key (sem_id) references Semester(sem_id),
+    add constraint FK_Co_CoInfo foreign key (course_id) references Course_info(course_id);
+alter table Course
+	add constraint FK_Co_Te foreign key (teacher_id) references Teacher(teacher_id);
+alter table Student_Course
+	add constraint FK_StCo_St foreign key (student_id) references Student(student_id),
+    add constraint FK_StCo_Co foreign key (course_id, number, sem_id) references Course(course_id, number, sem_id);
+alter table Timetable
+	add constraint FK_Ti_Co foreign key (course_id, number, sem_id) references Course(course_id, number, sem_id);
+  
+-- ACCOUNT  
+insert into Account values ('S18127200', 'S18127200');
+insert into Account values ('S18127201', 'S18127201');
+insert into Account values ('S18127202', 'S18127202');
+insert into Account values ('S18127203', 'S18127203');
+insert into Account values ('S18127204', 'S18127204');
+insert into Account values ('S18127205', 'S18127205');
+insert into Account values ('S18127206', 'S18127206');
+insert into Account values ('S18127207', 'S18127207');
+insert into Account values ('S18127208', 'S18127208');
+insert into Account values ('S18127209', 'S18127209');
+insert into Account values ('S18127210', 'S18127210');
+insert into Account values ('S18127211', 'S18127211');
+insert into Account values ('T001', 'T001');
+insert into Account values ('T002', 'T002');
+insert into Account values ('T003', 'T003');
+insert into Account values ('T004', 'T004');
+insert into Account values ('Admin', 'admin');
+
+-- STUDENT
+insert into Student values ('S18127200', 'Nguyễn Hoàng', 'Minh', 'Nam', '28/12/2000');
+insert into Student values ('S18127201', 'Nguyễn', 'Biểu', 'Nam', '02/10/2000');
+insert into Student values ('S18127202', 'Đinh Lê Trọng', 'Tài', 'Nam', '11/12/2000');
+insert into Student values ('S18127203', 'Đặng Minh Hoàng', 'Long', 'Nam', '23/09/1998');
+insert into Student values ('S18127204', 'Nguyễn Hoàng Chiêu', 'Minh', 'Nam', '28/05/2000');
+insert into Student values ('S18127205', 'Trần Hoàng Gia', 'Long', 'Nam', '01/04/2000');
+insert into Student values ('S18127206', 'Hồ Đại', 'Trí', 'Nữ', '04/05/2000');
+insert into Student values ('S18127207', 'Phạm Thiên', 'Phúc', 'Nữ', '26/03/2000');
+insert into Student values ('S18127208', 'Bùi Thị Anh', 'Thư', 'Nữ', '19/07/2000');
+insert into Student values ('S18127209', 'Nguyễn Trung', 'Nam', 'Nữ', '11/02/2000');
+insert into Student values ('S18127210', 'Đỗ Quốc', 'Thắng', 'Nữ', '22/12/2000');
+insert into Student values ('S18127211', 'Phan Thị Thúy', 'Sang', 'Nữ', '03/12/2000');
+
+-- TEACHER
+insert into Teacher values ('T001', 'Trịnh Trần Phương', 'Tuấn', 'Nam', '12/04/1997');
+insert into Teacher values ('T002', 'Lê Nguyễn Trung', 'Đan', 'Nữ', '24/05/1988');
+insert into Teacher values ('T003', 'Phạm Hoàng', 'Khoa', 'Nam', '12/04/1989');
+insert into Teacher values ('T004', 'Hàng Lâm Trang', 'Anh', 'Nữ', '14/01/1990');
+
+-- SEMESTER
+insert into Semester values (1, 1, 2020);
+insert into Semester values (2, 2, 2020);
+insert into Semester values (3, 3, 2020);
+insert into Semester values (4, 1, 2021);
+insert into Semester values (5, 2, 2021);
+insert into Semester values (6, 3, 2021);
+
+-- COURSE INFO
+insert into Course_info values ('CSC00001', 'Cơ sở dữ liệu');
+insert into Course_info values ('CSC00002', 'Cơ sở trí tuệ nhân tạo');
+insert into Course_info values ('MTH00001', 'Toán rời rạc');
+insert into Course_info values ('MTH00002', 'Giải tích B1');
+
+-- COURSE
+insert into Course values ('CSC00001', 1, 1, 'I01', 'T001');
+insert into Course values ('CSC00001', 1, 2, 'I02', 'T002');
+insert into Course values ('MTH00001', 1, 1, 'I01', 'T003');
+insert into Course values ('MTH00002', 1, 1, 'I02', 'T004');
+insert into Course values ('CSC00001', 2, 1, 'I01', 'T001');
+insert into Course values ('CSC00001', 2, 2, 'I02', 'T002');
+insert into Course values ('MTH00001', 2, 1, 'I01', 'T003');
+insert into Course values ('MTH00002', 2, 1, 'I02', 'T004');
+
+-- STUDENT COURSE
+insert into Student_Course values ('S18127200', 'CSC00001', 1, 1, null, null);
+insert into Student_Course values ('S18127201', 'CSC00001', 1, 1, null, null);
+insert into Student_Course values ('S18127202', 'CSC00001', 1, 1, null, null);
+insert into Student_Course values ('S18127203', 'CSC00001', 1, 2, null, null);
+insert into Student_Course values ('S18127204', 'CSC00001', 1, 2, null, null);
+insert into Student_Course values ('S18127205', 'CSC00001', 1, 2, null, null);
+
+insert into Student_Course values ('S18127201', 'MTH00001', 1, 1, null, null);
+insert into Student_Course values ('S18127202', 'MTH00001', 1, 1, null, null);
+insert into Student_Course values ('S18127203', 'MTH00001', 1, 1, null, null);
+insert into Student_Course values ('S18127204', 'MTH00002', 1, 1, null, null);
+insert into Student_Course values ('S18127205', 'MTH00002', 1, 1, null, null);
+insert into Student_Course values ('S18127206', 'MTH00002', 1, 1, null, null);
+
+-- TIMETABLE
+insert into Timetable values ('CSC00001', 1, 1, 2, 1);
+insert into Timetable values ('CSC00001', 1, 1, 4, 1);
+insert into Timetable values ('CSC00001', 1, 2, 2, 2);
+insert into Timetable values ('CSC00001', 1, 2, 4, 2);
+insert into Timetable values ('MTH00001', 1, 1, 3, 3);
+insert into Timetable values ('MTH00001', 1, 1, 5, 3);
+insert into Timetable values ('MTH00002', 1, 1, 6, 1);
+insert into Timetable values ('MTH00002', 1, 1, 3, 1);
+
+SELECT stc.course_id, ci.course_name, CONCAT(te.lastname," ",te.firstname) as fullname, se.semester, se.years, co.room, ti.week_day, ti.period_no
+FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id) 
+	join Course_info ci on (stc.course_id = ci.course_id) 
+	join teacher te on (co.teacher_id = te.teacher_id)
+	join semester se on (stc.sem_id = se.sem_id)
+    join Timetable ti on (ti.course_id = co.course_id and ti.number = co.number and ti.sem_id = co.sem_id) 
+WHERE student_id = 'S18127202';
+
+SELECT ti.week_day, ti.period_no 
+FROM Student_Course stc join Timetable ti on (stc.course_id = ti.course_id and stc.number = ti.number and stc.sem_id = ti.sem_id) 
+WHERE stc.student_id = 'S18127202' and stc.course_id = 'CSC00001';
+
+SELECT co.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room
+FROM Course co join Course_info ci on (co.course_id = ci.course_id)  
+		join teacher te on (co.teacher_id = te.teacher_id) 
+        join semester se on (co.sem_id = se.sem_id);
+        
+delete from Student_Course where student_id = 'S18127202' and course_id = 'CSC00001' and number= 1 and sem_id= 1;
+SELECT * FROM Student_Course
