@@ -2,16 +2,20 @@ package code;
 
 import java.util.ArrayList;
 
-class year{
-    ArrayList<semester> listSemester;
+class timetable{
+    int week_day, period_no;
 }
-class semester{
-    ArrayList<course> listCourse;
+class listStudent{
+    student student;
+    Double midterm, finall;
 }
 public class course {
-
     protected String id, name, room;
-    protected professor teacher;
-    protected ArrayList<student> listStu;
+    protected String teacher_name, teacher_id;
+    protected ArrayList<listStudent> listStu;
+    protected Double midterm, finall;
+    protected int semester, year, sem_id, number;
+    protected ArrayList<timetable> timetable;
+    
 
 }

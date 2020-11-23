@@ -10,6 +10,7 @@ public abstract class account {
     protected String password;
     protected String f_name;
     protected String l_name;
+    protected String gender;
     protected String dob;
 
     account(){
@@ -17,6 +18,7 @@ public abstract class account {
         password="";
         f_name="";
         l_name="";
+        gender="";
     };
     public void change_password() {
         Scanner scan = new Scanner(System.in);
