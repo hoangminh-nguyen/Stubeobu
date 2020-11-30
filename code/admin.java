@@ -14,12 +14,6 @@ public class admin extends account{
         System.out.println("day la admin");
     }
 
-    @Override
-    public void write_info() {
-        // TODO Auto-generated method stub
-
-    }
-
     
     
 }

@@ -114,6 +114,5 @@ public abstract class account {
         return false;
     }
 
-    public abstract void write_info();
 
 }

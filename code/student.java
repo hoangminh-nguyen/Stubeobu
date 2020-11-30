@@ -13,9 +13,57 @@ public class student extends account {
         super.password = pass;
     }
 
+    student(String name){
+        super.username = name;
+    }
+
+
+    public Double get_midterm(String course_id){
+        for(course x : listCourse){
+            if (x.id == course_id){
+                return x.midterm;
+            }
+        }
+        return 0.0;
+    }
+
+    public Double get_final(String course_id){
+        for(course x : listCourse){
+            if (x.id == course_id){
+                return x.finall;
+            }
+        }
+        return 0.0;
+    }
+
     @Override
     public void read_account_file() {
-        // TODO Auto-generated method stub
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "SELECT * FROM Student WHERE student_id = ? ";
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, super.username);
+            rs = stm.executeQuery();
+            if(rs.next()){
+                super.l_name = rs.getString("lastname");
+                super.f_name = rs.getString("firstname");
+                super.gender = rs.getString("gender");
+                super.dob = rs.getString("dob");
+            }
+        } catch(SQLException exp) {
+            System.out.println("Write info " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (rs != null) rs.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
+            }
+        }
 
     }
 
@@ -45,7 +93,7 @@ public class student extends account {
             }
             switch (choose) {
                 case 1:
-                    write_info();
+                    read_account_file();
                     break;
                 case 2:
                     view_course();
@@ -70,40 +118,7 @@ public class student extends account {
         }
     }
 
-    @Override
-    public void write_info() {
-        // TODO Auto-generated method stub
-        PreparedStatement stm = null;
-        Connection conn = MySQLConnUtils.getMySQLConnection();
-        ResultSet rs = null;
-        String query = "SELECT * FROM Student WHERE student_id = ? ";
-        try{
-            stm = conn.prepareStatement(query);
-            stm.setString(1, super.username);
-            rs = stm.executeQuery();
-            if(rs.next()){
-                super.l_name = rs.getString("lastname");
-                super.f_name = rs.getString("firstname");
-                super.gender = rs.getString("gender");
-                super.dob = rs.getString("dob");
-            }
-            System.out.println("Mã số sinh viên: " + super.username);
-            System.out.println("Tên đầy đủ: " + super.l_name + " " + super.f_name);
-            System.out.println("Ngày sinh: " +  super.dob);
-            System.out.println("Giới tính: " +  super.gender);
-        } catch(SQLException exp) {
-            System.out.println("Write info " + exp);
-            exp.printStackTrace();
-        } finally {
-            try {
-                if (conn != null) conn.close();
-                if (rs != null) rs.close();
-                if (stm != null) stm.close();
-            } catch (SQLException e) {
-              e.printStackTrace();
-            }
-        }
-    }
+    
     
     public void load_course(){
         // TODO Auto-generated method stub
