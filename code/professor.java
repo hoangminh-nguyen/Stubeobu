@@ -193,22 +193,23 @@ public class professor extends account{
     public void set_midterm(String student_id, String course_idz, int numberz, int semidz, Double new_midterm){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String query = "delete from Student_Course where student_id = ? and course_id = ? and number= ? and sem_id= ? ;";
+        String query = "update student_course set midterm = ? where student_id = ? and course_id = ? and number= ? and sem_id= ? ;";
         for (int i = 0; i < listCourse.size(); i++){
             if (listCourse.get(i).get_course_id() == course_idz && listCourse.get(i).get_number() == numberz && listCourse.get(i).get_sem_id() == semidz){
                 try{
                     stm = conn.prepareStatement(query);
-                    stm.setString(1, student_id);
-                    stm.setString(2, listCourse.get(i).id);
-                    stm.setInt(3, listCourse.get(i).number);
-                    stm.setInt(4, listCourse.get(i).sem_id);
+                    stm.setDouble(1, new_midterm);
+                    stm.setString(2, student_id);
+                    stm.setString(3, listCourse.get(i).id);
+                    stm.setInt(4, listCourse.get(i).number);
+                    stm.setInt(5, listCourse.get(i).sem_id);
                     System.out.println(stm.toString());
                     
                     stm.executeUpdate(); // thực hiện lệnh delete
                     load_course(course_idz,numberz,semidz);
                     
                 } catch(SQLException exp) {
-                    System.out.println("cancel_course_execute " + exp);
+                    System.out.println("update midterm " + exp);
                     exp.printStackTrace();
                 } finally {
                     try {
@@ -222,6 +223,38 @@ public class professor extends account{
         }
     }
     
+    public void set_final(String student_id, String course_idz, int numberz, int semidz, Double new_final){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "update student_course set final = ? where student_id = ? and course_id = ? and number= ? and sem_id= ? ;";
+        for (int i = 0; i < listCourse.size(); i++){
+            if (listCourse.get(i).get_course_id() == course_idz && listCourse.get(i).get_number() == numberz && listCourse.get(i).get_sem_id() == semidz){
+                try{
+                    stm = conn.prepareStatement(query);
+                    stm.setDouble(1, new_final);
+                    stm.setString(2, student_id);
+                    stm.setString(3, listCourse.get(i).id);
+                    stm.setInt(4, listCourse.get(i).number);
+                    stm.setInt(5, listCourse.get(i).sem_id);
+                    System.out.println(stm.toString());
+                    
+                    stm.executeUpdate(); // thực hiện lệnh delete
+                    load_course(course_idz,numberz,semidz);
+                    
+                } catch(SQLException exp) {
+                    System.out.println("update final " + exp);
+                    exp.printStackTrace();
+                } finally {
+                    try {
+                        if (conn != null) conn.close();
+                        if (stm != null) stm.close();
+                    } catch (SQLException e) {
+                    e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
 
     @Override
     public void role_menu() {
