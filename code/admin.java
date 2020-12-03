@@ -11,7 +11,7 @@ public class admin extends account{
     @Override
     public void role_menu() {
         // TODO Auto-generated method stub
-        System.out.println("day la admin");
+        System.out.println("day la admin admin");
     }
 
     
