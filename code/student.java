@@ -6,8 +6,8 @@ import java.sql.*;
 
 public class student extends account {
     
-    ArrayList<course> listCourse = null;
-    ArrayList<course> listAvailableCourse = null;
+    ArrayList<course> listCourse = null; //cac khoa hoc da dang ky
+    ArrayList<course> listAvailableCourse = null; //cac khoa hoc chua dang ky
     student(String name, String pass){
         super.username = name;
         super.password = pass;

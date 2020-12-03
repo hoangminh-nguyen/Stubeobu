@@ -73,7 +73,7 @@ public abstract class account {
                     account st = new student(this.username, this.password);
                     return st;
                 case 'T':
-                    account pr = new professor();
+                    account pr = new professor(this.username, this.password);
                     return pr;
                 case 'A':
                     account ad = new admin();

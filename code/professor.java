@@ -8,22 +8,52 @@ public class professor extends account{
 
     protected String id;
     ArrayList<course> listCourse = null;
-    
-    @Override
-    public void read_account_file() {
-        
-
+    professor(String name, String pass){
+        super.username = name;
+        super.password = pass;
+    }
+    professor(String name){
+        super.username = name;
     }
 
-    public void load_courses(){
-        // TODO Auto-generated method stub
+    @Override
+    public void read_account_file() {
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "select co.course_id, ci.course_name, number, se.sem_id, se.semester, se.years  from Teacher te join Course co on (te.teacher_id = co.teacher_id) join Course_info ci on ( ci.course_id = co.course_id) join Semester se on (co.sem_id = se.sem_id) where te.teacher_id = ?;";
-        try {
+        String query = "SELECT * FROM Teacher WHERE teacher_id = ? ";
+        try{
             stm = conn.prepareStatement(query);
-            stm.setString(1, id);
+            stm.setString(1, super.username);
+            rs = stm.executeQuery();
+            if(rs.next()){
+                super.l_name = rs.getString("lastname");
+                super.f_name = rs.getString("firstname");
+                super.gender = rs.getString("gender");
+                super.dob = rs.getString("dob");
+            }
+        } catch(SQLException exp) {
+            System.out.println("Write info " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (rs != null) rs.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
+            }
+        }
+    }
+
+    public void load_course(){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "SELECT ci.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room FROM Course co join Course_info ci on (co.course_id = ci.course_id) join teacher te on (co.teacher_id = te.teacher_id) join semester se on (co.sem_id = se.sem_id) WHERE co.teacher_id = ?";
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, super.username);
             rs = stm.executeQuery();
             listCourse = new ArrayList<>();
             while(rs.next()){
@@ -39,8 +69,9 @@ public class professor extends account{
                 temp.room = rs.getString("room");
                 listCourse.add(temp);
             }
+            
         } catch(SQLException exp) {
-            System.out.println("pro " + exp);
+            System.out.println("load course " + exp);
             exp.printStackTrace();
         } finally {
             try {
@@ -54,26 +85,28 @@ public class professor extends account{
     }
 
 
-    public void load_course(String course_idz, int numberz, int semidz){
+    public void load_student_in_course(String course_idz, int numberz, int semidz){
         for (int i = 0; i < listCourse.size(); i++){
-            if (listCourse.get(i).get_course_id() == course_idz && listCourse.get(i).get_number() == numberz && listCourse.get(i).get_sem_id() == semidz){
+            if (listCourse.get(i).get_course_id().equals(course_idz) && listCourse.get(i).get_number() == numberz && listCourse.get(i).get_sem_id() == semidz){
                 PreparedStatement stm = null;
                 Connection conn = MySQLConnUtils.getMySQLConnection();
                 ResultSet rs = null;
-                String query = "select st.student_id from Teacher te join Course co on (te.teacher_id = co.teacher_id) join Course_info ci on ( ci.course_id = co.course_id) join Semester se on (co.sem_id = se.sem_id) where te.teacher_id = ?;";
+                String query = "SELECT stc.student_id, stc.midterm, stc.final FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id) WHERE co.course_id = ? and co.number = ? and co.sem_id = ?;";
                 try {
                     stm = conn.prepareStatement(query);
-                    stm.setString(1, id);
+                    stm.setString(1, course_idz);
+                    stm.setInt(2, numberz);
+                    stm.setInt(3, semidz);
                     rs = stm.executeQuery();
                     listCourse.get(i).listStu = new ArrayList<>();
                     while(rs.next()){
                         student temp = new student(rs.getString("student_id"));
                         temp.read_account_file();
-                        listStudent to_add = new listStudent(temp, temp.get_midterm(listCourse.get(i).get_course_id()), temp.get_final(listCourse.get(i).get_course_id()));
+                        listStudent to_add = new listStudent(temp, rs.getDouble("midterm"), rs.getDouble("final"));
                         listCourse.get(i).listStu.add(to_add);
                         }
                     } catch(SQLException exp) {
-                        System.out.println("pro " + exp);
+                        System.out.println("load_student_in_course " + exp);
                     exp.printStackTrace();
                     } finally {
                         try {
@@ -90,7 +123,7 @@ public class professor extends account{
 
     public void load_timetable(String course_idz, int numberz, int semidz){
         for (int i = 0; i < listCourse.size(); i++){
-            if (listCourse.get(i).get_course_id() == course_idz && listCourse.get(i).get_number() == numberz && listCourse.get(i).get_sem_id() == semidz){
+            if (listCourse.get(i).get_course_id().equals(course_idz) && listCourse.get(i).get_number() == numberz && listCourse.get(i).get_sem_id() == semidz){
                 PreparedStatement stm = null;
                 Connection conn = MySQLConnUtils.getMySQLConnection();
                 ResultSet rs = null;
@@ -140,7 +173,7 @@ public class professor extends account{
                     System.out.println(stm.toString());
                     
                     stm.executeUpdate(); // thực hiện lệnh delete
-                    load_course(course_idz,numberz,semidz);
+                    load_student_in_course(course_idz,numberz,semidz);
                     
                 } catch(SQLException exp) {
                     System.out.println("delete stu " + exp);
@@ -173,7 +206,7 @@ public class professor extends account{
 
 
                     stm.executeUpdate(); // thực hiện lệnh delete
-                    load_course(course_idz,numberz,semidz);
+                    load_student_in_course(course_idz,numberz,semidz);
                     
                 } catch(SQLException exp) {
                     System.out.println("add stu " + exp);
@@ -206,7 +239,7 @@ public class professor extends account{
                     System.out.println(stm.toString());
                     
                     stm.executeUpdate(); // thực hiện lệnh delete
-                    load_course(course_idz,numberz,semidz);
+                    load_student_in_course(course_idz,numberz,semidz);
                     
                 } catch(SQLException exp) {
                     System.out.println("update midterm " + exp);
@@ -239,7 +272,7 @@ public class professor extends account{
                     System.out.println(stm.toString());
                     
                     stm.executeUpdate(); // thực hiện lệnh delete
-                    load_course(course_idz,numberz,semidz);
+                    load_student_in_course(course_idz,numberz,semidz);
                     
                 } catch(SQLException exp) {
                     System.out.println("update final " + exp);
@@ -262,5 +295,9 @@ public class professor extends account{
         
     }
 
-
+    public static void main(String[] args) {
+        professor pro = new professor("T001");
+        pro.read_account_file();
+        pro.load_course();
+    }
 }
