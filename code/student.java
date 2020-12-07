@@ -3,6 +3,9 @@ package code;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.*;
+import java.awt.*;  
+import java.awt.event.*;  
+import javax.swing.*;
 
 public class student extends account {
     
@@ -106,12 +109,12 @@ public class student extends account {
                     load_mark();
                     view_mark();
                     break;
-                case 5:
-                    enroll_course();
-                    break;
-                case 6:
-                    cancel_course();
-                    break;
+                // case 5:
+                //     enroll_course();
+                //     break;
+                // case 6:
+                //     cancel_course();
+                //     break;
                 default:
                     return;
             }
@@ -299,36 +302,24 @@ public class student extends account {
         }
         return false;
     }
-    public void enroll_course(){
-        Scanner scan = new Scanner(System.in);
-        int choose;
-        while (true){
-            view_available_course();
-            System.out.print("Chọn môn học muốn đăng ký (Nhập 0 để thoát): ");
-            choose = scan.nextInt();
-            scan.nextLine();
-            if(choose==0) return;
-            enroll_course_execute(choose);
-            System.out.println("Đăng ký thành công!");
-        }
-        
-    }
-    public void enroll_course_execute(int choose){
+    
+
+    public void enroll_course(String courseid, int number, int semid){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String query = "insert into Student_Course values (?, ?, ?, ?, null, null);";
         try{
             stm = conn.prepareStatement(query);
             stm.setString(1, super.username);
-            stm.setString(2, listAvailableCourse.get(choose-1).id);
-            stm.setInt(3, listAvailableCourse.get(choose-1).number);
-            stm.setInt(4, listAvailableCourse.get(choose-1).sem_id);
+            stm.setString(2, courseid);
+            stm.setInt(3, number);
+            stm.setInt(4, semid);
             stm.executeUpdate();
             load_course();
             load_available_course();
             
         } catch(SQLException exp) {
-            System.out.println("enroll_course_execute " + exp);
+            System.out.println("enroll_course" + exp);
             exp.printStackTrace();
         } finally {
             try {
@@ -339,30 +330,17 @@ public class student extends account {
             }
         }
     }
-    public void cancel_course(){
-        Scanner scan = new Scanner(System.in);
-        int choose;
-        while (true){
-            view_course();
-            System.out.print("Chọn môn học muốn hủy đăng ký (Nhập 0 để thoát): ");
-            choose = scan.nextInt();
-            scan.nextLine();
-            if(choose==0) return;
-            cancel_course_execute(choose);
-            System.out.println("Hủy thành công!");
-        }
-        
-    }
-    public void cancel_course_execute(int choose){
+    
+    public void cancel_course(String courseid, int number, int semid){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String query = "delete from Student_Course where student_id = ? and course_id = ? and number= ? and sem_id= ? ;";
         try{
             stm = conn.prepareStatement(query);
             stm.setString(1, super.username);
-            stm.setString(2, listCourse.get(choose-1).id);
-            stm.setInt(3, listCourse.get(choose-1).number);
-            stm.setInt(4, listCourse.get(choose-1).sem_id);
+            stm.setString(2, courseid);
+            stm.setInt(3, number);
+            stm.setInt(4, semid);
             System.out.println(stm.toString());
             
             stm.executeUpdate(); // thực hiện lệnh delete
@@ -371,7 +349,7 @@ public class student extends account {
             load_available_course();
             
         } catch(SQLException exp) {
-            System.out.println("cancel_course_execute " + exp);
+            System.out.println("cancel_course " + exp);
             exp.printStackTrace();
         } finally {
             try {
@@ -382,4 +360,11 @@ public class student extends account {
             }
         }
     }
+
+    public static void main(String[] args) {
+        student stu = new student("name");
+        stu.swing_LoginPage();
+        
+    }
+    
 }
