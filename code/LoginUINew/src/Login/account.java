@@ -49,7 +49,7 @@ public abstract class account {
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT * FROM Account WHERE username = ? and pass = ?";
+        String query = "SELECT * FROM Account WHERE BINARY username = BINARY ? and BINARY pass = BINARY ?";
         try{
             stm = conn.prepareStatement(query);
             stm.setString(1, name);
