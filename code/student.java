@@ -128,7 +128,7 @@ public class student extends account {
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT stc.course_id, ci.course_name, stc.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id)  join Course_info ci on (stc.course_id = ci.course_id)  join teacher te on (co.teacher_id = te.teacher_id) join semester se on (stc.sem_id = se.sem_id) WHERE student_id = ?";
+        String query = "call load_course(?);";
         try{
             stm = conn.prepareStatement(query);
             stm.setString(1, super.username);
@@ -362,8 +362,10 @@ public class student extends account {
     }
 
     public static void main(String[] args) {
-        student stu = new student("name");
-        stu.swing_LoginPage();
+        student stu = new student("S18127202");
+        //stu.swing_LoginPage();
+        stu.load_course();
+        stu.view_course();
         
     }
     

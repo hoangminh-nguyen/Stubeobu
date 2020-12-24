@@ -39,7 +39,7 @@ public abstract class account {
         }
     }
 
-    public abstract void read_account_file();
+    public abstract void read_account_file(JTextField id, JTextField name, JTextField dob, JTextField gender);
     public abstract void role_menu();
 
     

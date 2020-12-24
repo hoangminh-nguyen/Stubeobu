@@ -39,7 +39,7 @@ public class student extends account {
     }
 
     @Override
-    public void read_account_file() {
+    public void read_account_file(JTextField id, JTextField name, JTextField dob, JTextField gender) {
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
@@ -54,6 +54,10 @@ public class student extends account {
                 super.gender = rs.getString("gender");
                 super.dob = rs.getString("dob");
             }
+            id.setText(super.username);
+            name.setText(super.l_name + " " + super.f_name);
+            gender.setText(super.gender);
+            dob.setText(super.dob);
         } catch(SQLException exp) {
             System.out.println("Write info " + exp);
             exp.printStackTrace();
@@ -95,7 +99,7 @@ public class student extends account {
             }
             switch (choose) {
                 case 1:
-                    read_account_file();
+                    //read_account_file();
                     break;
                 case 2:
                     view_course();

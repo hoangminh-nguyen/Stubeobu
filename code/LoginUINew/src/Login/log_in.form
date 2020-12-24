@@ -1793,12 +1793,12 @@
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="jTextField35" min="-2" pref="118" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                                  <Component id="jTextField34" min="-2" pref="175" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jTextField34" min="-2" pref="264" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="jTextField36" min="-2" pref="100" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="jTextField37" min="-2" pref="69" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="324" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="jButton46" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
                                           </Group>
@@ -1956,6 +1956,7 @@
                         </Container>
                         <Component class="javax.swing.JTextField" name="jTextField34">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="H&#x1ecd; v&#xe0; t&#xea;n"/>
                           </Properties>
                           <Events>
@@ -1965,6 +1966,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField35">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="MSSV"/>
                           </Properties>
                           <Events>
@@ -1973,6 +1975,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField36">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="Ng&#xe0;y sinh"/>
                           </Properties>
                           <Events>
@@ -1981,6 +1984,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField37">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="Gi&#x1edb;i t&#xed;nh"/>
                           </Properties>
                           <Events>
@@ -2234,12 +2238,12 @@
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="jTextField39" min="-2" pref="118" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                                  <Component id="jTextField38" min="-2" pref="175" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jTextField38" min="-2" pref="254" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Component id="jTextField40" min="-2" pref="100" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="jTextField41" min="-2" pref="69" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="324" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="jButton47" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
                                           </Group>
@@ -2339,7 +2343,7 @@
                                   </Border>
                                 </Property>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="7" rowCount="4">
+                                  <Table columnCount="7" rowCount="0">
                                     <Column editable="false" title="M&#xe3; M&#xf4;n h&#x1ecd;c" type="java.lang.Object"/>
                                     <Column editable="false" title="T&#xea;n M&#xf4;n h&#x1ecd;c" type="java.lang.Object"/>
                                     <Column editable="false" title="Gi&#xe1;o Vi&#xea;n" type="java.lang.Object"/>
@@ -2377,12 +2381,12 @@
                                       <Renderer/>
                                     </Column>
                                     <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="true">
-                                      <Title value="&#x110;i&#x1ec3;m gi&#x1eef;a k&#x1ef3;"/>
+                                      <Title/>
                                       <Editor/>
                                       <Renderer/>
                                     </Column>
                                     <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="true">
-                                      <Title value="&#x110;i&#x1ec3;m cu&#x1ed1;i k&#x1ef3;"/>
+                                      <Title/>
                                       <Editor/>
                                       <Renderer/>
                                     </Column>
@@ -2397,6 +2401,7 @@
                         </Container>
                         <Component class="javax.swing.JTextField" name="jTextField38">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="H&#x1ecd; v&#xe0; t&#xea;n"/>
                           </Properties>
                           <Events>
@@ -2406,6 +2411,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField39">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="MSGV"/>
                           </Properties>
                           <Events>
@@ -2415,6 +2421,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField40">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="Ng&#xe0;y sinh"/>
                           </Properties>
                           <Events>
@@ -2423,6 +2430,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextField41">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="text" type="java.lang.String" value="Gi&#x1edb;i t&#xed;nh"/>
                           </Properties>
                           <Events>
@@ -2463,19 +2471,17 @@
                                   </Border>
                                 </Property>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="7" rowCount="4">
+                                  <Table columnCount="5" rowCount="1">
                                     <Column editable="false" title="M&#xe3; M&#xf4;n h&#x1ecd;c" type="java.lang.Object"/>
                                     <Column editable="false" title="T&#xea;n M&#xf4;n h&#x1ecd;c" type="java.lang.Object"/>
                                     <Column editable="false" title="Gi&#xe1;o Vi&#xea;n" type="java.lang.Object"/>
-                                    <Column editable="false" title="H&#x1ecd;c k&#x1ef3;" type="java.lang.Object"/>
                                     <Column editable="false" title="N&#x103;m h&#x1ecd;c" type="java.lang.Object"/>
-                                    <Column editable="false" title="&#x110;i&#x1ec3;m gi&#x1eef;a k&#x1ef3;" type="java.lang.Object"/>
-                                    <Column editable="false" title="&#x110;i&#x1ec3;m cu&#x1ed1;i k&#x1ef3;" type="java.lang.Object"/>
+                                    <Column editable="false" title="H&#x1ecd;c k&#x1ef3;" type="java.lang.Object"/>
                                   </Table>
                                 </Property>
                                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                                   <TableColumnModel selectionModel="0">
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="false">
                                       <Title/>
                                       <Editor/>
                                       <Renderer/>
@@ -2485,17 +2491,7 @@
                                       <Editor/>
                                       <Renderer/>
                                     </Column>
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                                      <Title/>
-                                      <Editor/>
-                                      <Renderer/>
-                                    </Column>
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="false">
-                                      <Title/>
-                                      <Editor/>
-                                      <Renderer/>
-                                    </Column>
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="false">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="50" resizable="false">
                                       <Title/>
                                       <Editor/>
                                       <Renderer/>

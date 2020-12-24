@@ -18,6 +18,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class log_in extends javax.swing.JFrame {
     account user = new student("","");
+    professor prof;
+    student stu;
+    admin ad;
     /**
      * Creates new form log_in
      */
@@ -39,9 +42,7 @@ public class log_in extends javax.swing.JFrame {
         jTable9.setAutoCreateRowSorter(true);
         jTable15.setAutoCreateRowSorter(true);
         jTable16.setAutoCreateRowSorter(true);
-        
-        
-        
+        jTable18.setAutoCreateRowSorter(true);
     }
 
     /**
@@ -1302,6 +1303,7 @@ public class log_in extends javax.swing.JFrame {
             jTable15.getColumnModel().getColumn(6).setHeaderValue("Điểm cuối kỳ");
         }
 
+        jTextField34.setEditable(false);
         jTextField34.setText("Họ và tên");
         jTextField34.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1314,6 +1316,7 @@ public class log_in extends javax.swing.JFrame {
             }
         });
 
+        jTextField35.setEditable(false);
         jTextField35.setText("MSSV");
         jTextField35.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1321,6 +1324,7 @@ public class log_in extends javax.swing.JFrame {
             }
         });
 
+        jTextField36.setEditable(false);
         jTextField36.setText("Ngày sinh");
         jTextField36.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1328,6 +1332,7 @@ public class log_in extends javax.swing.JFrame {
             }
         });
 
+        jTextField37.setEditable(false);
         jTextField37.setText("Giới tính");
         jTextField37.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1420,12 +1425,12 @@ public class log_in extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
                                 .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(8, 8, 8)
-                                .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField37, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(324, 324, 324))
+                                .addGap(259, 259, 259))
                             .addComponent(jButton46, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1529,10 +1534,7 @@ public class log_in extends javax.swing.JFrame {
         jTable17.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable17.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Mã Môn học", "Tên Môn học", "Giáo Viên", "Học kỳ", "Năm học", "Điểm giữa kỳ", "Điểm cuối kỳ"
@@ -1551,11 +1553,10 @@ public class log_in extends javax.swing.JFrame {
             jTable17.getColumnModel().getColumn(3).setPreferredWidth(10);
             jTable17.getColumnModel().getColumn(4).setPreferredWidth(10);
             jTable17.getColumnModel().getColumn(5).setPreferredWidth(10);
-            jTable17.getColumnModel().getColumn(5).setHeaderValue("Điểm giữa kỳ");
             jTable17.getColumnModel().getColumn(6).setPreferredWidth(10);
-            jTable17.getColumnModel().getColumn(6).setHeaderValue("Điểm cuối kỳ");
         }
 
+        jTextField38.setEditable(false);
         jTextField38.setText("Họ và tên");
         jTextField38.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1568,6 +1569,7 @@ public class log_in extends javax.swing.JFrame {
             }
         });
 
+        jTextField39.setEditable(false);
         jTextField39.setText("MSGV");
         jTextField39.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1580,6 +1582,7 @@ public class log_in extends javax.swing.JFrame {
             }
         });
 
+        jTextField40.setEditable(false);
         jTextField40.setText("Ngày sinh");
         jTextField40.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1587,6 +1590,7 @@ public class log_in extends javax.swing.JFrame {
             }
         });
 
+        jTextField41.setEditable(false);
         jTextField41.setText("Giới tính");
         jTextField41.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1609,17 +1613,14 @@ public class log_in extends javax.swing.JFrame {
         jTable18.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable18.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null}
             },
             new String [] {
-                "Mã Môn học", "Tên Môn học", "Giáo Viên", "Học kỳ", "Năm học", "Điểm giữa kỳ", "Điểm cuối kỳ"
+                "Mã Môn học", "Tên Môn học", "Giáo Viên", "Năm học", "Học kỳ"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1641,16 +1642,14 @@ public class log_in extends javax.swing.JFrame {
         jScrollPane18.setViewportView(jTable18);
         if (jTable18.getColumnModel().getColumnCount() > 0) {
             jTable18.getColumnModel().getColumn(0).setResizable(false);
+            jTable18.getColumnModel().getColumn(0).setPreferredWidth(30);
             jTable18.getColumnModel().getColumn(1).setResizable(false);
             jTable18.getColumnModel().getColumn(2).setResizable(false);
+            jTable18.getColumnModel().getColumn(2).setPreferredWidth(50);
             jTable18.getColumnModel().getColumn(3).setResizable(false);
             jTable18.getColumnModel().getColumn(3).setPreferredWidth(10);
             jTable18.getColumnModel().getColumn(4).setResizable(false);
             jTable18.getColumnModel().getColumn(4).setPreferredWidth(10);
-            jTable18.getColumnModel().getColumn(5).setResizable(false);
-            jTable18.getColumnModel().getColumn(5).setPreferredWidth(10);
-            jTable18.getColumnModel().getColumn(6).setResizable(false);
-            jTable18.getColumnModel().getColumn(6).setPreferredWidth(10);
         }
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1679,12 +1678,12 @@ public class log_in extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
                                 .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(8, 8, 8)
-                                .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(324, 324, 324))
+                                .addGap(265, 265, 265))
                             .addComponent(jButton47, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel19Layout.createSequentialGroup()
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1810,7 +1809,16 @@ public class log_in extends javax.swing.JFrame {
         cardlayout.show(jPanel8, "course");
     }//GEN-LAST:event_jLabel11MousePressed
     private void load_student(){
-        user.read_account_file();
+        user.read_account_file(jTextField35, jTextField34, jTextField36, jTextField37);
+    }
+    
+    
+    private void load_data_teacher(){
+        prof.read_account_file(jTextField39, jTextField38, jTextField40, jTextField41);
+        prof.load_course(jTable18);
+        
+        
+        
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String username = jTextField1.getText();
@@ -1819,10 +1827,12 @@ public class log_in extends javax.swing.JFrame {
             switch (username.charAt(0)) {
                         case 'S':
                             user = new student(username, password);
+                            
                             loginz.show(jPanel12, "student");
                             break;
                         case 'T':
-                            user = new professor(username, password);
+                            prof = new professor(username, password);
+                            load_data_teacher();
                             loginz.show(jPanel12, "teacher");
                             break;
                         case 'A':

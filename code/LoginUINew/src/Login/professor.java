@@ -2,13 +2,15 @@ package Login;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class professor extends account{
 
     protected String id;
     ArrayList<course> listCourse = null;
     professor(String name, String pass){
-        super.username = name;
+        super.username = name; //id
         super.password = pass;
     }
     professor(String name){
@@ -16,7 +18,7 @@ public class professor extends account{
     }
 
     @Override
-    public void read_account_file() {
+    public void read_account_file(JTextField id, JTextField name, JTextField dob, JTextField gender) {
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
@@ -31,6 +33,13 @@ public class professor extends account{
                 super.gender = rs.getString("gender");
                 super.dob = rs.getString("dob");
             }
+            
+            //chèn vô giao diện
+            id.setText(super.username);
+            name.setText(super.l_name + " " + super.f_name);
+            gender.setText(super.gender);
+            dob.setText(super.dob);
+            
         } catch(SQLException exp) {
             System.out.println("Write info " + exp);
             exp.printStackTrace();
@@ -45,7 +54,7 @@ public class professor extends account{
         }
     }
 
-    public void load_course(){
+    public void load_course(JTable table_course){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
@@ -55,6 +64,9 @@ public class professor extends account{
             stm.setString(1, super.username);
             rs = stm.executeQuery();
             listCourse = new ArrayList<>();
+            int i = 0;
+            DefaultTableModel model = (DefaultTableModel) table_course.getModel();
+            model.setRowCount(0);
             while(rs.next()){
                 course temp = new course();
                 temp.id = rs.getString("course_id");
@@ -67,7 +79,9 @@ public class professor extends account{
                 temp.year = rs.getInt("years");
                 temp.room = rs.getString("room");
                 listCourse.add(temp);
+                load_course_ui(temp, table_course);
             }
+            
             
         } catch(SQLException exp) {
             System.out.println("load course " + exp);
@@ -81,6 +95,11 @@ public class professor extends account{
               e.printStackTrace();
             }
         }
+    }
+    public void load_course_ui(course temp, JTable table_course){
+        Object[] row = {temp.id, temp.name + " " + temp.number, temp.teacher_name, temp.year, temp.semester};
+        DefaultTableModel model = (DefaultTableModel) table_course.getModel();
+        model.addRow(row);
     }
 
 
@@ -100,7 +119,7 @@ public class professor extends account{
                     listCourse.get(i).listStu = new ArrayList<>();
                     while(rs.next()){
                         student temp = new student(rs.getString("student_id"));
-                        temp.read_account_file();
+                        //temp.read_account_file();
                         listStudent to_add = new listStudent(temp, rs.getDouble("midterm"), rs.getDouble("final"));
                         listCourse.get(i).listStu.add(to_add);
                         }
@@ -294,11 +313,7 @@ public class professor extends account{
         
     }
 
-    public static void main(String[] args) {
-        professor pro = new professor("T001");
-        pro.read_account_file();
-        pro.load_course();
-    }
+    
 }
 
 //now i go
