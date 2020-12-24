@@ -58,6 +58,7 @@ create table Student_Course
 	sem_id int,
 	midterm double,
 	final double,
+	is_studied int,
 	constraint PK_St_Co primary key (student_id, course_id,number,sem_id)
 );
 create table Timetable
@@ -149,19 +150,19 @@ insert into Course values ('MTH00001', 2, 1, 'I01', 'T003');
 insert into Course values ('MTH00002', 2, 1, 'I02', 'T004');
 
 -- STUDENT COURSE
-insert into Student_Course values ('S18127200', 'CSC00001', 1, 1, null, null);
-insert into Student_Course values ('S18127201', 'CSC00001', 1, 1, null, null);
-insert into Student_Course values ('S18127202', 'CSC00001', 1, 1, null, null);
-insert into Student_Course values ('S18127203', 'CSC00001', 1, 2, null, null);
-insert into Student_Course values ('S18127204', 'CSC00001', 1, 2, null, null);
-insert into Student_Course values ('S18127205', 'CSC00001', 1, 2, null, null);
+insert into Student_Course values ('S18127200', 'CSC00001', 1, 1, null, null,1);
+insert into Student_Course values ('S18127201', 'CSC00001', 1, 1, null, null,1);
+insert into Student_Course values ('S18127202', 'CSC00001', 1, 1, null, null,1);
+insert into Student_Course values ('S18127203', 'CSC00001', 1, 2, null, null,1);
+insert into Student_Course values ('S18127204', 'CSC00001', 1, 2, null, null,1);
+insert into Student_Course values ('S18127205', 'CSC00001', 1, 2, null, null,1);
 
-insert into Student_Course values ('S18127201', 'MTH00001', 1, 1, null, null);
-insert into Student_Course values ('S18127202', 'MTH00001', 1, 1, null, null);
-insert into Student_Course values ('S18127203', 'MTH00001', 1, 1, null, null);
-insert into Student_Course values ('S18127204', 'MTH00002', 1, 1, null, null);
-insert into Student_Course values ('S18127205', 'MTH00002', 1, 1, null, null);
-insert into Student_Course values ('S18127206', 'MTH00002', 1, 1, null, null);
+insert into Student_Course values ('S18127201', 'MTH00001', 1, 1, null, null,1);
+insert into Student_Course values ('S18127202', 'MTH00001', 1, 1, null, null,1);
+insert into Student_Course values ('S18127203', 'MTH00001', 1, 1, null, null,1);
+insert into Student_Course values ('S18127204', 'MTH00002', 1, 1, null, null,1);
+insert into Student_Course values ('S18127205', 'MTH00002', 1, 1, null, null,1);
+insert into Student_Course values ('S18127206', 'MTH00002', 1, 1, null, null,1);
 
 -- TIMETABLE
 insert into Timetable values ('CSC00001', 1, 1, 2, 1);

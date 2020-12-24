@@ -2,6 +2,7 @@ package Login;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.*;
+import javax.swing.JTextField;
 
 public class admin extends account{
 
@@ -22,7 +23,7 @@ public class admin extends account{
             while(rs.next()){
                 id = rs.getString("username");
                 student temp = new student(id);
-                temp.read_account_file();
+                //temp.read_account_file();
                 list_Student.add(temp);
             }
         } catch(SQLException exp) {
@@ -51,7 +52,7 @@ public class admin extends account{
             while(rs.next()){
                 id = rs.getString("username");
                 professor temp = new professor(id);
-                temp.read_account_file();
+                //temp.read_account_file();
                 list_Professor.add(temp);
             }
         } catch(SQLException exp) {
@@ -135,16 +136,16 @@ public class admin extends account{
         }
     }
     
-    public void load_student_course(){
-        for (int i = 0; i < list_Student.size(); i++) {
-            list_Student.get(i).load_course();
-        }
-    }
-    public void load_proffesor_course(){
-        for (int i = 0; i < list_Professor.size(); i++) {
-            list_Professor.get(i).load_course();
-        }
-    }
+//    public void load_student_course(){
+//        for (int i = 0; i < list_Student.size(); i++) {
+//            list_Student.get(i).load_course();
+//        }
+//    }
+//    public void load_proffesor_course(){
+//        for (int i = 0; i < list_Professor.size(); i++) {
+//            list_Professor.get(i).load_course();
+//        }
+//    }
     public void load_student_in_course(String course_idz, int numberz, int semidz){
         for (int i = 0; i < list_Course.size(); i++){
             if (list_Course.get(i).get_course_id().equals(course_idz) && list_Course.get(i).get_number() == numberz && list_Course.get(i).get_sem_id() == semidz){
@@ -161,7 +162,7 @@ public class admin extends account{
                     list_Course.get(i).listStu = new ArrayList<>();
                     while(rs.next()){
                         student temp = new student(rs.getString("student_id"));
-                        temp.read_account_file();
+                        //temp.read_account_file();
                         listStudent to_add = new listStudent(temp, rs.getDouble("midterm"), rs.getDouble("final"));
                         list_Course.get(i).listStu.add(to_add);
                         }
@@ -187,15 +188,15 @@ public class admin extends account{
         a.load_student_list();
         a.load_course_list();
         a.load_professor_list();
-        a.load_student_course();
-        a.load_proffesor_course();
+//        a.load_student_course();
+//        a.load_proffesor_course();
         
         a.load_student_in_course("CSC00001", 1,2);
     }
 
 
 
-    @Override
+    //@Override
     public void read_account_file() {
         // TODO Auto-generated method stub
 
@@ -205,6 +206,11 @@ public class admin extends account{
     public void role_menu() {
         // TODO Auto-generated method stub
         System.out.println("day la admin");
+    }
+
+    @Override
+    public void read_account_file(JTextField id, JTextField name, JTextField dob, JTextField gender) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

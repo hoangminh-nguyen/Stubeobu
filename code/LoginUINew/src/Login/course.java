@@ -20,6 +20,7 @@ public class course {
     protected ArrayList<listStudent> listStu;
     protected Double midterm, finall;
     protected int semester, year, sem_id, number;
+    protected boolean is_studied;
     protected ArrayList<timetable> timetable;
     String get_course_id(){
         return id;
