@@ -1,0 +1,19 @@
+.vscode/
+code.rarr
+
+# NetBeans specific #
+code/LoginUINew/nbproject/private/
+code/LoginUINew/build/
+code/LoginUINew/nbbuild/
+code/LoginUINew/dist/
+code/LoginUINew/nbdist/
+code/LoginUINew/nbactions.xml
+code/LoginUINew/nb-configuration.xml
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
