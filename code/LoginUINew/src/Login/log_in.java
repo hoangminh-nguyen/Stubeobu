@@ -9,7 +9,9 @@ import com.formdev.flatlaf.*;
 import java.awt.CardLayout;
 import static java.awt.Event.UP;
 import java.awt.event.KeyEvent;
+import static java.lang.Double.parseDouble;
 import javax.swing.*;
+import javax.swing.JComboBox;
 import javax.swing.RowFilter;
 import javax.swing.UIManager;
 import javax.swing.table.*;
@@ -1804,6 +1806,11 @@ public class log_in extends javax.swing.JFrame {
                 jTable17MouseClicked(evt);
             }
         });
+        jTable17.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable17KeyReleased(evt);
+            }
+        });
         jScrollPane17.setViewportView(jTable17);
         if (jTable17.getColumnModel().getColumnCount() > 0) {
             jTable17.getColumnModel().getColumn(3).setPreferredWidth(10);
@@ -2321,14 +2328,7 @@ public class log_in extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
     
     
-//    private void show_student_admin(int selectRow){
-//        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-//        
-//        jTextField3.setText(model.getValueAt(selectRow, 0).toString());
-//        jTextField2.setText(model.getValueAt(selectRow, 1).toString());
-//        jTextField4.setText(model.getValueAt(selectRow, 2).toString());
-//        jTextField5.setText(model.getValueAt(selectRow, 3).toString());
-//    }
+
     
     private void show_student_se_co(int selectRow){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -2339,12 +2339,7 @@ public class log_in extends javax.swing.JFrame {
         jTextField5.setText(model.getValueAt(selectRow, 3).toString());
     }
     
-//    private void show_studentpoint_admin(int selectRow){
-//        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
-//        
-//        jTextField6.setText(model.getValueAt(selectRow, 5).toString());
-//        jTextField7.setText(model.getValueAt(selectRow, 6).toString());
-//    }
+
     
      private void show_teacher_admin(int selectRow){
         DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
@@ -2872,11 +2867,36 @@ public class log_in extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton50ActionPerformed
 
     private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
-        // TODO add your handling code here:
+        Double midterm = parseDouble(jTextField50.getText());
+        Double finalz = parseDouble(jTextField51.getText());
+        
+        
+        int selectRow = jTable17.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTable17.getModel();
+        
+        int selectRow2 = jTable18.getSelectedRow();
+        DefaultTableModel model2 = (DefaultTableModel) jTable18.getModel();
+        
+        String courseid = (model2.getValueAt(selectRow2, 0).toString());
+        String studentid = model.getValueAt(selectRow, 0).toString();
+        String name = model2.getValueAt(selectRow2, 1).toString();
+        name = name.substring(name.length()-1);
+        int number = Integer.parseInt(name);
+        int year =(int) model2.getValueAt(selectRow2, 3);
+        int semester =(int) model2.getValueAt(selectRow2, 4);
+        int sem_id = prof.getSemid(year, semester);
+        
+        if (!jTextField50.getText().equals("")){prof.set_midterm(studentid, courseid, number, sem_id, midterm);}
+        if (!jTextField51.getText().equals("")){prof.set_final(studentid, courseid, number, sem_id, finalz);}
+        prof.load_student_in_course(courseid, number, sem_id, jTable17);
+        
+        jTextField50.setEditable(false);
+        jTextField51.setEditable(false);
     }//GEN-LAST:event_jButton51ActionPerformed
 
     private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed
-        // TODO add your handling code here:
+        jTextField50.setEditable(true);
+        jTextField51.setEditable(true);
     }//GEN-LAST:event_jButton52ActionPerformed
 
     private void jTable17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable17MouseClicked
@@ -2886,6 +2906,16 @@ public class log_in extends javax.swing.JFrame {
         jTextField50.setText(model.getValueAt(selectRow, 4).toString());
         jTextField51.setText(model.getValueAt(selectRow, 5).toString());
     }//GEN-LAST:event_jTable17MouseClicked
+
+    private void jTable17KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable17KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            int selectRow = jTable17.getSelectedRow();
+            DefaultTableModel model = (DefaultTableModel) jTable17.getModel();
+
+            jTextField50.setText(model.getValueAt(selectRow, 4).toString());
+            jTextField51.setText(model.getValueAt(selectRow, 5).toString());
+        }     
+    }//GEN-LAST:event_jTable17KeyReleased
 
     /**
      * @param args the command line arguments

@@ -13,7 +13,7 @@ public class professor extends account{
     professor(String name, String pass){
         super.username = name; //id
         super.password = pass;
-    }
+    } 
     professor(String name){
         super.username = name;
     }
@@ -300,31 +300,27 @@ public class professor extends account{
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String query = "update student_course set midterm = ? where student_id = ? and course_id = ? and number= ? and sem_id= ? ;";
-        for (int i = 0; i < listCourse.size(); i++){
-            if (listCourse.get(i).get_course_id() == course_idz && listCourse.get(i).get_number() == numberz && listCourse.get(i).get_sem_id() == semidz){
-                try{
-                    stm = conn.prepareStatement(query);
-                    stm.setDouble(1, new_midterm);
-                    stm.setString(2, student_id);
-                    stm.setString(3, listCourse.get(i).id);
-                    stm.setInt(4, listCourse.get(i).number);
-                    stm.setInt(5, listCourse.get(i).sem_id);
-                    System.out.println(stm.toString());
-                    
-                    stm.executeUpdate(); // thực hiện lệnh delete
-                    //load_student_in_course(course_idz,numberz,semidz);
-                    
-                } catch(SQLException exp) {
-                    System.out.println("update midterm " + exp);
-                    exp.printStackTrace();
-                } finally {
-                    try {
-                        if (conn != null) conn.close();
-                        if (stm != null) stm.close();
-                    } catch (SQLException e) {
-                    e.printStackTrace();
-                    }
-                }
+       
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setDouble(1, new_midterm);
+            stm.setString(2, student_id);
+            stm.setString(3, course_idz);
+            stm.setInt(4, numberz);
+            stm.setInt(5, semidz);
+            System.out.println(stm.toString());
+
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("update midterm " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
             }
         }
     }
@@ -333,31 +329,27 @@ public class professor extends account{
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String query = "update student_course set final = ? where student_id = ? and course_id = ? and number= ? and sem_id= ? ;";
-        for (int i = 0; i < listCourse.size(); i++){
-            if (listCourse.get(i).get_course_id() == course_idz && listCourse.get(i).get_number() == numberz && listCourse.get(i).get_sem_id() == semidz){
-                try{
-                    stm = conn.prepareStatement(query);
-                    stm.setDouble(1, new_final);
-                    stm.setString(2, student_id);
-                    stm.setString(3, listCourse.get(i).id);
-                    stm.setInt(4, listCourse.get(i).number);
-                    stm.setInt(5, listCourse.get(i).sem_id);
-                    System.out.println(stm.toString());
-                    
-                    stm.executeUpdate(); // thực hiện lệnh delete
-                    //load_student_in_course(course_idz,numberz,semidz);
-                    
-                } catch(SQLException exp) {
-                    System.out.println("update final " + exp);
-                    exp.printStackTrace();
-                } finally {
-                    try {
-                        if (conn != null) conn.close();
-                        if (stm != null) stm.close();
-                    } catch (SQLException e) {
-                    e.printStackTrace();
-                    }
-                }
+       
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setDouble(1, new_final);
+            stm.setString(2, student_id);
+            stm.setString(3, course_idz);
+            stm.setInt(4, numberz);
+            stm.setInt(5, semidz);
+            System.out.println(stm.toString());
+
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("update midterm " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
             }
         }
     }
