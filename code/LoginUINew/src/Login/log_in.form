@@ -2211,11 +2211,8 @@
                         <Component class="javax.swing.JComboBox" name="jComboBox1">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="4">
+                              <StringArray count="1">
                                 <StringItem index="0" value="N&#x103;m"/>
-                                <StringItem index="1" value="2020"/>
-                                <StringItem index="2" value="2019"/>
-                                <StringItem index="3" value="2018"/>
                               </StringArray>
                             </Property>
                           </Properties>
@@ -2564,7 +2561,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                          <CardConstraints cardName="student"/>
+                          <CardConstraints cardName="course"/>
                         </Constraint>
                       </Constraints>
 
@@ -2583,15 +2580,15 @@
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                   <Component id="jButton44" min="-2" pref="73" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jLabel30" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                                      <Component id="jLabel30" min="-2" pref="117" max="-2" attributes="0"/>
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <Component id="jLabel29" min="-2" pref="100" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="choice4" min="-2" pref="98" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                                          <Component id="choice3" min="-2" pref="98" max="-2" attributes="0"/>
+                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                          <Component id="jComboBox3" min="-2" pref="64" max="-2" attributes="0"/>
+                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                          <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -2630,12 +2627,12 @@
                                       <Component id="jTextField41" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel29" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
-                                      <Component id="choice3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="choice4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel29" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                                      <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="jScrollPane18" min="-2" pref="129" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButton44" min="-2" max="-2" attributes="0"/>
@@ -2645,7 +2642,7 @@
                                   <Component id="jScrollPane17" min="-2" pref="129" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jButton47" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="161" max="32767" attributes="0"/>
+                                  <EmptySpace pref="165" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2882,15 +2879,38 @@
                             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng k&#xfd;"/>
                           </Properties>
                         </Component>
-                        <Component class="java.awt.Choice" name="choice3">
-                        </Component>
-                        <Component class="java.awt.Choice" name="choice4">
+                        <Component class="javax.swing.JComboBox" name="jComboBox3">
                           <Properties>
-                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                              <Color id="Default Cursor"/>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="1">
+                                <StringItem index="0" value="N&#x103;m"/>
+                              </StringArray>
                             </Property>
-                            <Property name="name" type="java.lang.String" value="" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox3ItemStateChanged"/>
+                          </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JComboBox" name="jComboBox4">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="4">
+                                <StringItem index="0" value="H&#x1ecd;c k&#x1ef3;"/>
+                                <StringItem index="1" value="1"/>
+                                <StringItem index="2" value="2"/>
+                                <StringItem index="3" value="3"/>
+                              </StringArray>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox4ItemStateChanged"/>
+                          </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                          </AuxValues>
                         </Component>
                       </SubComponents>
                     </Container>

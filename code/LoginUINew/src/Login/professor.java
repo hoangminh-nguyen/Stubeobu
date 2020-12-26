@@ -9,12 +9,22 @@ public class professor extends account{
 
     protected String id;
     ArrayList<course> listCourse = null;
+    ArrayList<String> allyear;
     professor(String name, String pass){
         super.username = name; //id
         super.password = pass;
     }
     professor(String name){
         super.username = name;
+    }
+    
+    public boolean check_year(int year_temp){
+        String temp = String.valueOf(year_temp);
+        for(int i = 0 ; i<allyear.size(); i++){
+            System.out.println(allyear.get(i));
+            if (allyear.get(i).equals(temp)) {return false;}
+        }
+        return true;
     }
 
     @Override
@@ -54,7 +64,7 @@ public class professor extends account{
         }
     }
 
-    public void load_course(JTable table_course){
+    public void load_course(JTable table_course, JComboBox year){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
@@ -67,6 +77,7 @@ public class professor extends account{
             int i = 0;
             DefaultTableModel model = (DefaultTableModel) table_course.getModel();
             model.setRowCount(0);
+            allyear = new ArrayList<String>();
             while(rs.next()){
                 course temp = new course();
                 temp.id = rs.getString("course_id");
@@ -78,6 +89,7 @@ public class professor extends account{
                 temp.semester = rs.getInt("Semester");
                 temp.year = rs.getInt("years");
                 temp.room = rs.getString("room");
+                if(check_year(temp.year)) {year.addItem(String.valueOf(temp.year));allyear.add(String.valueOf(temp.year));}
                 listCourse.add(temp);
                 load_course_ui(temp, table_course);
             }

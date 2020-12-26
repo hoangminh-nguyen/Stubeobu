@@ -11,6 +11,7 @@ public class student extends account {
     
     ArrayList<course> listCourse = null; //cac khoa hoc da dang ky
     ArrayList<course> listAvailableCourse = null; //cac khoa hoc chua dang ky
+    ArrayList<String> allyear;
     student(String name, String pass){
         super.username = name;
         super.password = pass;
@@ -19,7 +20,15 @@ public class student extends account {
     student(String name){
         super.username = name;
     }
-
+    
+    public boolean check_year(int year_temp){
+        String temp = String.valueOf(year_temp);
+        for(int i = 0 ; i<allyear.size(); i++){
+            System.out.println(allyear.get(i));
+            if (allyear.get(i).equals(temp)) {return false;}
+        }
+        return true;
+    }
 
     public Double get_midterm(String course_id){
         for(course x : listCourse){
@@ -88,7 +97,7 @@ public class student extends account {
 
     
     
-    public void load_course(JTable table_course){
+    public void load_course(JTable table_course, JComboBox year){
         // TODO Auto-generated method stub
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
@@ -101,6 +110,7 @@ public class student extends account {
             listCourse = new ArrayList<>();
             DefaultTableModel model = (DefaultTableModel) table_course.getModel();
             model.setRowCount(0);
+            allyear = new ArrayList<String>();
             while(rs.next()){
                 course temp = new course();
                 temp.id = rs.getString("course_id");
@@ -113,7 +123,10 @@ public class student extends account {
                 temp.year = rs.getInt("years");
                 temp.room = rs.getString("room");
                 temp.is_studied =  rs.getInt("is_studied")==1;
-                if(temp.is_studied){this.load_mark(temp);}
+                if(temp.is_studied){
+                    this.load_mark(temp);
+                    if(check_year(temp.year)) {year.addItem(String.valueOf(temp.year));allyear.add(String.valueOf(temp.year));}
+                }
                 
                 listCourse.add(temp);
                 load_course_ui(temp, table_course);
@@ -312,7 +325,7 @@ public class student extends account {
         return sem_id;
     }
     
-    public void enroll_course(String courseid, int number, int semid,JTable table_course1, JTable table_course2,JTable table_course3){
+    public void enroll_course(String courseid, int number, int semid,JTable table_course1, JTable table_course2,JTable table_course3, JComboBox year){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String query = "insert into Student_Course values (?, ?, ?, ?, null, null, 0);";
@@ -324,7 +337,7 @@ public class student extends account {
             stm.setInt(4, semid);
             stm.executeUpdate();
             
-            load_course(table_course1);
+            load_course(table_course1, year);
             load_sign_course(table_course2);
             load_available_course(table_course3);
             
@@ -341,7 +354,7 @@ public class student extends account {
         }
     }
     
-    public void cancel_course(String courseid, int number, int semid,JTable table_course1, JTable table_course2,JTable table_course3){
+    public void cancel_course(String courseid, int number, int semid,JTable table_course1, JTable table_course2,JTable table_course3, JComboBox year){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String query = "delete from Student_Course where student_id = ? and course_id = ? and number= ? and sem_id= ? ;";
@@ -355,7 +368,7 @@ public class student extends account {
             
             stm.executeUpdate(); // thực hiện lệnh delete
             
-            load_course(table_course1);
+            load_course(table_course1,year);
             load_sign_course(table_course2);
             load_available_course(table_course3);
             
