@@ -6,6 +6,7 @@ class timetable{
 }
 class listStudent{
     student student;
+    String name="", dob="", gender="";
     Double midterm, finall;
     listStudent(student studentz, Double m, Double f){
         student = studentz;

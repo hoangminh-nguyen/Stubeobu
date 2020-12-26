@@ -113,42 +113,85 @@ public class professor extends account{
         DefaultTableModel model = (DefaultTableModel) table_course.getModel();
         model.addRow(row);
     }
-
-
-    public void load_student_in_course(String course_idz, int numberz, int semidz){
-        for (int i = 0; i < listCourse.size(); i++){
-            if (listCourse.get(i).get_course_id().equals(course_idz) && listCourse.get(i).get_number() == numberz && listCourse.get(i).get_sem_id() == semidz){
-                PreparedStatement stm = null;
-                Connection conn = MySQLConnUtils.getMySQLConnection();
-                ResultSet rs = null;
-                String query = "SELECT stc.student_id, stc.midterm, stc.final FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id) WHERE co.course_id = ? and co.number = ? and co.sem_id = ?;";
-                try {
-                    stm = conn.prepareStatement(query);
-                    stm.setString(1, course_idz);
-                    stm.setInt(2, numberz);
-                    stm.setInt(3, semidz);
-                    rs = stm.executeQuery();
-                    listCourse.get(i).listStu = new ArrayList<>();
-                    while(rs.next()){
-                        student temp = new student(rs.getString("student_id"));
-                        //temp.read_account_file();
-                        listStudent to_add = new listStudent(temp, rs.getDouble("midterm"), rs.getDouble("final"));
-                        listCourse.get(i).listStu.add(to_add);
-                        }
-                    } catch(SQLException exp) {
-                        System.out.println("load_student_in_course " + exp);
-                    exp.printStackTrace();
-                    } finally {
-                        try {
-                            if (conn != null) conn.close();
-                            if (rs != null) rs.close();
-                            if (stm != null) stm.close();
-                        } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
+    
+    public int getSemid(int year, int semester){
+        int sem_id = 0;
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "select sem_id from semester where years = ? and semester = ?;";
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setInt(1, year);
+            stm.setInt(2, semester);
+            rs = stm.executeQuery();
+            if(rs.next()){
+                //System.out.println("Have id");
+                sem_id = rs.getInt("sem_id");
+                
+            }
+            
+        } catch(SQLException exp) {
+            System.out.println("enroll_course" + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
             }
         }
+        
+        return sem_id;
+    }
+
+
+    public void load_student_in_course(String course_idz, int numberz, int semidz, JTable student_course){
+        
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "SELECT stc.student_id, concat(st.lastname ,' ',st.firstname) as student_name, st.gender, st.dob, stc.midterm, stc.final FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id) join student st on (st.student_id = stc.student_id) WHERE co.course_id = ? and co.number = ? and co.sem_id = ?;";
+        try {
+            stm = conn.prepareStatement(query);
+            stm.setString(1, course_idz);
+            stm.setInt(2, numberz);
+            stm.setInt(3, semidz);
+            rs = stm.executeQuery();
+            DefaultTableModel model = (DefaultTableModel) student_course.getModel();
+            model.setRowCount(0);
+            while(rs.next()){
+                String student_id = rs.getString("student_id");
+                String name = rs.getString("student_name");
+                String dob = rs.getString("dob");
+                String gender = rs.getString("gender");
+                Double midterm = (Double)rs.getObject("midterm");
+                Double finalz = (Double)rs.getObject("final");
+                load_student_mark_ui(student_id, name, dob, gender, midterm, finalz, student_course);
+                }
+            } catch(SQLException exp) {
+                System.out.println("load_student_in_course " + exp);
+            exp.printStackTrace();
+            } finally {
+                try {
+                    if (conn != null) conn.close();
+                    if (rs != null) rs.close();
+                    if (stm != null) stm.close();
+                } catch (SQLException e) {
+                e.printStackTrace();
+            }    
+        }
+    }
+    
+    public void load_student_mark_ui(String id, String name, String dob, String gender, Double midterm, Double finalz, JTable table_course){
+        
+        String temp_mid = midterm != null ? String.valueOf(midterm) : "";
+        String temp_final = finalz != null ? String.valueOf(finalz) : "";
+        Object[] row = {id, name, dob, gender,temp_mid,temp_final};
+        DefaultTableModel model = (DefaultTableModel) table_course.getModel();
+        model.addRow(row);
+        
     }
 
     public void load_timetable(String course_idz, int numberz, int semidz){
@@ -203,7 +246,7 @@ public class professor extends account{
                     System.out.println(stm.toString());
                     
                     stm.executeUpdate(); // thực hiện lệnh delete
-                    load_student_in_course(course_idz,numberz,semidz);
+                    //load_student_in_course(course_idz,numberz,semidz);
                     
                 } catch(SQLException exp) {
                     System.out.println("delete stu " + exp);
@@ -236,7 +279,7 @@ public class professor extends account{
 
 
                     stm.executeUpdate(); // thực hiện lệnh delete
-                    load_student_in_course(course_idz,numberz,semidz);
+                    //load_student_in_course(course_idz,numberz,semidz);
                     
                 } catch(SQLException exp) {
                     System.out.println("add stu " + exp);
@@ -269,7 +312,7 @@ public class professor extends account{
                     System.out.println(stm.toString());
                     
                     stm.executeUpdate(); // thực hiện lệnh delete
-                    load_student_in_course(course_idz,numberz,semidz);
+                    //load_student_in_course(course_idz,numberz,semidz);
                     
                 } catch(SQLException exp) {
                     System.out.println("update midterm " + exp);
@@ -302,7 +345,7 @@ public class professor extends account{
                     System.out.println(stm.toString());
                     
                     stm.executeUpdate(); // thực hiện lệnh delete
-                    load_student_in_course(course_idz,numberz,semidz);
+                    //load_student_in_course(course_idz,numberz,semidz);
                     
                 } catch(SQLException exp) {
                     System.out.println("update final " + exp);
@@ -317,6 +360,47 @@ public class professor extends account{
                 }
             }
         }
+    }
+    
+    public void parse_name(String name, String[] namez){
+        String[] each = name.split(" ");
+
+        namez[0] = each[each.length-1];
+        for (int i = 0; i<each.length-1;i++){
+            namez[1] += each[i] + " ";
+        }
+        namez[1]=namez[1].substring(0,namez[1].length() - 1);
+    }
+    
+    public void edit_info(String name, String dob, String gender){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "update teacher set lastname = ?, firstname = ?, dob = ?, gender = ? where teacher_id = ?;";
+        String[] namez = {"",""};
+        parse_name(name, namez);
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, namez[1]);
+            stm.setString(2, namez[0]);
+            stm.setString(3, dob);
+            stm.setString(4, gender);
+            stm.setString(5, super.username);
+            System.out.println(stm.toString());
+
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("update infor " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+
     }
 
     @Override

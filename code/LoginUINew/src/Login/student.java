@@ -154,7 +154,6 @@ public class student extends account {
             DefaultTableModel model = (DefaultTableModel) table_course.getModel();
             model.addRow(row);
         }
-        
     }
     
     public void load_sign_course(JTable table_course){
@@ -305,7 +304,7 @@ public class student extends account {
             stm.setInt(2, semester);
             rs = stm.executeQuery();
             if(rs.next()){
-                System.out.println("Have id");
+                //System.out.println("Have id");
                 sem_id = rs.getInt("sem_id");
                 
             }
@@ -411,7 +410,7 @@ public class student extends account {
             stm.setString(5, super.username);
             System.out.println(stm.toString());
 
-            stm.executeUpdate(); // thực hiện lệnh delete
+            stm.executeUpdate(); 
 
         } catch(SQLException exp) {
             System.out.println("update infor " + exp);
