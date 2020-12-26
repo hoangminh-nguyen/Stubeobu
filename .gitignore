@@ -10,6 +10,7 @@ code/LoginUINew/nbdist/
 code/LoginUINew/nbactions.xml
 code/LoginUINew/nb-configuration.xml
 
+
 # Class Files #
 *.class
 
@@ -17,3 +18,5 @@ code/LoginUINew/nb-configuration.xml
 *.jar
 *.war
 *.ear
+*.class
+*.class
