@@ -198,7 +198,7 @@ public class professor extends account{
     }
     
     private int getSemidNow(){
-        java.util.Date date = null; // your date
+        Date date = new Date(); // your date
         // Choose time zone in which you want to interpret your Date
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
         cal.setTime(date);
@@ -216,7 +216,7 @@ public class professor extends account{
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT distinct ti.week_day, ti.period_no, ci.course_name FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) join student_course stc on (co.course_id = stc.course_id and co.number = stc.number and co.sem_id = stc.sem_id) join course_info ci on (co.course_id = ci.course_id) WHERE co.teacher_id = ? and stc.is_studied = 1 and co.sem_id = ?";
+        String query = "SELECT ti.week_day, ti.period_no, ci.course_name, co.number FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) join course_info ci on (co.course_id = ci.course_id) WHERE co.teacher_id = ? and co.sem_id = ? and (select stc.is_studied from student_course stc WHERE stc.course_id = co.course_id and stc.number=co.number and stc.sem_id=co.sem_id limit 1) = 1";
         try{
                 DefaultTableModel model = (DefaultTableModel) timetable.getModel();
 		model.setRowCount(4);
@@ -228,7 +228,7 @@ public class professor extends account{
                 while(rs.next()){
                     int week_day = rs.getInt("week_day");
                     int period_no = rs.getInt("period_no");
-		    String tempname = rs.getString("course_name");
+		    String tempname = rs.getString("course_name") +" "+ String.valueOf(rs.getInt("number"));
 		    model.setValueAt(tempname,  period_no-1,week_day-2 );
                 }
             

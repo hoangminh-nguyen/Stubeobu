@@ -124,6 +124,9 @@ insert into Teacher values ('T001', 'Trịnh Trần Phương', 'Tuấn', 'Nam', 
 insert into Teacher values ('T002', 'Lê Nguyễn Trung', 'Đan', 'Nữ', '24/05/1988');
 insert into Teacher values ('T003', 'Phạm Hoàng', 'Khoa', 'Nam', '12/04/1989');
 insert into Teacher values ('T004', 'Hàng Lâm Trang', 'Anh', 'Nữ', '14/01/1990');
+insert into Teacher values ('T005', 'Nguyễn Tiến', 'Lên', 'Nam', '28/06/1990');
+insert into Teacher values ('T006', 'Đinh Bá', 'Dũng', 'Nam', '30/06/1990');
+insert into Teacher values ('T007', 'Nguyễn Xuân', 'Phúc', 'Nam', '22/03/1990');
 
 -- SEMESTER
 insert into Semester values (1, 1, 2020);
@@ -132,47 +135,200 @@ insert into Semester values (3, 3, 2020);
 insert into Semester values (4, 1, 2021);
 insert into Semester values (5, 2, 2021);
 insert into Semester values (6, 3, 2021);
+insert into Semester values (7, 1, 2022);
+insert into Semester values (8, 2, 2022);
+insert into Semester values (9, 3, 2022);
 
 -- COURSE INFO
 insert into Course_info values ('CSC00001', 'Cơ sở dữ liệu');
 insert into Course_info values ('CSC00002', 'Cơ sở trí tuệ nhân tạo');
+insert into Course_info values ('CSC00003', 'Hệ điều hành');
+insert into Course_info values ('CSC00004', 'Mạng máy tính');
 insert into Course_info values ('MTH00001', 'Toán rời rạc');
 insert into Course_info values ('MTH00002', 'Giải tích B1');
+insert into Course_info values ('MTH00003', 'Toán ứng dụng');
+insert into Course_info values ('MTH00004', 'Xác suất thống kê');
+insert into Course_info values ('BAA00001', 'Giáo dục thể chất');
+insert into Course_info values ('BAA00002', 'Đường lối cách mạng');
+insert into Course_info values ('BAA00003', 'Pháp luật đại cương');
+insert into Course_info values ('BAA00004', 'Tư tưởng Hồ Chí Minh');
 
 -- COURSE
+-- hoc ki 1-2020
 insert into Course values ('CSC00001', 1, 1, 'I01', 'T001');
-insert into Course values ('CSC00001', 1, 2, 'I02', 'T002');
-insert into Course values ('MTH00001', 1, 1, 'I01', 'T003');
-insert into Course values ('MTH00002', 1, 1, 'I02', 'T004');
-insert into Course values ('CSC00001', 2, 1, 'I01', 'T001');
-insert into Course values ('CSC00001', 2, 2, 'I02', 'T002');
-insert into Course values ('MTH00001', 2, 1, 'I01', 'T003');
-insert into Course values ('MTH00002', 2, 1, 'I02', 'T004');
+insert into Course values ('CSC00001', 2, 1, 'I02', 'T002');
+insert into Course values ('CSC00002', 1, 1, 'F01', 'T004');
+insert into Course values ('CSC00002', 2, 1, 'A02', 'T004');
+insert into Course values ('BAA00001', 1, 1, 'H01', 'T003');
+insert into Course values ('BAA00001', 2, 1, 'H01', 'T003');
+insert into Course values ('MTH00003', 1, 1, 'I03', 'T005');
+-- hoc ki 2-2020
+insert into Course values ('CSC00003', 1, 2, 'I01', 'T001');
+insert into Course values ('CSC00003', 2, 2, 'I02', 'T001');
+insert into Course values ('MTH00001', 1, 2, 'F01', 'T005');
+insert into Course values ('MTH00001', 2, 2, 'A02', 'T006');
+insert into Course values ('BAA00002', 1, 2, 'H01', 'T007');
+insert into Course values ('BAA00002', 2, 2, 'H01', 'T007');
+insert into Course values ('MTH00004', 1, 2, 'I03', 'T005');
+insert into Course values ('BAA00004', 1, 2, 'H01', 'T007');
+insert into Course values ('CSC00001', 1, 2, 'I03', 'T001');
+insert into Course values ('CSC00001', 2, 2, 'I03', 'T002');
+insert into Course values ('CSC00004', 1, 2, 'I03', 'T002');
+insert into Course values ('CSC00004', 2, 2, 'I03', 'T002');
+-- hoc ki 3-2020
+insert into Course values ('MTH00002', 1, 3, 'I01', 'T005');
+insert into Course values ('MTH00002', 2, 3, 'I02', 'T005');
+insert into Course values ('CSC00004', 1, 3, 'F01', 'T001');
+insert into Course values ('CSC00004', 2, 3, 'A02', 'T001');
+insert into Course values ('BAA00003', 1, 3, 'H01', 'T007');
+insert into Course values ('BAA00003', 2, 3, 'H01', 'T007');
+insert into Course values ('BAA00004', 1, 3, 'H01', 'T007');
+
+-- TIMETABLE
+-- hoc ki 1-2020
+insert into Timetable values ('CSC00001', 1, 1, 2, 1);
+insert into Timetable values ('CSC00001', 1, 1, 4, 1);
+insert into Timetable values ('CSC00001', 2, 1, 2, 1);
+insert into Timetable values ('CSC00001', 2, 1, 4, 1);
+insert into Timetable values ('CSC00002', 1, 1, 2, 2);
+insert into Timetable values ('CSC00002', 1, 1, 4, 2);
+insert into Timetable values ('CSC00002', 2, 1, 3, 3);
+insert into Timetable values ('CSC00002', 2, 1, 5, 4);
+insert into Timetable values ('BAA00001', 1, 1, 7, 1);
+insert into Timetable values ('BAA00001', 1, 1, 7, 2);
+insert into Timetable values ('BAA00002', 1, 1, 5, 1);
+insert into Timetable values ('BAA00002', 1, 1, 5, 2);
+insert into Timetable values ('MTH00003', 1, 1, 4, 3);
+insert into Timetable values ('MTH00003', 1, 1, 6, 3);
+-- hoc ki 2-2020
+insert into Timetable values ('CSC00003', 1, 2, 2, 1);
+insert into Timetable values ('CSC00003', 1, 2, 4, 1);
+insert into Timetable values ('CSC00003', 2, 2, 2, 2);
+insert into Timetable values ('CSC00003', 2, 2, 4, 2);
+insert into Timetable values ('MTH00001', 1, 2, 4, 3);
+insert into Timetable values ('MTH00001', 1, 2, 6, 3);
+insert into Timetable values ('MTH00001', 2, 2, 4, 3);
+insert into Timetable values ('MTH00001', 2, 2, 6, 3);
+insert into Timetable values ('BAA00002', 1, 2, 3, 1);
+insert into Timetable values ('BAA00002', 1, 2, 3, 2);
+insert into Timetable values ('BAA00002', 2, 2, 3, 3);
+insert into Timetable values ('BAA00002', 2, 2, 3, 4);
+insert into Timetable values ('MTH00004', 1, 2, 4, 2);
+insert into Timetable values ('MTH00004', 1, 2, 6, 2);
+insert into Timetable values ('BAA00004', 1, 2, 5, 1);
+insert into Timetable values ('BAA00004', 1, 2, 5, 2);
+insert into Timetable values ('CSC00001', 1, 2, 3, 1);
+insert into Timetable values ('CSC00001', 1, 2, 5, 1);
+insert into Timetable values ('CSC00001', 2, 2, 3, 2);
+insert into Timetable values ('CSC00001', 2, 2, 5, 2);
+insert into Timetable values ('CSC00004', 1, 2, 6, 1);
+insert into Timetable values ('CSC00004', 1, 2, 7, 4);
+insert into Timetable values ('CSC00004', 2, 2, 2, 1);
+insert into Timetable values ('CSC00004', 2, 2, 5, 3);
+-- hoc ki 3-2020
+insert into Timetable values ('MTH00002', 1, 3, 2, 1);
+insert into Timetable values ('MTH00002', 1, 3, 4, 1);
+insert into Timetable values ('MTH00002', 2, 3, 3, 1);
+insert into Timetable values ('MTH00002', 2, 3, 5, 2);
+insert into Timetable values ('CSC00004', 1, 3, 3, 3);
+insert into Timetable values ('CSC00004', 1, 3, 5, 3);
+insert into Timetable values ('CSC00004', 2, 3, 4, 2);
+insert into Timetable values ('CSC00004', 2, 3, 7, 2);
+insert into Timetable values ('BAA00003', 1, 3, 5, 1);
+insert into Timetable values ('BAA00003', 1, 3, 5, 2);
+insert into Timetable values ('BAA00003', 2, 3, 5, 3);
+insert into Timetable values ('BAA00003', 2, 3, 5, 4);
+insert into Timetable values ('BAA00004', 1, 3, 6, 3);
+insert into Timetable values ('BAA00004', 1, 3, 6, 4);
 
 -- STUDENT COURSE
+-- hoc ki 1-2020
 insert into Student_Course values ('S18127200', 'CSC00001', 1, 1, null, null,1);
 insert into Student_Course values ('S18127201', 'CSC00001', 1, 1, null, null,1);
 insert into Student_Course values ('S18127202', 'CSC00001', 1, 1, null, null,1);
-insert into Student_Course values ('S18127203', 'CSC00001', 1, 2, null, null,1);
-insert into Student_Course values ('S18127204', 'CSC00001', 1, 2, null, null,1);
-insert into Student_Course values ('S18127205', 'CSC00001', 1, 2, null, null,1);
+insert into Student_Course values ('S18127203', 'CSC00001', 1, 1, null, null,1);
+insert into Student_Course values ('S18127204', 'CSC00001', 1, 1, null, null,1);
+insert into Student_Course values ('S18127205', 'CSC00001', 1, 1, null, null,1);
+insert into Student_Course values ('S18127206', 'CSC00001', 2, 1, null, null,1);
+insert into Student_Course values ('S18127207', 'CSC00001', 2, 1, null, null,1);
+insert into Student_Course values ('S18127208', 'CSC00001', 2, 1, null, null,1);
+insert into Student_Course values ('S18127209', 'CSC00001', 2, 1, null, null,1);
+insert into Student_Course values ('S18127210', 'CSC00001', 2, 1, null, null,1);
+insert into Student_Course values ('S18127211', 'CSC00001', 2, 1, null, null,1);
+-- hoc ki 2-2020
+insert into Student_Course values ('S18127200', 'CSC00003', 1, 2, null, null,1);
+insert into Student_Course values ('S18127201', 'CSC00003', 1, 2, null, null,1);
+insert into Student_Course values ('S18127202', 'CSC00003', 1, 2, null, null,1);
+insert into Student_Course values ('S18127203', 'CSC00003', 1, 2, null, null,1);
+insert into Student_Course values ('S18127204', 'CSC00003', 1, 2, null, null,1);
+insert into Student_Course values ('S18127205', 'CSC00003', 1, 2, null, null,1);
+insert into Student_Course values ('S18127206', 'CSC00003', 2, 2, null, null,1);
+insert into Student_Course values ('S18127207', 'CSC00003', 2, 2, null, null,1);
+insert into Student_Course values ('S18127208', 'CSC00003', 2, 2, null, null,1);
+insert into Student_Course values ('S18127209', 'CSC00003', 2, 2, null, null,1);
+insert into Student_Course values ('S18127210', 'CSC00003', 2, 2, null, null,1);
+insert into Student_Course values ('S18127211', 'CSC00003', 2, 2, null, null,1);
 
-insert into Student_Course values ('S18127201', 'MTH00001', 1, 1, null, null,1);
-insert into Student_Course values ('S18127202', 'MTH00001', 1, 1, null, null,1);
-insert into Student_Course values ('S18127203', 'MTH00001', 1, 1, null, null,1);
-insert into Student_Course values ('S18127204', 'MTH00002', 1, 1, null, null,1);
-insert into Student_Course values ('S18127205', 'MTH00002', 1, 1, null, null,1);
-insert into Student_Course values ('S18127206', 'MTH00002', 1, 1, null, null,1);
+insert into Student_Course values ('S18127200', 'MTH00001', 1, 2, null, null,1);
+insert into Student_Course values ('S18127201', 'MTH00001', 1, 2, null, null,1);
+insert into Student_Course values ('S18127202', 'MTH00001', 1, 2, null, null,1);
+insert into Student_Course values ('S18127203', 'MTH00001', 1, 2, null, null,1);
+insert into Student_Course values ('S18127204', 'MTH00001', 1, 2, null, null,1);
+insert into Student_Course values ('S18127205', 'MTH00001', 1, 2, null, null,1);
+insert into Student_Course values ('S18127206', 'MTH00001', 2, 2, null, null,1);
+insert into Student_Course values ('S18127207', 'MTH00001', 2, 2, null, null,1);
+insert into Student_Course values ('S18127208', 'MTH00001', 2, 2, null, null,1);
+insert into Student_Course values ('S18127209', 'MTH00001', 2, 2, null, null,1);
+insert into Student_Course values ('S18127210', 'MTH00001', 2, 2, null, null,1);
+insert into Student_Course values ('S18127211', 'MTH00001', 2, 2, null, null,1);
 
--- TIMETABLE
-insert into Timetable values ('CSC00001', 1, 1, 2, 1);
-insert into Timetable values ('CSC00001', 1, 1, 4, 1);
-insert into Timetable values ('CSC00001', 1, 2, 2, 2);
-insert into Timetable values ('CSC00001', 1, 2, 4, 2);
-insert into Timetable values ('MTH00001', 1, 1, 3, 3);
-insert into Timetable values ('MTH00001', 1, 1, 5, 3);
-insert into Timetable values ('MTH00002', 1, 1, 6, 1);
-insert into Timetable values ('MTH00002', 1, 1, 3, 1);
+insert into Student_Course values ('S18127200', 'BAA00002', 1, 2, null, null,1);
+insert into Student_Course values ('S18127201', 'BAA00002', 1, 2, null, null,1);
+insert into Student_Course values ('S18127202', 'BAA00002', 1, 2, null, null,1);
+insert into Student_Course values ('S18127203', 'BAA00002', 1, 2, null, null,1);
+insert into Student_Course values ('S18127204', 'BAA00002', 1, 2, null, null,1);
+insert into Student_Course values ('S18127205', 'BAA00002', 1, 2, null, null,1);
+insert into Student_Course values ('S18127206', 'BAA00002', 2, 2, null, null,1);
+insert into Student_Course values ('S18127207', 'BAA00002', 2, 2, null, null,1);
+insert into Student_Course values ('S18127208', 'BAA00002', 2, 2, null, null,1);
+insert into Student_Course values ('S18127209', 'BAA00002', 2, 2, null, null,1);
+insert into Student_Course values ('S18127210', 'BAA00002', 2, 2, null, null,1);
+insert into Student_Course values ('S18127211', 'BAA00002', 2, 2, null, null,1);
+
+insert into Student_Course values ('S18127200', 'MTH00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127201', 'MTH00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127202', 'MTH00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127203', 'MTH00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127204', 'MTH00004', 1, 2, null, null,1);
+
+insert into Student_Course values ('S18127200', 'BAA00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127201', 'BAA00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127202', 'BAA00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127203', 'BAA00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127204', 'BAA00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127205', 'BAA00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127206', 'BAA00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127207', 'BAA00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127208', 'BAA00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127209', 'BAA00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127210', 'BAA00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127211', 'BAA00004', 1, 2, null, null,1);
+
+insert into Student_Course values ('S18127200', 'CSC00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127201', 'CSC00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127202', 'CSC00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127203', 'CSC00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127204', 'CSC00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127205', 'CSC00004', 1, 2, null, null,1);
+insert into Student_Course values ('S18127206', 'CSC00004', 2, 2, null, null,1);
+insert into Student_Course values ('S18127207', 'CSC00004', 2, 2, null, null,1);
+insert into Student_Course values ('S18127208', 'CSC00004', 2, 2, null, null,1);
+insert into Student_Course values ('S18127209', 'CSC00004', 2, 2, null, null,1);
+insert into Student_Course values ('S18127210', 'CSC00004', 2, 2, null, null,1);
+insert into Student_Course values ('S18127211', 'CSC00004', 2, 2, null, null,1);
+
+-- hoc ki 3-2020
+
 
 SELECT stc.course_id, ci.course_name, CONCAT(te.lastname," ",te.firstname) as fullname, se.semester, se.years, co.room, ti.week_day, ti.period_no
 FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id) 
