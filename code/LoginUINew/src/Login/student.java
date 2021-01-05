@@ -168,26 +168,25 @@ public class student extends account {
         
     }
     
-    public void load_timetable(){
+public void load_timetable(JTable timetable){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT ti.week_day, ti.period_no FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) WHERE co.course_id = ? and co.number = ? and co.sem_id = ?";
+        String query = "SELECT ti.week_day, ti.period_no, ci.course_name FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) join student_course stc on (co.course_id = stc.course_id and co.number = stc.number and co.sem_id = stc.sem_id) join course_info ci on (co.course_id = ci.course_id) WHERE stc.student_id = ? and stc.is_studied = 1 ORDER BY period_no, week_day  desc";
         try{
-            for (int i = 0; i < listCourse.size(); i++) {
-                listCourse.get(i).timetable = new ArrayList<>();
+                DefaultTableModel model = (DefaultTableModel) timetable.getModel();
+		model.setRowCount(4);
+		model.setColumnCount(6);
                 stm = conn.prepareStatement(query);
-                stm.setString(1, listCourse.get(i).id);
-                stm.setString(2, String.valueOf(listCourse.get(i).number));
-                stm.setString(3, String.valueOf(listCourse.get(i).sem_id));
+                stm.setString(1, super.username);
                 rs = stm.executeQuery();
                 while(rs.next()){
-                    timetable temp = new timetable();
-                    temp.week_day = rs.getInt("week_day");
-                    temp.period_no = rs.getInt("period_no");
-                    listCourse.get(i).timetable.add(temp);
+                    int week_day = rs.getInt("week_day");
+                    int period_no = rs.getInt("period_no");
+		    String tempname = rs.getString("course_name");
+		    model.setValueAt(tempname,  period_no-1,week_day-2 );
                 }
-            }
+            
         } catch(SQLException exp) {
             System.out.println("load timetable " + exp);
             exp.printStackTrace();

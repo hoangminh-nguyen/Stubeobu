@@ -2,8 +2,11 @@ package Login;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.*;
+import java.util.Calendar;
+import java.util.TimeZone;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.Date; 
 
 public class professor extends account{
 
@@ -193,42 +196,54 @@ public class professor extends account{
         model.addRow(row);
         
     }
+    
+    private int getSemidNow(){
+        java.util.Date date = null; // your date
+        // Choose time zone in which you want to interpret your Date
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int sem;
+        if (month<5) {sem = 2; year--;}
+        else if (month<9) {sem = 3; year--;}
+        else sem=1;
+        return getSemid(year, sem);
+    }
 
-    public void load_timetable(String course_idz, int numberz, int semidz){
-        for (int i = 0; i < listCourse.size(); i++){
-            if (listCourse.get(i).get_course_id().equals(course_idz) && listCourse.get(i).get_number() == numberz && listCourse.get(i).get_sem_id() == semidz){
-                PreparedStatement stm = null;
-                Connection conn = MySQLConnUtils.getMySQLConnection();
-                ResultSet rs = null;
-                String query = "SELECT ti.week_day, ti.period_no FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) WHERE co.course_id = ? and co.number = ? and co.sem_id = ?";
-                try{
-                    
-                    stm = conn.prepareStatement(query);
-                    stm.setString(1, listCourse.get(i).get_course_id());
-                    stm.setString(2, String.valueOf(listCourse.get(i).get_number()));
-                    stm.setString(3, String.valueOf(listCourse.get(i).get_sem_id()));
-                    rs = stm.executeQuery();
-                    while(rs.next()){
-                        timetable temp = new timetable();
-                        temp.week_day = rs.getInt("week_day");
-                        temp.period_no = rs.getInt("period_no");
-                        listCourse.get(i).timetable.add(temp);
-                    }
-                } catch(SQLException exp) {
-                    System.out.println("load timetable " + exp);
-                    exp.printStackTrace();
-                } finally {
-                    try {
-                        if (conn != null) conn.close();
-                        if (rs != null) rs.close();
-                        if (stm != null) stm.close();
-                    } catch (SQLException e) {
-                    e.printStackTrace();
-                    }
+    public void load_timetable(JTable timetable){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "SELECT distinct ti.week_day, ti.period_no, ci.course_name FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) join student_course stc on (co.course_id = stc.course_id and co.number = stc.number and co.sem_id = stc.sem_id) join course_info ci on (co.course_id = ci.course_id) WHERE co.teacher_id = ? and stc.is_studied = 1 and co.sem_id = ?";
+        try{
+                DefaultTableModel model = (DefaultTableModel) timetable.getModel();
+		model.setRowCount(4);
+		model.setColumnCount(6);
+                stm = conn.prepareStatement(query);
+                stm.setString(1, super.username);
+                stm.setInt(2, getSemidNow());
+                rs = stm.executeQuery();
+                while(rs.next()){
+                    int week_day = rs.getInt("week_day");
+                    int period_no = rs.getInt("period_no");
+		    String tempname = rs.getString("course_name");
+		    model.setValueAt(tempname,  period_no-1,week_day-2 );
                 }
+            
+        } catch(SQLException exp) {
+            System.out.println("load timetable " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (rs != null) rs.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
             }
         }
-        
     }
 
     public void delete_student(String student_id, String course_idz, int numberz, int semidz){

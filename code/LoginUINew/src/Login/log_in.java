@@ -7,6 +7,7 @@ package Login;
 
 import com.formdev.flatlaf.*;
 import java.awt.CardLayout;
+import java.awt.Color;
 import static java.awt.Event.UP;
 import java.awt.event.KeyEvent;
 import static java.lang.Double.parseDouble;
@@ -16,7 +17,11 @@ import javax.swing.RowFilter;
 import javax.swing.UIManager;
 import javax.swing.table.*;
 import javax.swing.table.TableRowSorter;
-
+import java.util.Date; 
+import java.time.Month; 
+import java.time.LocalDate; 
+import java.util.Calendar;
+import java.util.TimeZone;
 /**
  *
  * @author DELL
@@ -39,18 +44,9 @@ public class log_in extends javax.swing.JFrame {
         teacher = (CardLayout) (jPanel16.getLayout());
         jPasswordField1.requestFocusInWindow();
         this.setResizable(false);
-        jTable1.setAutoCreateRowSorter(true);
-        jTable2.setAutoCreateRowSorter(true);
-        jTable3.setAutoCreateRowSorter(true);
-        jTable4.setAutoCreateRowSorter(true);
-        jTable5.setAutoCreateRowSorter(true);
-        jTable6.setAutoCreateRowSorter(true);
-        jTable7.setAutoCreateRowSorter(true);
-        jTable9.setAutoCreateRowSorter(true);
-        jTable15.setAutoCreateRowSorter(true);
-        jTable16.setAutoCreateRowSorter(true);
-        jTable18.setAutoCreateRowSorter(true);
         jTable8.setRowHeight(70);
+        jTable8.setShowGrid(true);
+        jTable8.setGridColor(Color.GRAY);
     }
 
     /**
@@ -383,6 +379,7 @@ public class log_in extends javax.swing.JFrame {
 
         jScrollPane1.setBorder(null);
 
+        jTable1.setAutoCreateRowSorter(true);
         jTable1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -439,6 +436,7 @@ public class log_in extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(null);
 
+        jTable2.setAutoCreateRowSorter(true);
         jTable2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -522,6 +520,7 @@ public class log_in extends javax.swing.JFrame {
 
         jScrollPane3.setBorder(null);
 
+        jTable3.setAutoCreateRowSorter(true);
         jTable3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -696,6 +695,7 @@ public class log_in extends javax.swing.JFrame {
 
         jScrollPane4.setBorder(null);
 
+        jTable4.setAutoCreateRowSorter(true);
         jTable4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -739,6 +739,7 @@ public class log_in extends javax.swing.JFrame {
 
         jScrollPane5.setBorder(null);
 
+        jTable5.setAutoCreateRowSorter(true);
         jTable5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -821,6 +822,7 @@ public class log_in extends javax.swing.JFrame {
 
         jScrollPane6.setBorder(null);
 
+        jTable6.setAutoCreateRowSorter(true);
         jTable6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -965,6 +967,7 @@ public class log_in extends javax.swing.JFrame {
 
         jScrollPane7.setBorder(null);
 
+        jTable7.setAutoCreateRowSorter(true);
         jTable7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1059,6 +1062,7 @@ public class log_in extends javax.swing.JFrame {
 
         jScrollPane9.setBorder(null);
 
+        jTable9.setAutoCreateRowSorter(true);
         jTable9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable9.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1321,6 +1325,7 @@ public class log_in extends javax.swing.JFrame {
 
         jScrollPane15.setBorder(null);
 
+        jTable15.setAutoCreateRowSorter(true);
         jTable15.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable15.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1394,6 +1399,7 @@ public class log_in extends javax.swing.JFrame {
 
         jScrollPane16.setBorder(null);
 
+        jTable16.setAutoCreateRowSorter(true);
         jTable16.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable16.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1466,6 +1472,7 @@ public class log_in extends javax.swing.JFrame {
 
         jScrollPane19.setBorder(null);
 
+        jTable19.setAutoCreateRowSorter(true);
         jTable19.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable19.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1675,17 +1682,23 @@ public class log_in extends javax.swing.JFrame {
         jLabel36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel36.setText("Đã học:");
 
+        jTable8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTable8.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Thể dục", null, null, null, null, null},
-                {"quốc phòng", null, null, "Văn", null, null},
-                {null, "Toán", null, "Văn", "Anh", null},
-                {null, "Toán", null, null, null, null}
+
             },
             new String [] {
                 "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane8.setViewportView(jTable8);
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
@@ -1787,6 +1800,7 @@ public class log_in extends javax.swing.JFrame {
 
         jScrollPane17.setBorder(null);
 
+        jTable17.setAutoCreateRowSorter(true);
         jTable17.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable17.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1873,6 +1887,7 @@ public class log_in extends javax.swing.JFrame {
 
         jScrollPane18.setBorder(null);
 
+        jTable18.setAutoCreateRowSorter(true);
         jTable18.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable18.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2065,22 +2080,24 @@ public class log_in extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton49)
-                    .addComponent(jButton50)
-                    .addComponent(jTextField41))
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField41)
+                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton49)
+                        .addComponent(jButton50)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(jLabel22))
                 .addGap(42, 42, 42)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
@@ -2156,12 +2173,10 @@ public class log_in extends javax.swing.JFrame {
         jLabel39.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel39.setText("Đã học:");
 
+        jTable10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTable10.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Thể dục", null, null, null, null, null},
-                {"quốc phòng", null, null, "Văn", null, null},
-                {null, "Toán", null, "Văn", "Anh", null},
-                {null, "Toán", null, null, null, null}
+
             },
             new String [] {
                 "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"
@@ -2292,11 +2307,28 @@ public class log_in extends javax.swing.JFrame {
     private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
         cardlayout.show(jPanel8, "course");
     }//GEN-LAST:event_jLabel11MousePressed
+    private int getSemidNow(){
+        Date date = null; // your date
+        // Choose time zone in which you want to interpret your Date
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int sem;
+        if (month<5) {sem = 2; year--;}
+        else if (month<9) {sem = 3; year--;}
+        else sem=1;
+        return prof.getSemid(year, sem);
+    }
+    
     private void load_student(){
         stu.read_account_file(jTextField35, jTextField34, jTextField36, jTextField37);
         stu.load_course(jTable16, jComboBox1);
         stu.load_available_course(jTable15);
         stu.load_sign_course(jTable19);
+        stu.load_timetable(jTable8);
+        
         
     }
     
@@ -2304,6 +2336,7 @@ public class log_in extends javax.swing.JFrame {
     private void load_data_teacher(){
         prof.read_account_file(jTextField39, jTextField38, jTextField40, jTextField41);
         prof.load_course(jTable18, jComboBox3);
+        prof.load_timetable(jTable10);
         
         
         

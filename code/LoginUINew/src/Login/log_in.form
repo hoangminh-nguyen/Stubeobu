@@ -465,6 +465,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable1">
                               <Properties>
+                                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -563,6 +564,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable2">
                               <Properties>
+                                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -701,6 +703,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable3">
                               <Properties>
+                                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -951,6 +954,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable4">
                               <Properties>
+                                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -1033,6 +1037,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable5">
                               <Properties>
+                                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -1154,6 +1159,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable6">
                               <Properties>
+                                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -1376,6 +1382,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable7">
                               <Properties>
+                                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -1513,6 +1520,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable9">
                               <Properties>
+                                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -1904,6 +1912,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable15">
                               <Properties>
+                                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -2014,6 +2023,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable16">
                               <Properties>
+                                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -2130,6 +2140,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable19">
                               <Properties>
+                                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -2370,34 +2381,19 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable8">
                               <Properties>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder/>
+                                  </Border>
+                                </Property>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="6" rowCount="4">
-                                    <Column editable="true" title="Th&#x1ee9; 2" type="java.lang.Object">
-                                      <Data value="Th&#x1ec3; d&#x1ee5;c"/>
-                                      <Data value="qu&#x1ed1;c ph&#xf2;ng"/>
-                                      <Data value="null"/>
-                                      <Data value="null"/>
-                                    </Column>
-                                    <Column editable="true" title="Th&#x1ee9; 3" type="java.lang.Object">
-                                      <Data value="null"/>
-                                      <Data value="null"/>
-                                      <Data value="To&#xe1;n"/>
-                                      <Data value="To&#xe1;n"/>
-                                    </Column>
-                                    <Column editable="true" title="Th&#x1ee9; 4" type="java.lang.Object"/>
-                                    <Column editable="true" title="Th&#x1ee9; 5" type="java.lang.Object">
-                                      <Data value="null"/>
-                                      <Data value="V&#x103;n"/>
-                                      <Data value="V&#x103;n"/>
-                                      <Data value="null"/>
-                                    </Column>
-                                    <Column editable="true" title="Th&#x1ee9; 6" type="java.lang.Object">
-                                      <Data value="null"/>
-                                      <Data value="null"/>
-                                      <Data value="Anh"/>
-                                      <Data value="null"/>
-                                    </Column>
-                                    <Column editable="true" title="Th&#x1ee9; 7" type="java.lang.Object"/>
+                                  <Table columnCount="6" rowCount="0">
+                                    <Column editable="false" title="Th&#x1ee9; 2" type="java.lang.Object"/>
+                                    <Column editable="false" title="Th&#x1ee9; 3" type="java.lang.Object"/>
+                                    <Column editable="false" title="Th&#x1ee9; 4" type="java.lang.Object"/>
+                                    <Column editable="false" title="Th&#x1ee9; 5" type="java.lang.Object"/>
+                                    <Column editable="false" title="Th&#x1ee9; 6" type="java.lang.Object"/>
+                                    <Column editable="false" title="Th&#x1ee9; 7" type="java.lang.Object"/>
                                   </Table>
                                 </Property>
                                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -2640,13 +2636,15 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel28" min="-2" pref="46" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField38" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField39" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField40" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton49" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton50" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jTextField41" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jTextField38" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField39" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField40" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jButton49" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jButton50" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -2654,10 +2652,12 @@
                                       <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel29" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="jScrollPane18" min="-2" pref="129" max="-2" attributes="0"/>
@@ -2713,6 +2713,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable17">
                               <Properties>
+                                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -2834,6 +2835,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable18">
                               <Properties>
+                                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                     <EmptyBorder/>
@@ -3178,33 +3180,18 @@
                           <SubComponents>
                             <Component class="javax.swing.JTable" name="jTable10">
                               <Properties>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder/>
+                                  </Border>
+                                </Property>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="6" rowCount="4">
-                                    <Column editable="true" title="Th&#x1ee9; 2" type="java.lang.Object">
-                                      <Data value="Th&#x1ec3; d&#x1ee5;c"/>
-                                      <Data value="qu&#x1ed1;c ph&#xf2;ng"/>
-                                      <Data value="null"/>
-                                      <Data value="null"/>
-                                    </Column>
-                                    <Column editable="true" title="Th&#x1ee9; 3" type="java.lang.Object">
-                                      <Data value="null"/>
-                                      <Data value="null"/>
-                                      <Data value="To&#xe1;n"/>
-                                      <Data value="To&#xe1;n"/>
-                                    </Column>
+                                  <Table columnCount="6" rowCount="0">
+                                    <Column editable="true" title="Th&#x1ee9; 2" type="java.lang.Object"/>
+                                    <Column editable="true" title="Th&#x1ee9; 3" type="java.lang.Object"/>
                                     <Column editable="true" title="Th&#x1ee9; 4" type="java.lang.Object"/>
-                                    <Column editable="true" title="Th&#x1ee9; 5" type="java.lang.Object">
-                                      <Data value="null"/>
-                                      <Data value="V&#x103;n"/>
-                                      <Data value="V&#x103;n"/>
-                                      <Data value="null"/>
-                                    </Column>
-                                    <Column editable="true" title="Th&#x1ee9; 6" type="java.lang.Object">
-                                      <Data value="null"/>
-                                      <Data value="null"/>
-                                      <Data value="Anh"/>
-                                      <Data value="null"/>
-                                    </Column>
+                                    <Column editable="true" title="Th&#x1ee9; 5" type="java.lang.Object"/>
+                                    <Column editable="true" title="Th&#x1ee9; 6" type="java.lang.Object"/>
                                     <Column editable="true" title="Th&#x1ee9; 7" type="java.lang.Object"/>
                                   </Table>
                                 </Property>
