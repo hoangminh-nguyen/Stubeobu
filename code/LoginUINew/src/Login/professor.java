@@ -262,6 +262,36 @@ public class professor extends account{
             }
         }
     }
+    
+    public boolean checkStudiedCourse(String courseid, int number, int sem_id){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "select stc.is_studied from Student_Course stc where stc.course_id = ? and stc.number = ? and stc.sem_id = ? limit 1;";
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, courseid);
+            stm.setInt(2, number);
+            stm.setInt(3, sem_id);
+            rs = stm.executeQuery();
+            while(rs.next()){  
+                return rs.getInt("is_studied")==1;
+            }
+                    
+        } catch(SQLException exp) {
+            System.out.println("add stu " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
 
     public void add_student(String student_id, String course_idz, int numberz, int semidz){
         PreparedStatement stm = null;
