@@ -92,7 +92,12 @@ public class professor extends account{
                 temp.semester = rs.getInt("Semester");
                 temp.year = rs.getInt("years");
                 temp.room = rs.getString("room");
-                if(check_year(temp.year)) {year.addItem(String.valueOf(temp.year));allyear.add(String.valueOf(temp.year));}
+                if(check_year(temp.year)) {
+                    for (int j=0; j<3; j++){
+                        year.addItem(String.valueOf(temp.year)+"-"+String.valueOf(j+1));
+                    }
+                    allyear.add(String.valueOf(temp.year));
+                }
                 listCourse.add(temp);
                 load_course_ui(temp, table_course);
             }
@@ -111,6 +116,53 @@ public class professor extends account{
             }
         }
     }
+    
+    public void load_course_atsem(JTable table_course, int semid){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "SELECT ci.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room FROM Course co join Course_info ci on (co.course_id = ci.course_id) join teacher te on (co.teacher_id = te.teacher_id) join semester se on (co.sem_id = se.sem_id) WHERE co.teacher_id = ? and co.sem_id = ?";
+        try{
+            if(semid == 0) {query = query.substring(0,query.length()-17);}
+            stm = conn.prepareStatement(query);
+            stm.setString(1, super.username);
+            if (semid != 0){stm.setInt(2,semid);}
+            
+            rs = stm.executeQuery();
+            listCourse = new ArrayList<>();
+            int i = 0;
+            DefaultTableModel model = (DefaultTableModel) table_course.getModel();
+            model.setRowCount(0);
+            while(rs.next()){
+                course temp = new course();
+                temp.id = rs.getString("course_id");
+                temp.name = rs.getString("course_name");
+                temp.number = rs.getInt("number");
+                temp.teacher_name = rs.getString("fullname");
+                temp.teacher_id = rs.getString("teacher_id");
+                temp.sem_id = rs.getInt("sem_id");
+                temp.semester = rs.getInt("Semester");
+                temp.year = rs.getInt("years");
+                temp.room = rs.getString("room");
+                listCourse.add(temp);
+                load_course_ui(temp, table_course);
+            }
+            
+            
+        } catch(SQLException exp) {
+            System.out.println("load course " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (rs != null) rs.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
+            }
+        }
+    }
+    
     public void load_course_ui(course temp, JTable table_course){
         Object[] row = {temp.id, temp.name + " " + temp.number, temp.teacher_name, temp.year, temp.semester};
         DefaultTableModel model = (DefaultTableModel) table_course.getModel();
@@ -151,7 +203,7 @@ public class professor extends account{
 
 
     public void load_student_in_course(String course_idz, int numberz, int semidz, JTable student_course){
-        
+        //System.out.println("sem: "+ semidz);
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
@@ -165,6 +217,7 @@ public class professor extends account{
             DefaultTableModel model = (DefaultTableModel) student_course.getModel();
             model.setRowCount(0);
             while(rs.next()){
+                //System.out.println("Has student");
                 String student_id = rs.getString("student_id");
                 String name = rs.getString("student_name");
                 String dob = rs.getString("dob");
@@ -197,7 +250,7 @@ public class professor extends account{
         
     }
     
-    private int getSemidNow(){
+    public int getSemidNow(){
         Date date = new Date(); // your date
         // Choose time zone in which you want to interpret your Date
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));

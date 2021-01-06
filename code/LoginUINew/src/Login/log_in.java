@@ -11,6 +11,7 @@ import java.awt.Color;
 import static java.awt.Event.UP;
 import java.awt.event.KeyEvent;
 import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
 import javax.swing.*;
 import javax.swing.JComboBox;
 import javax.swing.RowFilter;
@@ -178,7 +179,6 @@ public class log_in extends javax.swing.JFrame {
         jButton45 = new javax.swing.JButton();
         jButton48 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jPanel21 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
@@ -204,7 +204,6 @@ public class log_in extends javax.swing.JFrame {
         jTable18 = new javax.swing.JTable();
         jLabel30 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
         jTextField50 = new javax.swing.JTextField();
         jTextField51 = new javax.swing.JTextField();
         jButton49 = new javax.swing.JButton();
@@ -1535,13 +1534,6 @@ public class log_in extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Học kỳ", "1", "2", "3" }));
-        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox2ItemStateChanged(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
@@ -1558,13 +1550,6 @@ public class log_in extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton24))
                     .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel17Layout.createSequentialGroup()
                         .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)
                         .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1580,8 +1565,13 @@ public class log_in extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton46, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel17Layout.createSequentialGroup()
+                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 655, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
@@ -1599,8 +1589,7 @@ public class log_in extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1884,13 +1873,6 @@ public class log_in extends javax.swing.JFrame {
             }
         });
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Học kỳ", "1", "2", "3" }));
-        jComboBox4.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox4ItemStateChanged(evt);
-            }
-        });
-
         jTextField50.setEditable(false);
         jTextField50.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1979,10 +1961,8 @@ public class log_in extends javax.swing.JFrame {
                             .addGroup(jPanel19Layout.createSequentialGroup()
                                 .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 588, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
                         .addGap(0, 11, Short.MAX_VALUE)
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2039,9 +2019,7 @@ public class log_in extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
@@ -2596,6 +2574,7 @@ public class log_in extends javax.swing.JFrame {
         int number = Integer.parseInt(name);
         int year =(int) model.getValueAt(selectRow, 3);
         int semester =(int) model.getValueAt(selectRow, 4);
+        System.out.println("year and semester: "+ year+" "+ semester);
         int sem_id = prof.getSemid(year, semester);
         prof.load_student_in_course(id,number, sem_id, jTable17);
         jTextField50.setEditable(false);
@@ -2722,40 +2701,38 @@ public class log_in extends javax.swing.JFrame {
         int sem_id = stu.getSemid(year, semester);
         stu.cancel_course(id, number, sem_id, jTable16, jTable19, jTable15, jComboBox1);
     }//GEN-LAST:event_jButton24ActionPerformed
-    public void filter_semester(String query, JTable sort){
-        DefaultTableModel model = (DefaultTableModel) sort.getModel();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        sort.setRowSorter(tr);
+
+    public void filter_year_student(String query, JTable sort){
         
-        if(query!="Học kỳ"){
-            tr.setRowFilter(RowFilter.regexFilter(query,4));
-        }else
-        {
-            sort.setRowSorter(tr);
-        }
-    }
-    
-    public void filter_year(String query, JTable sort){
-        DefaultTableModel model = (DefaultTableModel) sort.getModel();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        sort.setRowSorter(tr);
         
         if(query!="Năm"){
-            tr.setRowFilter(RowFilter.regexFilter(query,3));
+            int year = parseInt(query.substring(0,4));
+            int semester = parseInt(query.substring(query.length()-1));
+            int semid = stu.getSemid(year, semester);
+            stu.load_course_atsem(sort, semid);
         }else
         {
-            sort.setRowSorter(tr);
+            stu.load_course_atsem(sort, 0);
+        }
+    }  
+    
+    public void filter_year(String query, JTable sort){
+        
+        
+        if(query!="Năm"){
+            int year = parseInt(query.substring(0,4));
+            int semester = parseInt(query.substring(query.length()-1));
+            int semid = prof.getSemid(year, semester);
+            prof.load_course_atsem(sort, semid);
+        }else
+        {
+            prof.load_course_atsem(sort, 0);
         }
     }    
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         String query = jComboBox1.getSelectedItem().toString();
-        filter_year(query, jTable16);
+        filter_year_student(query, jTable16);
     }//GEN-LAST:event_jComboBox1ItemStateChanged
-
-    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
-        String query = jComboBox2.getSelectedItem().toString();
-        filter_semester(query, jTable16);
-    }//GEN-LAST:event_jComboBox2ItemStateChanged
 
     private void jLabel34MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MousePressed
         student.show(jPanel14, "manage");
@@ -2765,14 +2742,10 @@ public class log_in extends javax.swing.JFrame {
         teacher.show(jPanel16, "timetable");
     }//GEN-LAST:event_jLabel37MousePressed
 
-    private void jComboBox4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox4ItemStateChanged
-        String query = jComboBox4.getSelectedItem().toString();
-        filter_semester(query, jTable18);
-    }//GEN-LAST:event_jComboBox4ItemStateChanged
-
     private void jComboBox3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox3ItemStateChanged
         String query = jComboBox3.getSelectedItem().toString();
         filter_year(query, jTable18);
+        
     }//GEN-LAST:event_jComboBox3ItemStateChanged
 
     private void jTextField50FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField50FocusGained
@@ -2872,8 +2845,9 @@ public class log_in extends javax.swing.JFrame {
         int year =(int) model2.getValueAt(selectRow2, 3);
         int semester =(int) model2.getValueAt(selectRow2, 4);
         int sem_id = prof.getSemid(year, semester);
+        System.out.println("sem id : "+ sem_id);
         System.out.print(prof.checkStudiedCourse(courseid, number, sem_id));
-        if (selectRow != -1 && prof.checkStudiedCourse(courseid, number, sem_id)){
+        if (selectRow != -1 && prof.checkStudiedCourse(courseid, number, sem_id) &&sem_id == prof.getSemidNow()){
             jTextField50.setText(model.getValueAt(selectRow, 4).toString());
             jTextField51.setText(model.getValueAt(selectRow, 5).toString());
             jButton52.setEnabled(true);
@@ -2883,7 +2857,6 @@ public class log_in extends javax.swing.JFrame {
             jTextField51.setText("");
             jButton52.setEnabled(false);
         }
-        
     }//GEN-LAST:event_jTable17MouseClicked
 
     private void jTable17KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable17KeyReleased
@@ -2962,9 +2935,7 @@ public class log_in extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

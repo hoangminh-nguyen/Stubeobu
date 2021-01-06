@@ -127,7 +127,12 @@ public class student extends account {
                 temp.is_studied =  rs.getInt("is_studied")==1;
                 if(temp.is_studied){
                     this.load_mark(temp);
-                    if(check_year(temp.year)) {year.addItem(String.valueOf(temp.year));allyear.add(String.valueOf(temp.year));}
+                    if(check_year(temp.year)) {
+                        for (int j=0; j<3; j++){
+                            year.addItem(String.valueOf(temp.year)+"-"+String.valueOf(j+1));
+                        }
+                        allyear.add(String.valueOf(temp.year));
+                    }
                 }
                 
                 listCourse.add(temp);
@@ -136,6 +141,55 @@ public class student extends account {
             
         } catch(SQLException exp) {
             System.out.println("load courses " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (rs != null) rs.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
+            }
+        }
+    }
+    public void load_course_atsem(JTable table_course, int semid){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "SELECT stc.course_id, ci.course_name, stc.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room, stc.is_studied FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id)  join Course_info ci on (stc.course_id = ci.course_id)  join teacher te on (co.teacher_id = te.teacher_id) join semester se on (stc.sem_id = se.sem_id) WHERE student_id = ? and co.sem_id = ?";
+        try{
+            if(semid == 0) {query = query.substring(0,query.length()-17);}
+            stm = conn.prepareStatement(query);
+            stm.setString(1, super.username);
+            if (semid != 0){stm.setInt(2,semid);}
+            rs = stm.executeQuery();
+            listCourse = new ArrayList<>();
+            DefaultTableModel model = (DefaultTableModel) table_course.getModel();
+            model.setRowCount(0);
+            allyear = new ArrayList<String>();
+            while(rs.next()){
+                course temp = new course();
+                temp.id = rs.getString("course_id");
+                temp.name = rs.getString("course_name");
+                temp.number = rs.getInt("number");
+                temp.teacher_name = rs.getString("fullname");
+                temp.teacher_id = rs.getString("teacher_id");
+                temp.sem_id = rs.getInt("sem_id");
+                temp.semester = rs.getInt("Semester");
+                temp.year = rs.getInt("years");
+                temp.room = rs.getString("room");
+                temp.is_studied =  rs.getInt("is_studied")==1;
+                if(temp.is_studied){
+                    this.load_mark(temp);
+                }
+                
+                listCourse.add(temp);
+                load_course_ui(temp, table_course);
+            }
+            
+            
+        } catch(SQLException exp) {
+            System.out.println("load course " + exp);
             exp.printStackTrace();
         } finally {
             try {
