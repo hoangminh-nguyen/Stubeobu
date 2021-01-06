@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.sql.*;
 import java.awt.*;  
 import java.awt.event.*;  
+import java.util.Calendar;
+import java.util.TimeZone;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -165,27 +167,51 @@ public class student extends account {
                 load_ava_course_ui(listCourse.get(i), table_course);
             }
         }
-        
     }
     
-public void load_timetable(JTable timetable){
+    private int getSemidNow(){
+        java.util.Date date = new java.util.Date(); // your date
+        // Choose time zone in which you want to interpret your Date
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int sem;
+        if (month<5) {sem = 2; year--;}
+        else if (month<9) {sem = 3; year--;}
+        else sem=1;
+        return getSemid(year, sem);
+    }
+    
+    public void load_timetable(JTable timetable){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT ti.week_day, ti.period_no, ci.course_name FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) join student_course stc on (co.course_id = stc.course_id and co.number = stc.number and co.sem_id = stc.sem_id) join course_info ci on (co.course_id = ci.course_id) WHERE stc.student_id = ? and stc.is_studied = 1 ORDER BY period_no, week_day  desc";
+        String query = "SELECT ti.week_day, ti.period_no, ci.course_name, co.room, co.number FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) join student_course stc on (co.course_id = stc.course_id and co.number = stc.number and co.sem_id = stc.sem_id) join course_info ci on (co.course_id = ci.course_id) WHERE stc.student_id = ? and stc.is_studied = 1 and co.sem_id=? ";
         try{
                 DefaultTableModel model = (DefaultTableModel) timetable.getModel();
 		model.setRowCount(4);
-		model.setColumnCount(6);
+		model.setColumnCount(7);
                 stm = conn.prepareStatement(query);
                 stm.setString(1, super.username);
+                stm.setInt(2, getSemidNow());
                 rs = stm.executeQuery();
                 while(rs.next()){
                     int week_day = rs.getInt("week_day");
                     int period_no = rs.getInt("period_no");
-		    String tempname = rs.getString("course_name");
-		    model.setValueAt(tempname,  period_no-1,week_day-2 );
+                    //temp này để lưu lại cái lịch trước, tránh 2 lịch đụng nhau mà chỉ in ra 1 lịch sau
+                    String temp ="";
+                    if (model.getValueAt(period_no-1, week_day-1)!=null) {
+                        temp = model.getValueAt(period_no-1, week_day-1).toString();
+                    };
+		    String tempname = temp + " " + rs.getString("course_name") +" "+ String.valueOf(rs.getInt("number")) + " - " + rs.getString("room");
+		    model.setValueAt(tempname,  period_no-1, week_day-1);
                 }
+                model.setValueAt(1,  0,0 );
+                model.setValueAt(2,  1,0 );
+                model.setValueAt(3,  2,0 );
+                model.setValueAt(4,  3,0 );
             
         } catch(SQLException exp) {
             System.out.println("load timetable " + exp);
@@ -237,10 +263,10 @@ public void load_timetable(JTable timetable){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT co.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room FROM Course co join Course_info ci on (co.course_id = ci.course_id) join teacher te on (co.teacher_id = te.teacher_id) join semester se on (co.sem_id = se.sem_id)";
+        String query = "SELECT co.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room FROM Course co join Course_info ci on (co.course_id = ci.course_id) join teacher te on (co.teacher_id = te.teacher_id) join semester se on (co.sem_id = se.sem_id) where co.sem_id=?";
         try{
             stm = conn.prepareStatement(query);
-            //stm.setString(1, super.username);
+            stm.setInt(1, getSemidNow());
             rs = stm.executeQuery();
             listAvailableCourse = new ArrayList<>();
             DefaultTableModel model = (DefaultTableModel) table_course.getModel();

@@ -216,11 +216,11 @@ public class professor extends account{
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT ti.week_day, ti.period_no, ci.course_name, co.number FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) join course_info ci on (co.course_id = ci.course_id) WHERE co.teacher_id = ? and co.sem_id = ? and (select stc.is_studied from student_course stc WHERE stc.course_id = co.course_id and stc.number=co.number and stc.sem_id=co.sem_id limit 1) = 1";
+        String query = "SELECT ti.week_day, ti.period_no, ci.course_name, co.number, co.room FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) join course_info ci on (co.course_id = ci.course_id) WHERE co.teacher_id = ? and co.sem_id = ? and (select stc.is_studied from student_course stc WHERE stc.course_id = co.course_id and stc.number=co.number and stc.sem_id=co.sem_id limit 1) = 1";
         try{
                 DefaultTableModel model = (DefaultTableModel) timetable.getModel();
 		model.setRowCount(4);
-		model.setColumnCount(6);
+		model.setColumnCount(7);
                 stm = conn.prepareStatement(query);
                 stm.setString(1, super.username);
                 stm.setInt(2, getSemidNow());
@@ -228,9 +228,18 @@ public class professor extends account{
                 while(rs.next()){
                     int week_day = rs.getInt("week_day");
                     int period_no = rs.getInt("period_no");
-		    String tempname = rs.getString("course_name") +" "+ String.valueOf(rs.getInt("number"));
-		    model.setValueAt(tempname,  period_no-1,week_day-2 );
+                    //temp này để lưu lại cái lịch trước, tránh 2 lịch đụng nhau mà chỉ in ra 1 lịch sau
+                    String temp ="";
+                    if (model.getValueAt(period_no-1, week_day-1)!=null) {
+                        temp = model.getValueAt(period_no-1, week_day-1).toString();
+                    };
+		    String tempname = temp + " " + rs.getString("course_name") +" "+ String.valueOf(rs.getInt("number")) + " - " + rs.getString("room");
+		    model.setValueAt(tempname,  period_no-1,week_day-1 );
                 }
+                model.setValueAt(1,  0,0 );
+                model.setValueAt(2,  1,0 );
+                model.setValueAt(3,  2,0 );
+                model.setValueAt(4,  3,0 );
             
         } catch(SQLException exp) {
             System.out.println("load timetable " + exp);
@@ -348,7 +357,8 @@ public class professor extends account{
        
         try{
             stm = conn.prepareStatement(query);
-            stm.setDouble(1, new_midterm);
+            if (new_midterm!=null) stm.setDouble(1, new_midterm);
+            else stm.setString(1, null);
             stm.setString(2, student_id);
             stm.setString(3, course_idz);
             stm.setInt(4, numberz);
@@ -377,7 +387,8 @@ public class professor extends account{
        
         try{
             stm = conn.prepareStatement(query);
-            stm.setDouble(1, new_final);
+            if (new_final!=null) stm.setDouble(1, new_final);
+            else stm.setString(1, null);
             stm.setString(2, student_id);
             stm.setString(3, course_idz);
             stm.setInt(4, numberz);
