@@ -61,7 +61,7 @@ public abstract class account {
             }
             
         } catch(SQLException exp) {
-            System.out.println("enroll_course" + exp);
+            System.out.println("getSemid" + exp);
             exp.printStackTrace();
         } finally {
             try {

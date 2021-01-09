@@ -149,27 +149,54 @@ public class log_in extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTable7 = new javax.swing.JTable();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        jTable9 = new javax.swing.JTable();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jTextField16 = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
-        jButton23 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
-        jTextField18 = new javax.swing.JTextField();
-        jTextField19 = new javax.swing.JTextField();
-        jTextField20 = new javax.swing.JTextField();
+        jLabel52 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField45 = new javax.swing.JTextField();
+        jTextField46 = new javax.swing.JTextField();
+        jTextField47 = new javax.swing.JTextField();
+        jTextField48 = new javax.swing.JTextField();
+        jButton10 = new javax.swing.JButton();
+        jButton35 = new javax.swing.JButton();
+        jButton36 = new javax.swing.JButton();
+        jLabel53 = new javax.swing.JLabel();
+        jButton37 = new javax.swing.JButton();
+        jLabel54 = new javax.swing.JLabel();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jTable13 = new javax.swing.JTable();
+        jTextField9 = new javax.swing.JTextField();
+        jTextField56 = new javax.swing.JTextField();
+        jTextField57 = new javax.swing.JTextField();
+        jTextField58 = new javax.swing.JTextField();
+        jLabel55 = new javax.swing.JLabel();
+        jButton11 = new javax.swing.JButton();
+        jButton39 = new javax.swing.JButton();
+        jButton40 = new javax.swing.JButton();
+        jButton41 = new javax.swing.JButton();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jTextField59 = new javax.swing.JTextField();
+        jTextField60 = new javax.swing.JTextField();
+        jLabel59 = new javax.swing.JLabel();
+        jTextField61 = new javax.swing.JTextField();
+        jTextField62 = new javax.swing.JTextField();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        jTextField49 = new javax.swing.JTextField();
+        jTextField11 = new javax.swing.JTextField();
+        jTextField52 = new javax.swing.JTextField();
+        jTextField53 = new javax.swing.JTextField();
+        jTextField54 = new javax.swing.JTextField();
+        jTextField55 = new javax.swing.JTextField();
+        jTextField71 = new javax.swing.JTextField();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jTextField72 = new javax.swing.JTextField();
+        jTextField73 = new javax.swing.JTextField();
+        jTextField74 = new javax.swing.JTextField();
+        jTextField75 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -524,8 +551,11 @@ public class log_in extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTable3);
         if (jTable3.getColumnModel().getColumnCount() > 0) {
+            jTable3.getColumnModel().getColumn(2).setHeaderValue("Giáo Viên");
             jTable3.getColumnModel().getColumn(3).setPreferredWidth(10);
+            jTable3.getColumnModel().getColumn(3).setHeaderValue("Học kỳ");
             jTable3.getColumnModel().getColumn(4).setPreferredWidth(10);
+            jTable3.getColumnModel().getColumn(4).setHeaderValue("Năm học");
             jTable3.getColumnModel().getColumn(5).setResizable(false);
             jTable3.getColumnModel().getColumn(5).setPreferredWidth(10);
             jTable3.getColumnModel().getColumn(5).setHeaderValue("Điểm giữa kỳ");
@@ -968,7 +998,7 @@ public class log_in extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -989,20 +1019,22 @@ public class log_in extends javax.swing.JFrame {
         });
         jScrollPane11.setViewportView(jTable11);
         if (jTable11.getColumnModel().getColumnCount() > 0) {
+            jTable11.getColumnModel().getColumn(2).setHeaderValue("Giáo Viên");
             jTable11.getColumnModel().getColumn(3).setPreferredWidth(10);
+            jTable11.getColumnModel().getColumn(3).setHeaderValue("Học kỳ");
             jTable11.getColumnModel().getColumn(4).setPreferredWidth(10);
+            jTable11.getColumnModel().getColumn(4).setHeaderValue("Năm học");
+            jTable11.getColumnModel().getColumn(5).setHeaderValue("Phòng học");
         }
 
         jPanel10.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 851, 90));
 
         jLabel50.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(204, 51, 0));
-        jLabel50.setText("jLabel50");
         jPanel10.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 340, -1));
 
         jLabel51.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(204, 51, 0));
-        jLabel51.setText("jLabel51");
         jPanel10.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 340, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1015,17 +1047,17 @@ public class log_in extends javax.swing.JFrame {
         jTable12.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTable12.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Mã Môn học", "Tên Môn học", "Giáo Viên", "Học kỳ", "Năm học", "Điểm giữa kỳ", "Điểm cuối kỳ"
+                "Mã Môn học", "Tên Môn học", "Học kỳ", "Năm học", "Phòng học"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1046,14 +1078,10 @@ public class log_in extends javax.swing.JFrame {
         });
         jScrollPane12.setViewportView(jTable12);
         if (jTable12.getColumnModel().getColumnCount() > 0) {
+            jTable12.getColumnModel().getColumn(2).setPreferredWidth(10);
+            jTable12.getColumnModel().getColumn(2).setHeaderValue("Học kỳ");
             jTable12.getColumnModel().getColumn(3).setPreferredWidth(10);
-            jTable12.getColumnModel().getColumn(4).setPreferredWidth(10);
-            jTable12.getColumnModel().getColumn(5).setResizable(false);
-            jTable12.getColumnModel().getColumn(5).setPreferredWidth(10);
-            jTable12.getColumnModel().getColumn(5).setHeaderValue("Điểm giữa kỳ");
-            jTable12.getColumnModel().getColumn(6).setResizable(false);
-            jTable12.getColumnModel().getColumn(6).setPreferredWidth(10);
-            jTable12.getColumnModel().getColumn(6).setHeaderValue("Điểm cuối kỳ");
+            jTable12.getColumnModel().getColumn(3).setHeaderValue("Năm học");
         }
 
         jPanel10.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 851, 90));
@@ -1083,12 +1111,12 @@ public class log_in extends javax.swing.JFrame {
         jLabel19.setBackground(new java.awt.Color(255, 255, 255));
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(204, 0, 51));
-        jLabel19.setText("*Không thể hủy khóa học đã bắt đầu");
         jPanel10.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, 210, 20));
 
         jPanel8.add(jPanel10, "teacher");
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setBackground(new java.awt.Color(161, 93, 220));
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -1096,296 +1124,523 @@ public class log_in extends javax.swing.JFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("MANAGE COURSE");
         jLabel14.setOpaque(true);
+        jPanel11.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 851, 46));
 
-        jScrollPane7.setBorder(null);
+        jLabel52.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel52.setText("Danh sách khóa học:");
+        jPanel11.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 269, 30));
 
-        jTable7.setAutoCreateRowSorter(true);
-        jTable7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+        jScrollPane4.setBorder(null);
+
+        jTable4.setAutoCreateRowSorter(true);
+        jTable4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"S18127226", "Bùi Thị Anh Thư", "19/7/2000", "Nữ"},
-                {"S18127265", "Nguyễn Hoàng Minh", "28/12/2000", "Nam"},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "MSSV", "Họ Và Tên", "Ngày Sinh", "Giới Tính"
+                "Mã Khóa học", "Tên Khóa học", "Số", "Học kỳ", "Năm học", "MSGV", "Phòng học", "Lịch học"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class
-            };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable7.getTableHeader().setResizingAllowed(false);
-        jTable7.getTableHeader().setReorderingAllowed(false);
-        jTable7.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTable4.getTableHeader().setResizingAllowed(false);
+        jTable4.getTableHeader().setReorderingAllowed(false);
+        jTable4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable7MouseClicked(evt);
+                jTable4MouseClicked(evt);
             }
         });
-        jTable7.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTable4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTable7KeyReleased(evt);
+                jTable4KeyReleased(evt);
             }
         });
-        jScrollPane7.setViewportView(jTable7);
+        jScrollPane4.setViewportView(jTable4);
 
-        jTextField12.setText("Họ và tên");
-        jTextField12.addFocusListener(new java.awt.event.FocusAdapter() {
+        jPanel11.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 851, 130));
+
+        jTextField8.setEditable(false);
+        jTextField8.setText("Mã khóa học");
+        jTextField8.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField12FocusGained(evt);
+                jTextField8FocusGained(evt);
             }
         });
-        jTextField12.addActionListener(new java.awt.event.ActionListener() {
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField12ActionPerformed(evt);
+                jTextField8ActionPerformed(evt);
             }
         });
+        jPanel11.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 78, -1));
 
-        jTextField13.setText("MSGV");
-        jTextField13.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTextField45.setEditable(false);
+        jTextField45.setText("Số");
+        jTextField45.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField13FocusGained(evt);
+                jTextField45FocusGained(evt);
             }
         });
-        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+        jTextField45.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField13ActionPerformed(evt);
+                jTextField45ActionPerformed(evt);
             }
         });
+        jPanel11.add(jTextField45, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 40, -1));
 
-        jTextField14.setText("Ngày sinh");
-        jTextField14.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTextField46.setEditable(false);
+        jTextField46.setText("Năm học");
+        jTextField46.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField14FocusGained(evt);
+                jTextField46FocusGained(evt);
             }
         });
+        jPanel11.add(jTextField46, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 60, -1));
 
-        jTextField15.setText("Giới tính");
-        jTextField15.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTextField47.setEditable(false);
+        jTextField47.setText("Phòng học");
+        jTextField47.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField15FocusGained(evt);
+                jTextField47FocusGained(evt);
             }
         });
-        jTextField15.addActionListener(new java.awt.event.ActionListener() {
+        jTextField47.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField15ActionPerformed(evt);
+                jTextField47ActionPerformed(evt);
             }
         });
+        jPanel11.add(jTextField47, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 70, -1));
 
-        jButton17.setText("Thêm");
+        jTextField48.setEditable(false);
+        jTextField48.setText("MSGV");
+        jTextField48.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField48FocusGained(evt);
+            }
+        });
+        jTextField48.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField48ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jTextField48, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 60, -1));
 
-        jButton18.setText("Xóa");
+        jButton10.setBackground(new java.awt.Color(204, 0, 51));
+        jButton10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(255, 255, 255));
+        jButton10.setText("Sửa");
+        jButton10.setEnabled(false);
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 73, -1));
 
-        jButton19.setText("Sửa");
+        jButton35.setBackground(new java.awt.Color(0, 0, 255));
+        jButton35.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton35.setForeground(new java.awt.Color(255, 255, 255));
+        jButton35.setText("Lưu");
+        jButton35.setEnabled(false);
+        jButton35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton35ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jButton35, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 220, 73, -1));
 
-        jButton20.setText("Tìm");
+        jButton36.setBackground(new java.awt.Color(204, 0, 51));
+        jButton36.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton36.setForeground(new java.awt.Color(255, 255, 255));
+        jButton36.setText("Xóa");
+        jButton36.setEnabled(false);
+        jButton36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton36ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jButton36, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 220, 73, -1));
 
-        jScrollPane9.setBorder(null);
+        jLabel53.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel53.setText("Thêm khóa học mới");
+        jPanel11.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 250, -1));
 
-        jTable9.setAutoCreateRowSorter(true);
-        jTable9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jTable9.setModel(new javax.swing.table.DefaultTableModel(
+        jButton37.setBackground(new java.awt.Color(0, 0, 255));
+        jButton37.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton37.setForeground(new java.awt.Color(255, 255, 255));
+        jButton37.setText("Thêm");
+        jButton37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton37ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jButton37, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 590, 73, 20));
+
+        jLabel54.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel54.setText("Thông tin khóa học:");
+        jPanel11.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 269, -1));
+
+        jScrollPane13.setBorder(null);
+
+        jTable13.setAutoCreateRowSorter(true);
+        jTable13.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTable13.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Mã Môn học", "Tên Môn học", "Giáo Viên", "Học kỳ", "Năm học"
+                "Mã Khóa học", "Tên Khóa học"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable9.getTableHeader().setResizingAllowed(false);
-        jTable9.getTableHeader().setReorderingAllowed(false);
-        jTable9.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTable13.getTableHeader().setResizingAllowed(false);
+        jTable13.getTableHeader().setReorderingAllowed(false);
+        jTable13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable9MouseClicked(evt);
+                jTable13MouseClicked(evt);
             }
         });
-        jTable9.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTable13.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTable9KeyReleased(evt);
+                jTable13KeyReleased(evt);
             }
         });
-        jScrollPane9.setViewportView(jTable9);
-        if (jTable9.getColumnModel().getColumnCount() > 0) {
-            jTable9.getColumnModel().getColumn(3).setPreferredWidth(10);
-            jTable9.getColumnModel().getColumn(4).setPreferredWidth(10);
-        }
+        jScrollPane13.setViewportView(jTable13);
 
-        jButton21.setBackground(new java.awt.Color(204, 0, 0));
-        jButton21.setForeground(new java.awt.Color(255, 255, 255));
-        jButton21.setText("Xóa môn học");
-        jButton21.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton21ActionPerformed(evt);
-            }
-        });
+        jPanel11.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 850, 120));
 
-        jButton22.setText("Sửa");
-
-        jTextField16.setText("Mã MH");
-        jTextField16.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTextField9.setEditable(false);
+        jTextField9.setText("Mã khóa học");
+        jTextField9.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField16FocusGained(evt);
+                jTextField9FocusGained(evt);
             }
         });
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+        jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
+                jTextField9ActionPerformed(evt);
             }
         });
+        jPanel11.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 160, -1));
 
-        jTextField17.setText("Tên môn học");
-        jTextField17.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTextField56.setEditable(false);
+        jTextField56.setText("Tên khóa học");
+        jTextField56.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField17FocusGained(evt);
+                jTextField56FocusGained(evt);
             }
         });
-        jTextField17.addActionListener(new java.awt.event.ActionListener() {
+        jTextField56.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField17ActionPerformed(evt);
+                jTextField56ActionPerformed(evt);
             }
         });
+        jPanel11.add(jTextField56, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 190, -1));
 
-        jButton23.setText("Thêm");
-
-        jButton25.setText("Tìm");
-
-        jTextField18.setText("Giáo viên");
-        jTextField18.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTextField57.setText("Mã khóa học");
+        jTextField57.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField18FocusGained(evt);
+                jTextField57FocusGained(evt);
             }
         });
+        jPanel11.add(jTextField57, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, 160, -1));
 
-        jTextField19.setText("Học kỳ");
-        jTextField19.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTextField58.setText("Tên khóa học");
+        jTextField58.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField19FocusGained(evt);
+                jTextField58FocusGained(evt);
             }
         });
-        jTextField19.addActionListener(new java.awt.event.ActionListener() {
+        jTextField58.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField19ActionPerformed(evt);
+                jTextField58ActionPerformed(evt);
             }
         });
+        jPanel11.add(jTextField58, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, 190, -1));
 
-        jTextField20.setText("Năm học");
-        jTextField20.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField20FocusGained(evt);
-            }
-        });
-        jTextField20.addActionListener(new java.awt.event.ActionListener() {
+        jLabel55.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel55.setText("Thêm khóa học mới:");
+        jPanel11.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 250, -1));
+
+        jButton11.setBackground(new java.awt.Color(204, 0, 51));
+        jButton11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(255, 255, 255));
+        jButton11.setText("Sửa");
+        jButton11.setEnabled(false);
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField20ActionPerformed(evt);
+                jButton11ActionPerformed(evt);
             }
         });
+        jPanel11.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, 73, -1));
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane9)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jTextField13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton22)
-                    .addComponent(jButton21)
-                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton23)
-                    .addComponent(jButton25)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton17)
-                    .addComponent(jButton18)
-                    .addComponent(jButton19)
-                    .addComponent(jButton20))
-                .addContainerGap(88, Short.MAX_VALUE))
-        );
+        jButton39.setBackground(new java.awt.Color(0, 0, 255));
+        jButton39.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton39.setForeground(new java.awt.Color(255, 255, 255));
+        jButton39.setText("Lưu");
+        jButton39.setEnabled(false);
+        jButton39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton39ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jButton39, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 530, 73, -1));
+
+        jButton40.setBackground(new java.awt.Color(204, 0, 51));
+        jButton40.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton40.setForeground(new java.awt.Color(255, 255, 255));
+        jButton40.setText("Xóa");
+        jButton40.setEnabled(false);
+        jButton40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton40ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jButton40, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 530, 73, -1));
+
+        jButton41.setBackground(new java.awt.Color(0, 0, 255));
+        jButton41.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton41.setForeground(new java.awt.Color(255, 255, 255));
+        jButton41.setText("Thêm");
+        jButton41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton41ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jButton41, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, 73, 20));
+
+        jLabel56.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel56.setForeground(new java.awt.Color(204, 0, 51));
+        jLabel56.setText("jLabel56");
+        jPanel11.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 250, -1));
+
+        jLabel57.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel57.setForeground(new java.awt.Color(204, 0, 51));
+        jLabel57.setText("jLabel57");
+        jPanel11.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 620, 210, -1));
+
+        jLabel58.setText("Buổi 1");
+        jPanel11.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, 20));
+
+        jTextField59.setEditable(false);
+        jTextField59.setText("Ca");
+        jTextField59.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField59FocusGained(evt);
+            }
+        });
+        jTextField59.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField59ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jTextField59, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 40, -1));
+
+        jTextField60.setEditable(false);
+        jTextField60.setText("Thứ");
+        jTextField60.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField60FocusGained(evt);
+            }
+        });
+        jTextField60.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField60ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jTextField60, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 50, -1));
+
+        jLabel59.setText("Buổi 2");
+        jPanel11.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, -1, 20));
+
+        jTextField61.setEditable(false);
+        jTextField61.setText("Thứ");
+        jTextField61.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField61FocusGained(evt);
+            }
+        });
+        jTextField61.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField61ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jTextField61, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 50, -1));
+
+        jTextField62.setEditable(false);
+        jTextField62.setText("Ca");
+        jTextField62.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField62FocusGained(evt);
+            }
+        });
+        jTextField62.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField62ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jTextField62, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 40, -1));
+
+        jLabel60.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(204, 0, 51));
+        jLabel60.setText("jLabel60");
+        jPanel11.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 560, 210, -1));
+
+        jLabel63.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(204, 0, 51));
+        jLabel63.setText("jLabel63");
+        jPanel11.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 250, -1));
+
+        jTextField49.setEditable(false);
+        jTextField49.setText("Học kỳ");
+        jTextField49.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField49FocusGained(evt);
+            }
+        });
+        jPanel11.add(jTextField49, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 60, -1));
+
+        jTextField11.setText("Mã khóa học");
+        jTextField11.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField11FocusGained(evt);
+            }
+        });
+        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField11ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 78, -1));
+
+        jTextField52.setText("Số");
+        jTextField52.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField52FocusGained(evt);
+            }
+        });
+        jTextField52.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField52ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jTextField52, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 40, -1));
+
+        jTextField53.setText("Học kỳ");
+        jTextField53.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField53FocusGained(evt);
+            }
+        });
+        jPanel11.add(jTextField53, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 60, -1));
+
+        jTextField54.setText("Năm học");
+        jTextField54.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField54FocusGained(evt);
+            }
+        });
+        jPanel11.add(jTextField54, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 60, -1));
+
+        jTextField55.setText("MSGV");
+        jTextField55.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField55FocusGained(evt);
+            }
+        });
+        jTextField55.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField55ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jTextField55, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 60, -1));
+
+        jTextField71.setText("Phòng học");
+        jTextField71.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField71FocusGained(evt);
+            }
+        });
+        jTextField71.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField71ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jTextField71, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 70, -1));
+
+        jLabel64.setText("Buổi 1");
+        jPanel11.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, -1, 20));
+
+        jLabel65.setText("Buổi 2");
+        jPanel11.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, -1, 20));
+
+        jTextField72.setText("Thứ");
+        jTextField72.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField72FocusGained(evt);
+            }
+        });
+        jTextField72.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField72ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jTextField72, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 50, -1));
+
+        jTextField73.setText("Thứ");
+        jTextField73.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField73FocusGained(evt);
+            }
+        });
+        jTextField73.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField73ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jTextField73, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 50, -1));
+
+        jTextField74.setText("Ca");
+        jTextField74.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField74FocusGained(evt);
+            }
+        });
+        jTextField74.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField74ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jTextField74, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 40, -1));
+
+        jTextField75.setText("Ca");
+        jTextField75.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField75FocusGained(evt);
+            }
+        });
+        jTextField75.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField75ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(jTextField75, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 330, 40, -1));
 
         jPanel8.add(jPanel11, "course");
 
@@ -2384,11 +2639,11 @@ public class log_in extends javax.swing.JFrame {
         prof.load_timetable(jTable10);
     }
     private void load_data_admin(){
-        System.out.println("helo");
+        
         ad.load_student_list(jTable1);
         ad.load_teacher_list(jTable2);
-        //ad.load_course(jTable18, jComboBox3);
-        //ad.load_timetable(jTable10);
+        ad.load_course_list(jTable4);
+        ad.load_titlecourse_list(jTable13);
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String username = jTextField1.getText();
@@ -2536,90 +2791,6 @@ public class log_in extends javax.swing.JFrame {
             jTextField7.setText(model.getValueAt(selectRow, 6).toString());
         }     
     }//GEN-LAST:event_jTable3KeyReleased
-
-    private void jTable7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable7MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTable7MouseClicked
-
-    private void jTable7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable7KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTable7KeyReleased
-
-    private void jTextField12FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField12FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField12FocusGained
-
-    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField12ActionPerformed
-
-    private void jTextField13FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField13FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13FocusGained
-
-    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13ActionPerformed
-
-    private void jTextField14FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField14FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14FocusGained
-
-    private void jTextField15FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField15FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15FocusGained
-
-    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15ActionPerformed
-
-    private void jTable9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable9MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTable9MouseClicked
-
-    private void jTable9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable9KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTable9KeyReleased
-
-    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton21ActionPerformed
-
-    private void jTextField16FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField16FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16FocusGained
-
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
-
-    private void jTextField17FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField17FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField17FocusGained
-
-    private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField17ActionPerformed
-
-    private void jTextField18FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField18FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField18FocusGained
-
-    private void jTextField19FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField19FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField19FocusGained
-
-    private void jTextField19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField19ActionPerformed
-
-    private void jTextField20FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField20FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField20FocusGained
-
-    private void jTextField20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField20ActionPerformed
 
     private void jTextField34FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField34FocusGained
         // TODO add your handling code here:
@@ -2901,8 +3072,16 @@ public class log_in extends javax.swing.JFrame {
 
     private void jButton50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton50ActionPerformed
         String name = jTextField38.getText(), dob = jTextField40.getText(), gender = jTextField41.getText();
-        if (!gender.equals("Nam") && !gender.equals("Nữ")){
-            jLabel21.setText("'Nam' hoặc 'Nữ'");
+        if (name.equals("") || dob.equals("") || gender.equals("")){
+            jLabel21.setText("*Chưa nhập đủ thông tin");
+            return;
+        }
+        else if(!checkDob(dob)){
+            jLabel21.setText("*Ngày sinh không hợp lệ (dd/mm/yyyy)");
+            return;
+        }
+        else if (!gender.equals("Nam") && !gender.equals("Nữ")){
+            jLabel21.setText("*Giới tính là 'Nam' hoặc 'Nữ'");
             return;
         }
         prof.edit_info(name, dob, gender);
@@ -3147,7 +3326,7 @@ public class log_in extends javax.swing.JFrame {
         String rowEntry;
         for (int i = 0; i < rowCount; i++) {
             rowEntry = table.getValueAt(i, 0).toString();
-            if (rowEntry.equalsIgnoreCase(mssv)) {
+            if (rowEntry.equals(mssv)) {
                 return true;
             }
         }
@@ -3259,6 +3438,7 @@ public class log_in extends javax.swing.JFrame {
         jLabel51.setText("");
         String msgv = model.getValueAt(selectRow, 0).toString();
         ad.load_course_of_teacher(msgv, jTable11);
+        ad.load_available_course_of_teacher(getSemidNow(), jTable12);
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void jTable2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable2KeyReleased
@@ -3409,7 +3589,7 @@ public class log_in extends javax.swing.JFrame {
         int nam = parseInt(model.getValueAt(selectRow, 4).toString());
         int semidcuakhoahoc = account.getSemid(nam, hocki);
         int semidbaygio = getSemidNow();
-        if(semidcuakhoahoc < semidbaygio){
+        if(semidcuakhoahoc <= semidbaygio){
             jLabel19.setText("*Không thể hủy khóa học đã bắt đầu");
             return;
         }
@@ -3425,6 +3605,7 @@ public class log_in extends javax.swing.JFrame {
         model.removeRow(selectRow);
         jButton32.setEnabled(false);
         jTable11.clearSelection();
+        ad.load_available_course_of_teacher(getSemidNow(), jTable12);
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void jTable11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable11MouseClicked
@@ -3484,12 +3665,421 @@ public class log_in extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton33ActionPerformed
 
     private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
-        // TODO add your handling code here:
+        int selectRow2 = jTable2.getSelectedRow();
+        DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
+        String teacher_id = model2.getValueAt(selectRow2, 0).toString();
+        
+        int selectRow = jTable12.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTable12.getModel();
+        String course_id = model.getValueAt(selectRow, 0).toString();
+        String name = model.getValueAt(selectRow, 1).toString();
+        name = name.substring(name.length()-1);
+        int number = Integer.parseInt(name);
+        int hocki = parseInt(model.getValueAt(selectRow, 2).toString());
+        int nam = parseInt(model.getValueAt(selectRow, 3).toString());
+        int semidcuakhoahoc = account.getSemid(nam, hocki);
+        
+        ad.enroll_teacher_to_course(teacher_id, course_id, number, semidcuakhoahoc);
+           
+        model.removeRow(selectRow);
+        jButton34.setEnabled(false);
+        jTable12.clearSelection();
+        ad.load_course_of_teacher(teacher_id, jTable11);
     }//GEN-LAST:event_jButton34ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
+       int selectRow = jTable4.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+        jTextField8.setText(model.getValueAt(selectRow, 0).toString());
+        jTextField45.setText(model.getValueAt(selectRow, 2).toString());
+        jTextField49.setText(model.getValueAt(selectRow, 3).toString());
+        jTextField46.setText(model.getValueAt(selectRow, 4).toString());
+        jTextField48.setText(model.getValueAt(selectRow, 5).toString());
+        jTextField47.setText(model.getValueAt(selectRow, 6).toString());
+        String timetable = model.getValueAt(selectRow, 7).toString();
+        jTextField60.setText(String.valueOf(timetable.charAt(1)));
+        jTextField59.setText(String.valueOf(timetable.charAt(6)));
+        jTextField61.setText(String.valueOf(timetable.charAt(11)));
+        jTextField62.setText(String.valueOf(timetable.charAt(16)));
+        
+        
+        jTextField45.setEditable(false);
+        jTextField49.setEditable(false); 
+        jTextField46.setEditable(false);
+        jTextField48.setEditable(false);
+        jTextField47.setEditable(false);
+        jTextField59.setEditable(false); 
+        jTextField60.setEditable(false);
+        jTextField61.setEditable(false);
+        jTextField62.setEditable(false);
+        
+        jButton10.setEnabled(true);
+        jButton36.setEnabled(true);
+        jButton35.setEnabled(false);
+        jButton11.setEnabled(false);
+        jButton39.setEnabled(false);
+        jButton40.setEnabled(false);
+        jLabel9.setText("");
+        jLabel56.setText("");
+    }//GEN-LAST:event_jTable4MouseClicked
+
+    private void jTable4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable4KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable4KeyReleased
+
+    private void jTextField8FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8FocusGained
+
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jTextField45FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField45FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField45FocusGained
+
+    private void jTextField45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField45ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField45ActionPerformed
+
+    private void jTextField46FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField46FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField46FocusGained
+
+    private void jTextField47FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField47FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField47FocusGained
+
+    private void jTextField47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField47ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField47ActionPerformed
+
+    private void jTextField48FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField48FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField48FocusGained
+
+    private void jTextField48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField48ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField48ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        jTextField8.setEditable(false);
+        jTextField48.setEditable(true);
+        jTextField47.setEditable(true);
+        jTextField60.setEditable(true);
+        jTextField59.setEditable(true);
+        jTextField61.setEditable(true);
+        jTextField62.setEditable(true);
+        jButton35.setEnabled(true);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
+        String course_id = jTextField8.getText(), teacher_id = jTextField48.getText(), room = jTextField47.getText();
+        
+        if (teacher_id.equals("") || room.equals("") || jTextField60.getText().equals("") || jTextField61.getText().equals("") || jTextField59.getText().equals("")  || jTextField62.getText().equals("")  ){
+            jLabel56.setText("*Chưa nhập đủ thông tin");
+            return;
+        }
+        else if (!checkInteger(jTextField45.getText()) || !checkInteger(jTextField49.getText()) ||!checkInteger(jTextField46.getText()) ||!checkInteger(jTextField59.getText()) ||!checkInteger(jTextField60.getText()) || !checkInteger(jTextField61.getText()) || !checkInteger(jTextField62.getText())){
+            jLabel56.setText("*Số, Học kỳ, Năm học, Thứ, Ca phải là số");
+            return;
+        }
+        int number = parseInt(jTextField45.getText()), semester = parseInt(jTextField49.getText()), year = parseInt(jTextField46.getText());
+        int day1 = parseInt(jTextField60.getText()), day2 = parseInt(jTextField61.getText()), ca1 = parseInt(jTextField59.getText()), ca2 = parseInt(jTextField62.getText());
+        //ghi thêm mấy cái check điều kiện ở đây nếu đủ thời gian
+        if (day1<2 || day1>7 || day2<2 || day2>7 || ca1<1 || ca1>4 || ca2<1 || ca2>4){
+            jLabel56.setText("*Thứ: 2-7, Ca: 1-4");
+            return;
+        }
+        jLabel56.setText("");
+        DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+        int selectRow = jTable4.getSelectedRow();
+        model.setValueAt(number,  selectRow, 2);
+        model.setValueAt(semester,  selectRow, 3);
+        model.setValueAt(year,  selectRow, 4);
+        model.setValueAt(teacher_id,  selectRow, 5);
+        model.setValueAt(room,  selectRow, 6);
+        String timetable = "T" + String.valueOf(day1) + " " + "Ca " + String.valueOf(ca1) + " - " + "T" + String.valueOf(day2) + " " + "Ca " + String.valueOf(ca2);
+        model.setValueAt(timetable,  selectRow, 7);
+        int semid = account.getSemid(year, semester);
+        
+        ad.edit_course(course_id, number, semid, room, teacher_id);
+        ad.delete_timetable(course_id, number, semid);
+        ad.insert_timetable(course_id, number, semid, day1, ca1);
+        ad.insert_timetable(course_id, number, semid, day2, ca2);
+        
+        jTextField46.setEditable(false);
+        jTextField48.setEditable(false);
+        jTextField47.setEditable(false);
+        jTextField59.setEditable(false);
+        jTextField60.setEditable(false);
+        jTextField61.setEditable(false);
+        jTextField62.setEditable(false);
+        jButton35.setEnabled(false);
+    }//GEN-LAST:event_jButton35ActionPerformed
+
+    private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
+        String course_id = jTextField8.getText();
+        int number = parseInt(jTextField45.getText()), semester = parseInt(jTextField49.getText()), year = parseInt(jTextField46.getText());
+        int semid = account.getSemid(year, semester);
+        ad.delete_timetable(course_id, number, semid);
+        ad.delete_course_studentcourse(course_id, number, semid);
+        ad.delete_course(course_id, number, semid);
+        
+        DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+        int selectRow = jTable4.getSelectedRow();
+        model.removeRow(selectRow);
+    }//GEN-LAST:event_jButton36ActionPerformed
+
+    private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton37ActionPerformed
+
+    private void jTable13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable13MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable13MouseClicked
+
+    private void jTable13KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable13KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable13KeyReleased
+
+    private void jTextField9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9FocusGained
+
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9ActionPerformed
+
+    private void jTextField56FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField56FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField56FocusGained
+
+    private void jTextField56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField56ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField56ActionPerformed
+
+    private void jTextField57FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField57FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField57FocusGained
+
+    private void jTextField58FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField58FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField58FocusGained
+
+    private void jTextField58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField58ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField58ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton39ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton39ActionPerformed
+
+    private void jButton40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton40ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton40ActionPerformed
+
+    private void jButton41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton41ActionPerformed
+        String course_id = jTextField11.getText(), teacher_id = jTextField55.getText(), room = jTextField71.getText();
+        
+        if (teacher_id.equals("") || room.equals("") || jTextField45.getText().equals("") || jTextField52.getText().equals("") || jTextField53.getText().equals("") || jTextField54.getText().equals("") || jTextField73.getText().equals("") || jTextField72.getText().equals("")  || jTextField74.getText().equals("") || jTextField75.getText().equals("") ){
+            jLabel63.setText("*Chưa nhập đủ thông tin");
+            return;
+        }
+        else if (!checkInteger(jTextField52.getText()) || !checkInteger(jTextField53.getText()) ||!checkInteger(jTextField54.getText()) ||!checkInteger(jTextField72.getText()) ||!checkInteger(jTextField73.getText()) || !checkInteger(jTextField74.getText()) || !checkInteger(jTextField75.getText())){
+            jLabel63.setText("*Số, Học kỳ, Năm học, Thứ, Ca phải là số");
+            return;
+        }
+        int number = parseInt(jTextField52.getText()), semester = parseInt(jTextField53.getText()), year = parseInt(jTextField54.getText());
+        int day1 = parseInt(jTextField73.getText()), day2 = parseInt(jTextField72.getText()), ca1 = parseInt(jTextField74.getText()), ca2 = parseInt(jTextField75.getText());
+        //ghi thêm mấy cái check điều kiện ở đây nếu đủ thời gian
+        if (number<1 || semester<1 || semester>3 || year<=2000){
+            jLabel63.setText("*Số > 0, Học kỳ: 1-3, Năm học > 2000");
+            return;
+        }
+        else if (day1<2 || day1>7 || day2<2 || day2>7 || ca1<1 || ca1>4 || ca2<1 || ca2>4){
+            jLabel63.setText("*Thứ: 2-7, Ca: 1-4");
+            return;
+        }
+        else if (!checkID(course_id, jTable13)){
+            jLabel63.setText("*Mã khóa học không tồn tại");
+            return;
+        }
+        else if (!checkID(teacher_id, jTable2)){
+            jLabel63.setText("*Mã giáo viên không tồn tại");
+            return;
+        }
+        else if (!checkavailabelcourse(course_id, number, semester, year, jTable4)){
+            jLabel63.setText("*Khóa học này đã tồn tại");
+            return;
+        }
+        jLabel63.setText("");
+        DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+        int selectRow = jTable4.getSelectedRow();
+        String course_name = getCourseNamebyid(course_id, jTable13);
+        String timetable = "T" + String.valueOf(day1) + " " + "Ca " + String.valueOf(ca1) + " - " + "T" + String.valueOf(day2) + " " + "Ca " + String.valueOf(ca2);
+        Object[] row = {course_id, course_name, number, semester, year, teacher_id, room, timetable};
+        model.addRow(row);
+        int semid = account.getSemid(year, semester);
+        
+        ad.add_course(course_id, number, semid, room, teacher_id);
+        ad.delete_timetable(course_id, number, semid);
+        ad.insert_timetable(course_id, number, semid, day1, ca1);
+        ad.insert_timetable(course_id, number, semid, day2, ca2);
+        
+        jTextField11.setText("Mã khóa học");
+        jTextField52.setText("Số");
+        jTextField53.setText("Học kỳ");
+        jTextField54.setText("Năm học");
+        jTextField55.setText("MSGV");
+        jTextField72.setText("Thứ");
+        jTextField73.setText("Thứ");
+        jTextField74.setText("Ca");
+        jTextField75.setText("Ca");
+        jTextField71.setText("Phòng học");
+    }//GEN-LAST:event_jButton41ActionPerformed
+    private boolean checkavailabelcourse(String course_id, int number, int semester, int year, JTable course){
+        int rowCount = course.getRowCount();
+        for (int i = 0; i < rowCount; i++) {
+            if (course_id.equals(course.getValueAt(i, 0).toString())) {
+                if(number == parseInt(course.getValueAt(i, 2).toString())){
+                    if(semester == parseInt(course.getValueAt(i, 3).toString())){
+                        if(year == parseInt(course.getValueAt(i, 4).toString())){
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+    private String getCourseNamebyid(String course_id, JTable table){
+        int rowCount = table.getRowCount();
+        String rowEntry ="";
+        for (int i = 0; i < rowCount; i++) {
+            rowEntry = table.getValueAt(i, 0).toString();
+            if (rowEntry.equals(course_id)) {
+                return table.getValueAt(i, 1).toString();
+            }
+        }
+        return rowEntry;
+    }
+    private void jTextField59FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField59FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField59FocusGained
+
+    private void jTextField59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField59ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField59ActionPerformed
+
+    private void jTextField60FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField60FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField60FocusGained
+
+    private void jTextField60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField60ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField60ActionPerformed
+
+    private void jTextField61FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField61FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField61FocusGained
+
+    private void jTextField61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField61ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField61ActionPerformed
+
+    private void jTextField62FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField62FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField62FocusGained
+
+    private void jTextField62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField62ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField62ActionPerformed
+
+    private void jTextField49FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField49FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField49FocusGained
+
+    private void jTextField11FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField11FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11FocusGained
+
+    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11ActionPerformed
+
+    private void jTextField52FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField52FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField52FocusGained
+
+    private void jTextField52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField52ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField52ActionPerformed
+
+    private void jTextField53FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField53FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField53FocusGained
+
+    private void jTextField54FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField54FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField54FocusGained
+
+    private void jTextField55FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField55FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField55FocusGained
+
+    private void jTextField55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField55ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField55ActionPerformed
+
+    private void jTextField71FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField71FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField71FocusGained
+
+    private void jTextField71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField71ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField71ActionPerformed
+
+    private void jTextField72FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField72FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField72FocusGained
+
+    private void jTextField72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField72ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField72ActionPerformed
+
+    private void jTextField73FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField73FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField73FocusGained
+
+    private void jTextField73ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField73ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField73ActionPerformed
+
+    private void jTextField74FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField74FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField74FocusGained
+
+    private void jTextField74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField74ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField74ActionPerformed
+
+    private void jTextField75FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField75FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField75FocusGained
+
+    private void jTextField75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField75ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField75ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3519,16 +4109,10 @@ public class log_in extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
@@ -3539,6 +4123,12 @@ public class log_in extends javax.swing.JFrame {
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
+    private javax.swing.JButton jButton35;
+    private javax.swing.JButton jButton36;
+    private javax.swing.JButton jButton37;
+    private javax.swing.JButton jButton39;
+    private javax.swing.JButton jButton40;
+    private javax.swing.JButton jButton41;
     private javax.swing.JButton jButton45;
     private javax.swing.JButton jButton46;
     private javax.swing.JButton jButton48;
@@ -3599,7 +4189,19 @@ public class log_in extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -3630,6 +4232,7 @@ public class log_in extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;
@@ -3637,9 +4240,8 @@ public class log_in extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JSplitPane jSplitPane3;
@@ -3648,6 +4250,7 @@ public class log_in extends javax.swing.JFrame {
     private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable11;
     private javax.swing.JTable jTable12;
+    private javax.swing.JTable jTable13;
     private javax.swing.JTable jTable15;
     private javax.swing.JTable jTable16;
     private javax.swing.JTable jTable17;
@@ -3655,20 +4258,11 @@ public class log_in extends javax.swing.JFrame {
     private javax.swing.JTable jTable19;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable7;
+    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable8;
-    private javax.swing.JTable jTable9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
@@ -3695,10 +4289,33 @@ public class log_in extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField42;
     private javax.swing.JTextField jTextField43;
     private javax.swing.JTextField jTextField44;
+    private javax.swing.JTextField jTextField45;
+    private javax.swing.JTextField jTextField46;
+    private javax.swing.JTextField jTextField47;
+    private javax.swing.JTextField jTextField48;
+    private javax.swing.JTextField jTextField49;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField50;
     private javax.swing.JTextField jTextField51;
+    private javax.swing.JTextField jTextField52;
+    private javax.swing.JTextField jTextField53;
+    private javax.swing.JTextField jTextField54;
+    private javax.swing.JTextField jTextField55;
+    private javax.swing.JTextField jTextField56;
+    private javax.swing.JTextField jTextField57;
+    private javax.swing.JTextField jTextField58;
+    private javax.swing.JTextField jTextField59;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField60;
+    private javax.swing.JTextField jTextField61;
+    private javax.swing.JTextField jTextField62;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField71;
+    private javax.swing.JTextField jTextField72;
+    private javax.swing.JTextField jTextField73;
+    private javax.swing.JTextField jTextField74;
+    private javax.swing.JTextField jTextField75;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

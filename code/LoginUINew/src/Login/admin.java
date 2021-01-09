@@ -501,7 +501,7 @@ public class admin extends account{
     }
    
    public void delete_course_of_teacher(String teacher_id, String course_id, int number, int semidcuakhoahoc){
-       PreparedStatement stm = null;
+        PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String query = "update course set teacher_id = null where teacher_id = ? and course_id=? and number =? and sem_id=?;";
         try{
@@ -524,8 +524,339 @@ public class admin extends account{
         }
    }
    
+   public void load_available_course_of_teacher(int semidNow, JTable available_course_of_teacher){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "SELECT co.course_id, ci.course_name, co.number, se.semester, se.years, co.room FROM course co join course_info ci on ci.course_id=co.course_id join semester se on co.sem_id=se.sem_id where co.teacher_id is null and co.sem_id > ?;";
+        DefaultTableModel model = (DefaultTableModel) available_course_of_teacher.getModel();
+        model.setRowCount(0);
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setInt(1, semidNow);
+            System.out.println(stm);
+            rs = stm.executeQuery();
+            String course_id, course_name, room;
+            Integer semester, year;
+            while(rs.next()){
+                course_id = rs.getString("course_id");
+                course_name = rs.getString("course_name") + " " + String.valueOf(rs.getInt("number"));
+                semester = rs.getInt("semester");
+                year = rs.getInt("years");
+                room = rs.getString("room");
+                load_available_course_of_teacher_ui(course_id, course_name, semester, year, room, available_course_of_teacher);
+            }
+        } catch(SQLException exp) {
+            System.out.println("load_course_of_teacher " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (rs != null) rs.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
+            }
+        }
+   } 
+   public void load_available_course_of_teacher_ui(String course_id, String  course_name, Integer semester, Integer year, String room, JTable course_of_teacher){
+       DefaultTableModel model = (DefaultTableModel) course_of_teacher.getModel();
+        Object[] row = {course_id, course_name, semester, year, room};
+        model.addRow(row);
+   }
    
+   public void enroll_teacher_to_course(String teacher_id, String course_id, int number, int semidcuakhoahoc){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "update course set teacher_id = ? where course_id = ? and number = ? and sem_id = ?;";
+        
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, teacher_id);
+            stm.setString(2, course_id);
+            stm.setInt(3, number);
+            stm.setInt(4, semidcuakhoahoc);
+            stm.executeUpdate(); 
 
+        } catch(SQLException exp) {
+            System.out.println("Admin enroll_teacher_to_course " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+   }
+   
+   
+   public void load_course_list(JTable course){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "SELECT co.course_id, ci.course_name, co.number, se.semester, se.years, te.teacher_id, co.room FROM course co join course_info ci on ci.course_id=co.course_id join semester se on co.sem_id=se.sem_id join teacher te on co.teacher_id=te.teacher_id order by se.years ASC, se.semester ASC, co.course_id asc, co.number ASC;";
+        DefaultTableModel model = (DefaultTableModel) course.getModel();
+        model.setRowCount(0);
+        try{
+            stm = conn.prepareStatement(query);
+            rs = stm.executeQuery();
+            String course_id, course_name, room, teacher_id;
+            Integer number, semester, year;
+            while(rs.next()){
+                course_id = rs.getString("course_id");
+                course_name = rs.getString("course_name");
+                number = rs.getInt("number");
+                semester = rs.getInt("semester");
+                year = rs.getInt("years");                
+                teacher_id = rs.getString("teacher_id");
+                room = rs.getString("room");
+                int semid = account.getSemid(year, semester);
+                String timetable = getTimetable(course_id, number, semid);
+                load_course_list_ui(course_id, course_name, number, semester, year, teacher_id, room, timetable, course);
+            }
+        } catch(SQLException exp) {
+            System.out.println("load_course_list " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (rs != null) rs.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
+            }
+        }
+   } 
+   public void load_course_list_ui(String course_id, String  course_name, Integer number, Integer semester, Integer year, String teacher_id, String room, String timetable, JTable course){
+       DefaultTableModel model = (DefaultTableModel) course.getModel();
+        Object[] row = {course_id, course_name, number, semester, year, teacher_id, room, timetable};
+        model.addRow(row);
+   }
+   public String getTimetable(String course_id, int number, int semid){
+       PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "SELECT week_day, period_no FROM timetable where course_id = ? and number = ? and sem_id = ?";
+        String result="";
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, course_id);
+            stm.setInt(2, number);
+            stm.setInt(3, semid);
+            rs = stm.executeQuery();
+            int week_day, period_no;
+            while(rs.next()){
+                week_day = rs.getInt("week_day");
+                period_no = rs.getInt("period_no");
+                result = result +  "T" + String.valueOf(week_day) + " " + "Ca " + String.valueOf(period_no) + " - ";
+                
+            }
+            return result.substring(0, result.length()-3);
+        } catch(SQLException exp) {
+            System.out.println("admin getTimetable " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (rs != null) rs.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
+            }
+        }
+        return result;
+   }
+   
+   
+   public void edit_course(String course_id, int number, int semid, String room, String teacher_id){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "update course set teacher_id = ?, room=? where course_id = ? and number = ? and sem_id = ?;";
+        
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, teacher_id);
+            stm.setString(2, room);
+            stm.setString(3, course_id);
+            stm.setInt(4, number);
+            stm.setInt(5, semid);
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("Admin edit_course " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+   }
+   public void add_course(String course_id, int number, int semid, String room, String teacher_id){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "insert into course values (?,?,?,?,?);";
+        
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, course_id);
+            stm.setInt(2, number);
+            stm.setInt(3, semid);
+            stm.setString(4, room);
+            stm.setString(5, teacher_id);
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("Admin add_course " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+   }
+   public void delete_course(String course_id, int number, int semid){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "delete from course where course_id = ? and number = ? and sem_id = ?;";
+        
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, course_id);
+            stm.setInt(2, number);
+            stm.setInt(3, semid);
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("Admin delete_course " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+   }
+   public void delete_course_studentcourse(String course_id, int number, int semid){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "delete from student_course where course_id = ? and number = ? and sem_id = ?;";
+        
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, course_id);
+            stm.setInt(2, number);
+            stm.setInt(3, semid);
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("Admin delete_course_studentcourse " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+   }
+   public void delete_timetable(String course_id, int number, int semid){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "delete from timetable where course_id = ? and number = ? and sem_id = ?;";
+        
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, course_id);
+            stm.setInt(2, number);
+            stm.setInt(3, semid);
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("Admin delete_timetable " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+   }
+   public void insert_timetable(String course_id, int number, int semid, int weekday, int period){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "insert into timetable values (?,?,?,?,?)";
+        
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, course_id);
+            stm.setInt(2, number);
+            stm.setInt(3, semid);
+            stm.setInt(4, weekday);
+            stm.setInt(5, period);
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("Admin edit_timetable " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+   }
+   
+   public void load_titlecourse_list(JTable titlecourse){
+       PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "SELECT course_id, course_name FROM course_info order by course_id;";
+        DefaultTableModel model = (DefaultTableModel) titlecourse.getModel();
+        model.setRowCount(0);
+        try{
+            stm = conn.prepareStatement(query);
+            rs = stm.executeQuery();
+            String course_id, course_name;
+            while(rs.next()){
+                course_id = rs.getString("course_id");
+                course_name = rs.getString("course_name");
+                load_titlecourse_list_ui(course_id, course_name, titlecourse);
+            }
+        } catch(SQLException exp) {
+            System.out.println("load_course_list " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (rs != null) rs.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
+            }
+        }
+    }
+   public void load_titlecourse_list_ui(String course_id, String  course_name, JTable titlecourse){
+        DefaultTableModel model = (DefaultTableModel) titlecourse.getModel();
+        Object[] row = {course_id, course_name};
+        model.addRow(row);
+    }
+   
+   
     @Override
     public void role_menu() {
         // TODO Auto-generated method stub
