@@ -43,7 +43,37 @@ public abstract class account {
     public abstract void role_menu();
 
     
-    
+    public static int getSemid(int year, int semester){
+        int sem_id = 0;
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        ResultSet rs = null;
+        String query = "select sem_id from semester where years = ? and semester = ?;";
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setInt(1, year);
+            stm.setInt(2, semester);
+            rs = stm.executeQuery();
+            if(rs.next()){
+                //System.out.println("Have id");
+                sem_id = rs.getInt("sem_id");
+                
+            }
+            
+        } catch(SQLException exp) {
+            System.out.println("enroll_course" + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
+            }
+        }
+        
+        return sem_id;
+    }
 
     public static boolean sign_in(String name, String pass) {
         PreparedStatement stm = null;
