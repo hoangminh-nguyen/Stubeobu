@@ -77,10 +77,12 @@ public class professor extends account{
             stm.setString(1, super.username);
             rs = stm.executeQuery();
             listCourse = new ArrayList<>();
-            int i = 0;
             DefaultTableModel model = (DefaultTableModel) table_course.getModel();
             model.setRowCount(0);
             allyear = new ArrayList<String>();
+            for(int i=year.getItemCount()-1; i>=1 ;i--){
+                year.removeItemAt(i);
+            }
             while(rs.next()){
                 course temp = new course();
                 temp.id = rs.getString("course_id");
@@ -272,6 +274,7 @@ public class professor extends account{
         String query = "SELECT ti.week_day, ti.period_no, ci.course_name, co.number, co.room FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) join course_info ci on (co.course_id = ci.course_id) WHERE co.teacher_id = ? and co.sem_id = ? and (select stc.is_studied from student_course stc WHERE stc.course_id = co.course_id and stc.number=co.number and stc.sem_id=co.sem_id limit 1) = 1";
         try{
                 DefaultTableModel model = (DefaultTableModel) timetable.getModel();
+                model.setRowCount(0);
 		model.setRowCount(4);
 		model.setColumnCount(7);
                 stm = conn.prepareStatement(query);
@@ -352,6 +355,7 @@ public class professor extends account{
             stm.setInt(3, sem_id);
             rs = stm.executeQuery();
             while(rs.next()){  
+                System.out.println(rs.getInt("is_studied"));
                 return rs.getInt("is_studied")==1;
             }
                     

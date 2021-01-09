@@ -101,6 +101,8 @@ public class student extends account {
     
     public void load_course(JTable table_course, JComboBox year){
         // TODO Auto-generated method stub
+        System.out.println("2");
+
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
@@ -113,6 +115,11 @@ public class student extends account {
             DefaultTableModel model = (DefaultTableModel) table_course.getModel();
             model.setRowCount(0);
             allyear = new ArrayList<String>();
+            //year.removeAllItems();
+            for(int i=year.getItemCount()-1; i>=1 ;i--){
+                year.removeItemAt(i);
+            }
+            //year.addItem("Năm");
             while(rs.next()){
                 course temp = new course();
                 temp.id = rs.getString("course_id");
@@ -134,8 +141,9 @@ public class student extends account {
                         allyear.add(String.valueOf(temp.year));
                     }
                 }
-                
-                listCourse.add(temp);
+                if (!check_Joined(temp)){
+                    listCourse.add(temp);
+                }
                 load_course_ui(temp, table_course);
             }
             
@@ -153,6 +161,7 @@ public class student extends account {
         }
     }
     public void load_course_atsem(JTable table_course, int semid){
+        System.out.println("1");
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
@@ -163,10 +172,8 @@ public class student extends account {
             stm.setString(1, super.username);
             if (semid != 0){stm.setInt(2,semid);}
             rs = stm.executeQuery();
-            listCourse = new ArrayList<>();
             DefaultTableModel model = (DefaultTableModel) table_course.getModel();
             model.setRowCount(0);
-            allyear = new ArrayList<String>();
             while(rs.next()){
                 course temp = new course();
                 temp.id = rs.getString("course_id");
@@ -183,7 +190,6 @@ public class student extends account {
                     this.load_mark(temp);
                 }
                 
-                listCourse.add(temp);
                 load_course_ui(temp, table_course);
             }
             
@@ -317,7 +323,7 @@ public class student extends account {
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT co.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room FROM Course co join Course_info ci on (co.course_id = ci.course_id) join teacher te on (co.teacher_id = te.teacher_id) join semester se on (co.sem_id = se.sem_id) where co.sem_id=?";
+        String query = "SELECT co.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room FROM Course co join Course_info ci on (co.course_id = ci.course_id) join teacher te on (co.teacher_id = te.teacher_id) join semester se on (co.sem_id = se.sem_id) where co.sem_id>?";
         try{
             stm = conn.prepareStatement(query);
             stm.setInt(1, getSemidNow());
@@ -405,6 +411,8 @@ public class student extends account {
     
     public void enroll_course(String courseid, int number, int semid,JTable table_course1, JTable table_course2,JTable table_course3, JComboBox year){
         PreparedStatement stm = null;
+        System.out.println("enroll");
+
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String query = "insert into Student_Course values (?, ?, ?, ?, null, null, 0);";
         try{
@@ -415,7 +423,7 @@ public class student extends account {
             stm.setInt(4, semid);
             stm.executeUpdate();
             
-            load_course(table_course1, year);
+            load_course(table_course1, new JComboBox());
             load_sign_course(table_course2);
             load_available_course(table_course3);
             
@@ -434,6 +442,8 @@ public class student extends account {
     
     public void cancel_course(String courseid, int number, int semid,JTable table_course1, JTable table_course2,JTable table_course3, JComboBox year){
         PreparedStatement stm = null;
+        System.out.println("delete");
+
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String query = "delete from Student_Course where student_id = ? and course_id = ? and number= ? and sem_id= ? ;";
         try{
@@ -446,7 +456,7 @@ public class student extends account {
             
             stm.executeUpdate(); // thực hiện lệnh delete
             
-            load_course(table_course1,year);
+            load_course(table_course1,new JComboBox());
             load_sign_course(table_course2);
             load_available_course(table_course3);
             

@@ -2,7 +2,10 @@ package Login;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.*;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class admin extends account{
 
@@ -10,24 +13,30 @@ public class admin extends account{
     ArrayList<student> list_Student = null;
     ArrayList<professor> list_Professor = null;
 
-    public void load_student_list(){
+    public void load_student_list(JTable tablestudent){
+        System.out.println("Have id");
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT * FROM Account where left(username, 1) = 'S'";
+        String query = "SELECT * FROM Account ac join student st on ac.username=st.student_id where left(ac.username, 1) = 'S'";
+        DefaultTableModel model = (DefaultTableModel) tablestudent.getModel();
+        model.setRowCount(0);
         try{
             stm = conn.prepareStatement(query);
             rs = stm.executeQuery();
             list_Student = new ArrayList<>();
-            String id;
+            String id, password, fname, lname, dob, gender;
             while(rs.next()){
-                id = rs.getString("username");
-                student temp = new student(id);
-                //temp.read_account_file();
-                list_Student.add(temp);
+                id = rs.getString("student_id");
+                password = rs.getString("pass");
+                fname = rs.getString("firstname");
+                lname = rs.getString("lastname");
+                dob = rs.getString("dob");
+                gender = rs.getString("gender");
+                load_student_list_ui(id,password,fname,lname,dob,gender, tablestudent);
             }
         } catch(SQLException exp) {
-            System.out.println("Write info " + exp);
+            System.out.println("load_student_list " + exp);
             exp.printStackTrace();
         } finally {
             try {
@@ -39,7 +48,146 @@ public class admin extends account{
             }
         }
     }
-    public void load_professor_list(){
+   public void load_student_list_ui(String id, String password, String fname, String lname, String dob, String gender, JTable tablestudent){
+        // TODO Auto-generated method stub
+        DefaultTableModel model = (DefaultTableModel) tablestudent.getModel();
+        Object[] row = {id, lname + " " + fname, dob, gender, password};
+        model.addRow(row);
+    }
+    
+   public void edit_student_info(String mssv, String name, String dob, String gender, String password){
+       edit_student_table(mssv, name, dob, gender);
+       edit_account_table(mssv, password);
+   }
+   public void edit_student_table(String mssv, String name, String dob, String gender){
+       PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "update student set lastname = ?, firstname = ?, dob = ?, gender = ? where student_id = ?;";
+        String[] namez = {"",""};
+        parse_name(name, namez);
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, namez[1]);
+            stm.setString(2, namez[0]);
+            stm.setString(3, dob);
+            stm.setString(4, gender);
+            stm.setString(5, mssv);
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("Admin update student table " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+    }
+   public void edit_account_table(String username, String password){
+       PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "update account set pass = ? where username = ?;";
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, password);
+            stm.setString(2, username);
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("Admin update account table " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+    }
+    public void parse_name(String name, String[] namez){
+        String[] each = name.split(" ");
+
+        namez[0] = each[each.length-1];
+        for (int i = 0; i<each.length-1;i++){
+            namez[1] += each[i] + " ";
+        }
+        namez[1]=namez[1].substring(0,namez[1].length() - 1);
+    }
+   
+   public void delete_student(String mssv){
+       delete_student_studentcourse(mssv);
+       delete_student_student(mssv);
+       delete_student_account(mssv);
+       
+   }
+   public void delete_student_student(String mssv){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "delete from Student where student_id = ?;";
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, mssv);
+            stm.executeUpdate();
+        } catch(SQLException exp) {
+            System.out.println("admin delete_student_student " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
+            }
+        }
+    }
+   public void delete_student_account(String mssv){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "delete from account where username = ?;";
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, mssv);
+            stm.executeUpdate();
+        } catch(SQLException exp) {
+            System.out.println("admin delete_student_account " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
+            }
+        }
+    }
+   public void delete_student_studentcourse(String mssv){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "delete from student_course where student_id = ?;";
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, mssv);
+            stm.executeUpdate();
+        } catch(SQLException exp) {
+            System.out.println("admin delete_student_studentcourse " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+              e.printStackTrace();
+            }
+        }
+    }
+    
+   
+   
+   public void load_professor_list(){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
@@ -182,17 +330,6 @@ public class admin extends account{
         }
     }
 
-
-    public static void main(String[] args) {
-        admin a = new admin();
-        a.load_student_list();
-        a.load_course_list();
-        a.load_professor_list();
-//        a.load_student_course();
-//        a.load_proffesor_course();
-        
-        a.load_student_in_course("CSC00001", 1,2);
-    }
 
 
 
