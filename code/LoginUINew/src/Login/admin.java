@@ -243,7 +243,7 @@ public class admin extends account{
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT stc.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as teacher, se.semester, se.years, stc.midterm, stc.final FROM student_course stc join course co on (stc.course_id=co.course_id and stc.number=co.number and stc.sem_id=co.sem_id) join course_info ci on ci.course_id=co.course_id join semester se on co.sem_id=se.sem_id join teacher te on te.teacher_id=co.teacher_id where stc.student_id=? ";
+        String query = "SELECT stc.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as teacher, se.semester, se.years, stc.midterm, stc.final FROM student_course stc join course co on (stc.course_id=co.course_id and stc.number=co.number and stc.sem_id=co.sem_id) join course_info ci on ci.course_id=co.course_id join semester se on co.sem_id=se.sem_id join teacher te on te.teacher_id=co.teacher_id where stc.student_id=? order by se.years ASC, se.semester ASC, co.course_id asc, co.number ASC;";
         DefaultTableModel model = (DefaultTableModel) course_of_student.getModel();
         model.setRowCount(0);
         try{
@@ -596,7 +596,7 @@ public class admin extends account{
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT co.course_id, ci.course_name, co.number, se.semester, se.years, te.teacher_id, co.room FROM course co join course_info ci on ci.course_id=co.course_id join semester se on co.sem_id=se.sem_id join teacher te on co.teacher_id=te.teacher_id order by se.years ASC, se.semester ASC, co.course_id asc, co.number ASC;";
+        String query = "SELECT co.course_id, ci.course_name, co.number, se.semester, se.years, te.teacher_id, co.room FROM course co join course_info ci on ci.course_id=co.course_id join semester se on co.sem_id=se.sem_id left join teacher te on co.teacher_id=te.teacher_id order by se.years ASC, se.semester ASC, co.course_id asc, co.number ASC;";
         DefaultTableModel model = (DefaultTableModel) course.getModel();
         model.setRowCount(0);
         try{
@@ -856,6 +856,74 @@ public class admin extends account{
         model.addRow(row);
     }
    
+    public void edit_titlecourse(String course_id, String course_name){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "update course_info set course_name = ? where course_id = ?;";
+        
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, course_name);
+            stm.setString(2, course_id);
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("Admin edit_titlecourse " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+    }
+    public void delete_titlecourse(String course_id){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "delete from course_info where course_id = ?;";
+        
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, course_id);
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("Admin delete_titlecourse " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+    }
+    public void add_titlecourse(String course_id, String course_name){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "insert into course_info values (?,?)";
+        
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, course_id);
+            stm.setString(2, course_name);
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("Admin add_titlecourse " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+    }
    
     @Override
     public void role_menu() {

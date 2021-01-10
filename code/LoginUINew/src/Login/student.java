@@ -106,7 +106,7 @@ public class student extends account {
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT stc.course_id, ci.course_name, stc.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room, stc.is_studied FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id)  join Course_info ci on (stc.course_id = ci.course_id)  join teacher te on (co.teacher_id = te.teacher_id) join semester se on (stc.sem_id = se.sem_id) WHERE student_id = ?";
+        String query = "SELECT stc.course_id, ci.course_name, stc.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room, stc.is_studied FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id)  join Course_info ci on (stc.course_id = ci.course_id)  join teacher te on (co.teacher_id = te.teacher_id) join semester se on (stc.sem_id = se.sem_id) WHERE student_id = ? order by se.years ASC, se.semester ASC, co.course_id asc, co.number ASC";
         try{
             stm = conn.prepareStatement(query);
             stm.setString(1, super.username);
@@ -165,7 +165,7 @@ public class student extends account {
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT stc.course_id, ci.course_name, stc.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room, stc.is_studied FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id)  join Course_info ci on (stc.course_id = ci.course_id)  join teacher te on (co.teacher_id = te.teacher_id) join semester se on (stc.sem_id = se.sem_id) WHERE student_id = ? and co.sem_id = ?";
+        String query = "SELECT stc.course_id, ci.course_name, stc.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room, stc.is_studied FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id)  join Course_info ci on (stc.course_id = ci.course_id)  join teacher te on (co.teacher_id = te.teacher_id) join semester se on (stc.sem_id = se.sem_id) WHERE student_id = ? and co.sem_id = ? order by se.years ASC, se.semester ASC, co.course_id asc, co.number ASC";
         try{
             if(semid == 0) {query = query.substring(0,query.length()-17);}
             stm = conn.prepareStatement(query);
@@ -229,20 +229,6 @@ public class student extends account {
         }
     }
     
-    private int getSemidNow(){
-        java.util.Date date = new java.util.Date(); // your date
-        // Choose time zone in which you want to interpret your Date
-        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
-        cal.setTime(date);
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        int sem;
-        if (month<5) {sem = 2; year--;}
-        else if (month<9) {sem = 3; year--;}
-        else sem=1;
-        return getSemid(year, sem);
-    }
     
     public void load_timetable(JTable timetable){
         PreparedStatement stm = null;
@@ -251,11 +237,12 @@ public class student extends account {
         String query = "SELECT ti.week_day, ti.period_no, ci.course_name, co.room, co.number FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) join student_course stc on (co.course_id = stc.course_id and co.number = stc.number and co.sem_id = stc.sem_id) join course_info ci on (co.course_id = ci.course_id) WHERE stc.student_id = ? and stc.is_studied = 1 and co.sem_id=? ";
         try{
                 DefaultTableModel model = (DefaultTableModel) timetable.getModel();
+                model.setRowCount(0);
 		model.setRowCount(4);
 		model.setColumnCount(7);
                 stm = conn.prepareStatement(query);
                 stm.setString(1, super.username);
-                stm.setInt(2, getSemidNow());
+                stm.setInt(2, account.getSemidNow());
                 rs = stm.executeQuery();
                 while(rs.next()){
                     int week_day = rs.getInt("week_day");
@@ -323,10 +310,10 @@ public class student extends account {
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT co.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room FROM Course co join Course_info ci on (co.course_id = ci.course_id) join teacher te on (co.teacher_id = te.teacher_id) join semester se on (co.sem_id = se.sem_id) where co.sem_id>?";
+        String query = "SELECT co.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room FROM Course co join Course_info ci on (co.course_id = ci.course_id) join teacher te on (co.teacher_id = te.teacher_id) join semester se on (co.sem_id = se.sem_id) where co.sem_id>? order by se.years ASC, se.semester ASC, co.course_id asc, co.number ASC";
         try{
             stm = conn.prepareStatement(query);
-            stm.setInt(1, getSemidNow());
+            stm.setInt(1, account.getSemidNow());
             rs = stm.executeQuery();
             listAvailableCourse = new ArrayList<>();
             DefaultTableModel model = (DefaultTableModel) table_course.getModel();
@@ -377,37 +364,7 @@ public class student extends account {
     }
     
     
-    public int getSemid(int year, int semester){
-        int sem_id = 0;
-        PreparedStatement stm = null;
-        Connection conn = MySQLConnUtils.getMySQLConnection();
-        ResultSet rs = null;
-        String query = "select sem_id from semester where years = ? and semester = ?;";
-        try{
-            stm = conn.prepareStatement(query);
-            stm.setInt(1, year);
-            stm.setInt(2, semester);
-            rs = stm.executeQuery();
-            if(rs.next()){
-                //System.out.println("Have id");
-                sem_id = rs.getInt("sem_id");
-                
-            }
-            
-        } catch(SQLException exp) {
-            System.out.println("enroll_course" + exp);
-            exp.printStackTrace();
-        } finally {
-            try {
-                if (conn != null) conn.close();
-                if (stm != null) stm.close();
-            } catch (SQLException e) {
-              e.printStackTrace();
-            }
-        }
-        
-        return sem_id;
-    }
+    
     
     public void enroll_course(String courseid, int number, int semid,JTable table_course1, JTable table_course2,JTable table_course3, JComboBox year){
         PreparedStatement stm = null;

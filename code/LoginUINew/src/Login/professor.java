@@ -71,7 +71,7 @@ public class professor extends account{
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT ci.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room FROM Course co join Course_info ci on (co.course_id = ci.course_id) join teacher te on (co.teacher_id = te.teacher_id) join semester se on (co.sem_id = se.sem_id) WHERE co.teacher_id = ?";
+        String query = "SELECT ci.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room FROM Course co join Course_info ci on (co.course_id = ci.course_id) join teacher te on (co.teacher_id = te.teacher_id) join semester se on (co.sem_id = se.sem_id) WHERE co.teacher_id = ? order by se.years ASC, se.semester ASC, co.course_id asc, co.number ASC;";
         try{
             stm = conn.prepareStatement(query);
             stm.setString(1, super.username);
@@ -119,20 +119,22 @@ public class professor extends account{
         }
     }
     
-    public void load_course_atsem(JTable table_course, int semid){
+    public void load_course_atsem(JTable table_course, int semid, JComboBox year){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT ci.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room FROM Course co join Course_info ci on (co.course_id = ci.course_id) join teacher te on (co.teacher_id = te.teacher_id) join semester se on (co.sem_id = se.sem_id) WHERE co.teacher_id = ? and co.sem_id = ?";
+        if(semid == 0) {
+            load_course(table_course, year);
+            return;
+        }
+        String query = "SELECT ci.course_id, ci.course_name, co.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room FROM Course co join Course_info ci on (co.course_id = ci.course_id) join teacher te on (co.teacher_id = te.teacher_id) join semester se on (co.sem_id = se.sem_id) WHERE co.teacher_id = ? and co.sem_id = ? order by se.years ASC, se.semester ASC, co.course_id asc, co.number ASC;";
         try{
-            if(semid == 0) {query = query.substring(0,query.length()-17);}
             stm = conn.prepareStatement(query);
             stm.setString(1, super.username);
-            if (semid != 0){stm.setInt(2,semid);}
+            stm.setInt(2,semid);
             
             rs = stm.executeQuery();
             listCourse = new ArrayList<>();
-            int i = 0;
             DefaultTableModel model = (DefaultTableModel) table_course.getModel();
             model.setRowCount(0);
             while(rs.next()){
@@ -171,45 +173,14 @@ public class professor extends account{
         model.addRow(row);
     }
     
-    public int getSemid(int year, int semester){
-        int sem_id = 0;
-        PreparedStatement stm = null;
-        Connection conn = MySQLConnUtils.getMySQLConnection();
-        ResultSet rs = null;
-        String query = "select sem_id from semester where years = ? and semester = ?;";
-        try{
-            stm = conn.prepareStatement(query);
-            stm.setInt(1, year);
-            stm.setInt(2, semester);
-            rs = stm.executeQuery();
-            if(rs.next()){
-                //System.out.println("Have id");
-                sem_id = rs.getInt("sem_id");
-                
-            }
-            
-        } catch(SQLException exp) {
-            System.out.println("enroll_course" + exp);
-            exp.printStackTrace();
-        } finally {
-            try {
-                if (conn != null) conn.close();
-                if (stm != null) stm.close();
-            } catch (SQLException e) {
-              e.printStackTrace();
-            }
-        }
-        
-        return sem_id;
-    }
-
+    
 
     public void load_student_in_course(String course_idz, int numberz, int semidz, JTable student_course){
         //System.out.println("sem: "+ semidz);
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT stc.student_id, concat(st.lastname ,' ',st.firstname) as student_name, st.gender, st.dob, stc.midterm, stc.final FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id) join student st on (st.student_id = stc.student_id) WHERE co.course_id = ? and co.number = ? and co.sem_id = ?;";
+        String query = "SELECT stc.student_id, concat(st.lastname ,' ',st.firstname) as student_name, st.gender, st.dob, stc.midterm, stc.final FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id) join student st on (st.student_id = stc.student_id) WHERE co.course_id = ? and co.number = ? and co.sem_id = ? order by stc.student_id ASC;";
         try {
             stm = conn.prepareStatement(query);
             stm.setString(1, course_idz);
@@ -252,26 +223,12 @@ public class professor extends account{
         
     }
     
-    public int getSemidNow(){
-        Date date = new Date(); // your date
-        // Choose time zone in which you want to interpret your Date
-        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
-        cal.setTime(date);
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        int sem;
-        if (month<5) {sem = 2; year--;}
-        else if (month<9) {sem = 3; year--;}
-        else sem=1;
-        return getSemid(year, sem);
-    }
 
     public void load_timetable(JTable timetable){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
-        String query = "SELECT ti.week_day, ti.period_no, ci.course_name, co.number, co.room FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) join course_info ci on (co.course_id = ci.course_id) WHERE co.teacher_id = ? and co.sem_id = ? and (select stc.is_studied from student_course stc WHERE stc.course_id = co.course_id and stc.number=co.number and stc.sem_id=co.sem_id limit 1) = 1";
+        String query = "SELECT ti.week_day, ti.period_no, ci.course_name, co.number, co.room FROM Course co join Timetable ti on (co.course_id = ti.course_id and co.number = ti.number and co.sem_id = ti.sem_id) join course_info ci on (co.course_id = ci.course_id) WHERE co.teacher_id = ? and co.sem_id = ?";
         try{
                 DefaultTableModel model = (DefaultTableModel) timetable.getModel();
                 model.setRowCount(0);
@@ -279,7 +236,7 @@ public class professor extends account{
 		model.setColumnCount(7);
                 stm = conn.prepareStatement(query);
                 stm.setString(1, super.username);
-                stm.setInt(2, getSemidNow());
+                stm.setInt(2, account.getSemidNow());
                 rs = stm.executeQuery();
                 while(rs.next()){
                     int week_day = rs.getInt("week_day");
@@ -290,12 +247,12 @@ public class professor extends account{
                         temp = model.getValueAt(period_no-1, week_day-1).toString();
                     };
 		    String tempname = temp + " " + rs.getString("course_name") +" "+ String.valueOf(rs.getInt("number")) + " - " + rs.getString("room");
-		    model.setValueAt(tempname,  period_no-1,week_day-1 );
+		    model.setValueAt(tempname, period_no-1, week_day-1);
                 }
-                model.setValueAt(1,  0,0 );
-                model.setValueAt(2,  1,0 );
-                model.setValueAt(3,  2,0 );
-                model.setValueAt(4,  3,0 );
+                model.setValueAt(1, 0, 0);
+                model.setValueAt(2, 1, 0);
+                model.setValueAt(3, 2, 0);
+                model.setValueAt(4, 3, 0);
             
         } catch(SQLException exp) {
             System.out.println("load timetable " + exp);

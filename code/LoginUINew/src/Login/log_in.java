@@ -24,6 +24,8 @@ import java.time.Month;
 import java.time.LocalDate; 
 import java.util.Calendar;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  *
  * @author DELL
@@ -63,6 +65,7 @@ public class log_in extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel61 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
@@ -116,6 +119,7 @@ public class log_in extends javax.swing.JFrame {
         jTextField22 = new javax.swing.JTextField();
         jLabel45 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
@@ -262,6 +266,7 @@ public class log_in extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
@@ -271,6 +276,8 @@ public class log_in extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
+
+        jLabel61.setText("jLabel61");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
@@ -753,6 +760,10 @@ public class log_in extends javax.swing.JFrame {
         jLabel47.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel47.setText("Thêm học sinh mới:");
         jPanel9.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 250, -1));
+
+        jLabel62.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(204, 0, 51));
+        jPanel9.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 620, 280, 30));
 
         jPanel8.add(jPanel9, "student");
 
@@ -1280,11 +1291,11 @@ public class log_in extends javax.swing.JFrame {
                 jButton37ActionPerformed(evt);
             }
         });
-        jPanel11.add(jButton37, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 590, 73, 20));
+        jPanel11.add(jButton37, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 580, 73, 20));
 
         jLabel54.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel54.setText("Thông tin khóa học:");
-        jPanel11.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 269, -1));
+        jLabel54.setText("Thông tin Tên khóa học:");
+        jPanel11.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 269, -1));
 
         jScrollPane13.setBorder(null);
 
@@ -1323,7 +1334,7 @@ public class log_in extends javax.swing.JFrame {
         });
         jScrollPane13.setViewportView(jTable13);
 
-        jPanel11.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 850, 120));
+        jPanel11.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 850, 120));
 
         jTextField9.setEditable(false);
         jTextField9.setText("Mã khóa học");
@@ -1337,7 +1348,7 @@ public class log_in extends javax.swing.JFrame {
                 jTextField9ActionPerformed(evt);
             }
         });
-        jPanel11.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 160, -1));
+        jPanel11.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 160, -1));
 
         jTextField56.setEditable(false);
         jTextField56.setText("Tên khóa học");
@@ -1351,7 +1362,7 @@ public class log_in extends javax.swing.JFrame {
                 jTextField56ActionPerformed(evt);
             }
         });
-        jPanel11.add(jTextField56, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 190, -1));
+        jPanel11.add(jTextField56, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 520, 190, -1));
 
         jTextField57.setText("Mã khóa học");
         jTextField57.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -1359,7 +1370,7 @@ public class log_in extends javax.swing.JFrame {
                 jTextField57FocusGained(evt);
             }
         });
-        jPanel11.add(jTextField57, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, 160, -1));
+        jPanel11.add(jTextField57, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 160, -1));
 
         jTextField58.setText("Tên khóa học");
         jTextField58.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -1372,11 +1383,11 @@ public class log_in extends javax.swing.JFrame {
                 jTextField58ActionPerformed(evt);
             }
         });
-        jPanel11.add(jTextField58, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, 190, -1));
+        jPanel11.add(jTextField58, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 580, 190, -1));
 
         jLabel55.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel55.setText("Thêm khóa học mới:");
-        jPanel11.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 250, -1));
+        jPanel11.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 250, -1));
 
         jButton11.setBackground(new java.awt.Color(204, 0, 51));
         jButton11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -1388,7 +1399,7 @@ public class log_in extends javax.swing.JFrame {
                 jButton11ActionPerformed(evt);
             }
         });
-        jPanel11.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, 73, -1));
+        jPanel11.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 520, 73, -1));
 
         jButton39.setBackground(new java.awt.Color(0, 0, 255));
         jButton39.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -1400,7 +1411,7 @@ public class log_in extends javax.swing.JFrame {
                 jButton39ActionPerformed(evt);
             }
         });
-        jPanel11.add(jButton39, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 530, 73, -1));
+        jPanel11.add(jButton39, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 520, 73, -1));
 
         jButton40.setBackground(new java.awt.Color(204, 0, 51));
         jButton40.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -1412,7 +1423,7 @@ public class log_in extends javax.swing.JFrame {
                 jButton40ActionPerformed(evt);
             }
         });
-        jPanel11.add(jButton40, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 530, 73, -1));
+        jPanel11.add(jButton40, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 520, 73, -1));
 
         jButton41.setBackground(new java.awt.Color(0, 0, 255));
         jButton41.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -1432,8 +1443,7 @@ public class log_in extends javax.swing.JFrame {
 
         jLabel57.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel57.setForeground(new java.awt.Color(204, 0, 51));
-        jLabel57.setText("jLabel57");
-        jPanel11.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 620, 210, -1));
+        jPanel11.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 610, 340, 20));
 
         jLabel58.setText("Buổi 1");
         jPanel11.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, 20));
@@ -1499,8 +1509,7 @@ public class log_in extends javax.swing.JFrame {
 
         jLabel60.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel60.setForeground(new java.awt.Color(204, 0, 51));
-        jLabel60.setText("jLabel60");
-        jPanel11.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 560, 210, -1));
+        jPanel11.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, 450, 20));
 
         jLabel63.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel63.setForeground(new java.awt.Color(204, 0, 51));
@@ -2146,6 +2155,7 @@ public class log_in extends javax.swing.JFrame {
         jPanel16.setLayout(new java.awt.CardLayout());
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel19.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel28.setBackground(new java.awt.Color(161, 93, 220));
         jLabel28.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -2153,6 +2163,7 @@ public class log_in extends javax.swing.JFrame {
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("MANAGE COURSE");
         jLabel28.setOpaque(true);
+        jPanel19.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 851, 46));
 
         jScrollPane17.setBorder(null);
 
@@ -2191,6 +2202,8 @@ public class log_in extends javax.swing.JFrame {
             jTable17.getColumnModel().getColumn(5).setPreferredWidth(10);
         }
 
+        jPanel19.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 356, 851, 183));
+
         jTextField38.setEditable(false);
         jTextField38.setText("Họ và tên");
         jTextField38.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -2203,6 +2216,7 @@ public class log_in extends javax.swing.JFrame {
                 jTextField38ActionPerformed(evt);
             }
         });
+        jPanel19.add(jTextField38, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 58, 254, -1));
 
         jTextField39.setEditable(false);
         jTextField39.setText("MSGV");
@@ -2216,6 +2230,7 @@ public class log_in extends javax.swing.JFrame {
                 jTextField39ActionPerformed(evt);
             }
         });
+        jPanel19.add(jTextField39, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 58, 118, -1));
 
         jTextField40.setEditable(false);
         jTextField40.setText("Ngày sinh");
@@ -2224,6 +2239,7 @@ public class log_in extends javax.swing.JFrame {
                 jTextField40FocusGained(evt);
             }
         });
+        jPanel19.add(jTextField40, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 58, 100, -1));
 
         jTextField41.setEditable(false);
         jTextField41.setText("Giới tính");
@@ -2237,9 +2253,11 @@ public class log_in extends javax.swing.JFrame {
                 jTextField41ActionPerformed(evt);
             }
         });
+        jPanel19.add(jTextField41, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 58, 69, -1));
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel29.setText("Danh sách môn học:");
+        jPanel19.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 128, 161, 20));
 
         jScrollPane18.setBorder(null);
 
@@ -2286,8 +2304,11 @@ public class log_in extends javax.swing.JFrame {
             jTable18.getColumnModel().getColumn(4).setPreferredWidth(10);
         }
 
+        jPanel19.add(jScrollPane18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 158, 851, 129));
+
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel30.setText("Danh sách học sinh:");
+        jPanel19.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 328, 154, -1));
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm" }));
         jComboBox3.addItemListener(new java.awt.event.ItemListener() {
@@ -2295,6 +2316,7 @@ public class log_in extends javax.swing.JFrame {
                 jComboBox3ItemStateChanged(evt);
             }
         });
+        jPanel19.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 128, 108, -1));
 
         jTextField50.setEditable(false);
         jTextField50.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -2302,6 +2324,7 @@ public class log_in extends javax.swing.JFrame {
                 jTextField50FocusGained(evt);
             }
         });
+        jPanel19.add(jTextField50, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 578, 100, -1));
 
         jTextField51.setEditable(false);
         jTextField51.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -2309,6 +2332,7 @@ public class log_in extends javax.swing.JFrame {
                 jTextField51FocusGained(evt);
             }
         });
+        jPanel19.add(jTextField51, new org.netbeans.lib.awtextra.AbsoluteConstraints(543, 578, 100, -1));
 
         jButton49.setBackground(new java.awt.Color(204, 0, 0));
         jButton49.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -2319,6 +2343,7 @@ public class log_in extends javax.swing.JFrame {
                 jButton49ActionPerformed(evt);
             }
         });
+        jPanel19.add(jButton49, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 57, 73, -1));
 
         jButton50.setBackground(new java.awt.Color(0, 0, 255));
         jButton50.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -2330,6 +2355,7 @@ public class log_in extends javax.swing.JFrame {
                 jButton50ActionPerformed(evt);
             }
         });
+        jPanel19.add(jButton50, new org.netbeans.lib.awtextra.AbsoluteConstraints(768, 57, 73, -1));
 
         jButton51.setBackground(new java.awt.Color(0, 0, 255));
         jButton51.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -2341,6 +2367,7 @@ public class log_in extends javax.swing.JFrame {
                 jButton51ActionPerformed(evt);
             }
         });
+        jPanel19.add(jButton51, new org.netbeans.lib.awtextra.AbsoluteConstraints(744, 577, 73, -1));
 
         jButton52.setBackground(new java.awt.Color(204, 0, 0));
         jButton52.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -2352,13 +2379,17 @@ public class log_in extends javax.swing.JFrame {
                 jButton52ActionPerformed(evt);
             }
         });
+        jPanel19.add(jButton52, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 577, 73, -1));
 
         jLabel17.setText("Điểm giữa kỳ:");
+        jPanel19.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 557, 100, -1));
 
         jLabel20.setText("Điểm cuối kỳ:");
+        jPanel19.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(543, 557, 100, -1));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(204, 0, 0));
+        jPanel19.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 320, 20));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 153, 0));
@@ -2367,100 +2398,11 @@ public class log_in extends javax.swing.JFrame {
                 jLabel22MouseEntered(evt);
             }
         });
+        jPanel19.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(841, 86, -1, -1));
 
-        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
-        jPanel19.setLayout(jPanel19Layout);
-        jPanel19Layout.setHorizontalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane17, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jScrollPane18, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel19Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel19Layout.createSequentialGroup()
-                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel19Layout.createSequentialGroup()
-                                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 544, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                        .addGap(0, 11, Short.MAX_VALUE)
-                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                                .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
-                                .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel19Layout.createSequentialGroup()
-                                        .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(99, 99, 99)
-                                        .addComponent(jButton49, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton50, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel19Layout.createSequentialGroup()
-                                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel22)))
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField50)
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField51)
-                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton52, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton51, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34))))))
-        );
-        jPanel19Layout.setVerticalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField41)
-                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton49)
-                        .addComponent(jButton50)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel22))
-                .addGap(42, 42, 42)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel20))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton52)
-                    .addComponent(jButton51))
-                .addGap(40, 40, 40))
-        );
+        jLabel66.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel66.setForeground(new java.awt.Color(204, 0, 51));
+        jPanel19.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 610, 310, 20));
 
         jPanel16.add(jPanel19, "course");
 
@@ -2508,7 +2450,7 @@ public class log_in extends javax.swing.JFrame {
         jPanel22Layout.setHorizontalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
             .addGroup(jPanel22Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2602,29 +2544,20 @@ public class log_in extends javax.swing.JFrame {
 
     private void jLabel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MousePressed
         cardlayout.show(jPanel8, "student");
+        ad.load_student_list(jTable1);
     }//GEN-LAST:event_jLabel8MousePressed
 
     private void jLabel10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MousePressed
         cardlayout.show(jPanel8, "teacher");
+        ad.load_teacher_list(jTable2);
     }//GEN-LAST:event_jLabel10MousePressed
 
     private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
         cardlayout.show(jPanel8, "course");
+        ad.load_course_list(jTable4);
+        ad.load_titlecourse_list(jTable13);
     }//GEN-LAST:event_jLabel11MousePressed
-    private int getSemidNow(){
-        Date date = new Date(); // your date
-        // Choose time zone in which you want to interpret your Date
-        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
-        cal.setTime(date);
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        int sem;
-        if (month<5) {sem = 2; year--;}
-        else if (month<9) {sem = 3; year--;}
-        else sem=1;
-        return account.getSemid(year, sem);
-    }
+   
     
     private void load_student(){
         stu.read_account_file(jTextField35, jTextField34, jTextField36, jTextField37);
@@ -2780,6 +2713,7 @@ public class log_in extends javax.swing.JFrame {
         jButton8.setEnabled(true);
         jTextField22.setText(model.getValueAt(selectRow, 5).toString());
         jTextField7.setText(model.getValueAt(selectRow, 6).toString());
+        jLabel62.setText("");
     }//GEN-LAST:event_jTable3MouseClicked
 
     private void jTable3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable3KeyReleased
@@ -2865,7 +2799,7 @@ public class log_in extends javax.swing.JFrame {
         int number = Integer.parseInt(name);
         int year =(int) model.getValueAt(selectRow, 3);
         int semester =(int) model.getValueAt(selectRow, 4);
-        int sem_id = prof.getSemid(year, semester);
+        int sem_id = account.getSemid(year, semester);
         prof.load_student_in_course(id,number, sem_id, jTable17);
         jTextField50.setEditable(false);
         jTextField51.setEditable(false);
@@ -2885,7 +2819,7 @@ public class log_in extends javax.swing.JFrame {
             int number = Integer.parseInt(name);
             int year =(int) model.getValueAt(selectRow, 3);
             int semester =(int) model.getValueAt(selectRow, 4);
-            int sem_id = prof.getSemid(year, semester);
+            int sem_id = account.getSemid(year, semester);
             prof.load_student_in_course(id,number, sem_id, jTable17);
             jTextField50.setText("");
             jTextField51.setText("");
@@ -2958,7 +2892,15 @@ public class log_in extends javax.swing.JFrame {
 
     private void jButton48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton48ActionPerformed
         String name = jTextField34.getText(), dob = jTextField36.getText(), gender = jTextField37.getText();
-        if (!gender.equals("Nam") && !gender.equals("Nữ")){
+        if (name.equals("") || dob.equals("") || gender.equals("")){
+            jLabel40.setText("*Chưa nhập đủ thông tin");
+            return;
+        }
+        else if(!checkDob(dob)){
+            jLabel40.setText("*Ngày sinh không hợp lệ (dd/mm/yyyy)");
+            return;
+        }
+        else if (!gender.equals("Nam") && !gender.equals("Nữ")){
             jLabel40.setText("'Nam' hoặc 'Nữ'");
             return;
         }
@@ -2982,7 +2924,7 @@ public class log_in extends javax.swing.JFrame {
         int number = Integer.parseInt(name);
         int year =(int) model.getValueAt(selectRow, 3);
         int semester =(int) model.getValueAt(selectRow, 4);
-        int sem_id = stu.getSemid(year, semester);
+        int sem_id = account.getSemid(year, semester);
         System.out.println(sem_id);
         stu.enroll_course(id, number, sem_id,jTable16, jTable19, jTable15, jComboBox1);
     }//GEN-LAST:event_jButton46ActionPerformed
@@ -2997,7 +2939,7 @@ public class log_in extends javax.swing.JFrame {
         int number = Integer.parseInt(name);
         int year =(int) model.getValueAt(selectRow, 3);
         int semester =(int) model.getValueAt(selectRow, 4);
-        int sem_id = stu.getSemid(year, semester);
+        int sem_id = account.getSemid(year, semester);
         stu.cancel_course(id, number, sem_id, jTable16, jTable19, jTable15, jComboBox1);
     }//GEN-LAST:event_jButton24ActionPerformed
 
@@ -3006,7 +2948,7 @@ public class log_in extends javax.swing.JFrame {
         if(query!="Năm"){
             int year = parseInt(query.substring(0,4));
             int semester = parseInt(query.substring(query.length()-1));
-            int semid = stu.getSemid(year, semester);
+            int semid = account.getSemid(year, semester);
             stu.load_course_atsem(sort, semid);
             System.out.println("change");
 
@@ -3024,11 +2966,11 @@ public class log_in extends javax.swing.JFrame {
         if(query!="Năm"){
             int year = parseInt(query.substring(0,4));
             int semester = parseInt(query.substring(query.length()-1));
-            int semid = prof.getSemid(year, semester);
-            prof.load_course_atsem(sort, semid);
+            int semid = account.getSemid(year, semester);
+            prof.load_course_atsem(sort, semid, jComboBox3);
         }else
         {
-            prof.load_course_atsem(sort, 0);
+            prof.load_course_atsem(sort, 0, jComboBox3);
         }
     }    
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
@@ -3095,10 +3037,18 @@ public class log_in extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton50ActionPerformed
 
     private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
+        String mid = jTextField50.getText(), finall = jTextField51.getText();
+        if ((!checkDouble(mid) && !mid.equals("")) || (!checkDouble(finall) && !finall.equals(""))){
+            jLabel66.setText("*Điểm là số từ 0-10 hoặc rỗng");
+            return;
+        }
         Double midterm = !jTextField50.getText().equals("") ? parseDouble(jTextField50.getText()) : null;
         Double finalz = !jTextField51.getText().equals("") ? parseDouble(jTextField51.getText()) : null;
-        
-        
+        if ((midterm!= null && (midterm<0 || midterm>10)) || (finalz!= null && (finalz<0 || finalz>10))){
+            jLabel66.setText("*Điểm là số từ 0-10 hoặc rỗng");
+            return;
+        }
+        jLabel66.setText("");
         int selectRow = jTable17.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jTable17.getModel();
         
@@ -3112,7 +3062,7 @@ public class log_in extends javax.swing.JFrame {
         int number = Integer.parseInt(name);
         int year =(int) model2.getValueAt(selectRow2, 3);
         int semester =(int) model2.getValueAt(selectRow2, 4);
-        int sem_id = prof.getSemid(year, semester);
+        int sem_id = account.getSemid(year, semester);
         
         prof.set_midterm(studentid, courseid, number, sem_id, midterm);
         prof.set_final(studentid, courseid, number, sem_id, finalz);
@@ -3127,51 +3077,33 @@ public class log_in extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton51ActionPerformed
 
     private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed
-        jButton51.setEnabled(true);
         int selectRow = jTable17.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jTable17.getModel();
-        
         int selectRow2 = jTable18.getSelectedRow();
         DefaultTableModel model2 = (DefaultTableModel) jTable18.getModel();
         
-        String courseid = (model2.getValueAt(selectRow2, 0).toString());
-        String name = model2.getValueAt(selectRow2, 1).toString();
-        name = name.substring(name.length()-1);
-        int number = Integer.parseInt(name);
+        
         int year =(int) model2.getValueAt(selectRow2, 3);
         int semester =(int) model2.getValueAt(selectRow2, 4);
-        int sem_id = prof.getSemid(year, semester);
-        
+        int sem_id = account.getSemid(year, semester);
+        if (sem_id > account.getSemidNow()){
+            jLabel66.setText("*Không thể sửa điểm của khóa học chưa bắt đầu");
+            return;
+        }
+        jLabel66.setText("");
         jTextField50.setEditable(true);
         jTextField51.setEditable(true);
+        jButton51.setEnabled(true);
     }//GEN-LAST:event_jButton52ActionPerformed
 
     private void jTable17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable17MouseClicked
         int selectRow = jTable17.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jTable17.getModel();
-        
-        int selectRow2 = jTable18.getSelectedRow();
-        DefaultTableModel model2 = (DefaultTableModel) jTable18.getModel();
-        
-        String courseid = (model2.getValueAt(selectRow2, 0).toString());
-        String name = model2.getValueAt(selectRow2, 1).toString();
-        name = name.substring(name.length()-1);
-        int number = Integer.parseInt(name);
-        int year =(int) model2.getValueAt(selectRow2, 3);
-        int semester =(int) model2.getValueAt(selectRow2, 4);
-        int sem_id = prof.getSemid(year, semester);
-        System.out.println("sem id : "+ sem_id);
-        System.out.println(prof.checkStudiedCourse(courseid, number, sem_id));
-        if (selectRow != -1 && prof.checkStudiedCourse(courseid, number, sem_id) &&sem_id == prof.getSemidNow()){
-            jTextField50.setText(model.getValueAt(selectRow, 4).toString());
-            jTextField51.setText(model.getValueAt(selectRow, 5).toString());
-            jButton52.setEnabled(true);
-        }
-        else if (selectRow != -1 && !prof.checkStudiedCourse(courseid, number, sem_id)){
-            jTextField50.setText("");
-            jTextField51.setText("");
-            jButton52.setEnabled(false);
-        }
+        jButton52.setEnabled(true);
+        jButton51.setEnabled(false);
+        jTextField50.setText(model.getValueAt(selectRow, 4).toString());
+        jTextField51.setText(model.getValueAt(selectRow, 5).toString());
+        jLabel66.setText("");
     }//GEN-LAST:event_jTable17MouseClicked
 
     private void jTable17KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable17KeyReleased
@@ -3246,6 +3178,17 @@ public class log_in extends javax.swing.JFrame {
         try 
         { 
             Integer.parseInt(input2); 
+            return true;
+        }  
+        catch (NumberFormatException e) 
+        { 
+            return false;
+        } 
+    }
+    private boolean checkDouble(String input2){
+        try 
+        { 
+            Double.parseDouble(input2); 
             return true;
         }  
         catch (NumberFormatException e) 
@@ -3332,11 +3275,34 @@ public class log_in extends javax.swing.JFrame {
         }
         return false;
     }
+    private boolean checkMSSV(String mssv){
+        if (mssv.length() != 9) return false;
+        if (mssv.charAt(0) != 'S') return false;
+        if (!checkInteger(mssv.substring(1,9))) return false;
+        return true;
+    }
+    private boolean checkMSGV(String msgv){
+        if (msgv.length() != 4) return false;
+        if (msgv.charAt(0) != 'T') return false;
+        if (!checkInteger(msgv.substring(1,4))) return false;
+        return true;
+    }
+    private boolean checkMSMH(String msmh){
+        if (msmh.length() != 8) return false;
+        if (!checkInteger(msmh.substring(3,8))) return false;
+        
+        if (!Character.isUpperCase(msmh.charAt(0)) || !Character.isUpperCase(msmh.charAt(1)) || !Character.isUpperCase(msmh.charAt(2)) ) return false;
+        return true;
+    }
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
         String name = jTextField28.getText(), dob = jTextField29.getText(), gender = jTextField30.getText();
         String mssv = jTextField27.getText(), password = jTextField31.getText();
         if (password.equals("") || name.equals("") || dob.equals("") ||  gender.equals("")){
             jLabel46.setText("*Chưa nhập đủ thông tin");
+            return;
+        }
+        else if(!checkMSSV(mssv)){
+            jLabel46.setText("*Mã số sinh viên không đúng quy định");
             return;
         }
         else if(checkID(mssv, jTable1)){
@@ -3365,16 +3331,34 @@ public class log_in extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton28ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        int selectRow = jTable3.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        int year =(int) model.getValueAt(selectRow, 4);
+        int semester =(int) model.getValueAt(selectRow, 3);
+        int sem_id = account.getSemid(year, semester);
+        if (sem_id > account.getSemidNow()){
+            jLabel62.setText("*Không thể sửa điểm của khóa học chưa bắt đầu");
+            return;
+        }
+        jLabel62.setText("");
         jTextField7.setEditable(true);
         jTextField22.setEditable(true);
         jButton29.setEnabled(true);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+        String mid = jTextField22.getText(), finall = jTextField7.getText();
+        if ((!checkDouble(mid) && !mid.equals("")) || (!checkDouble(finall) && !finall.equals(""))){
+            jLabel62.setText("*Điểm là số từ 0-10 hoặc rỗng");
+            return;
+        }
         Double midterm = !jTextField22.getText().equals("") ? parseDouble(jTextField22.getText()) : null;
         Double finalz = !jTextField7.getText().equals("") ? parseDouble(jTextField7.getText()) : null;
-        
-        
+        if ((midterm!= null && (midterm<0 || midterm>10)) || (finalz!= null && (finalz<0 || finalz>10))){
+            jLabel62.setText("*Điểm là số từ 0-10 hoặc rỗng");
+            return;
+        }
+        jLabel62.setText("");
         int selectRow = jTable1.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
@@ -3388,8 +3372,8 @@ public class log_in extends javax.swing.JFrame {
         int number = Integer.parseInt(name);
         int year =(int) model2.getValueAt(selectRow2, 4);
         int semester =(int) model2.getValueAt(selectRow2, 3);
-        prof = new professor("a", "a");
-        int sem_id = prof.getSemid(year, semester);
+        prof = new professor("a","b");
+        int sem_id = account.getSemid(year, semester);
         
         prof.set_midterm(studentid, courseid, number, sem_id, midterm);
         prof.set_final(studentid, courseid, number, sem_id, finalz);
@@ -3438,7 +3422,7 @@ public class log_in extends javax.swing.JFrame {
         jLabel51.setText("");
         String msgv = model.getValueAt(selectRow, 0).toString();
         ad.load_course_of_teacher(msgv, jTable11);
-        ad.load_available_course_of_teacher(getSemidNow(), jTable12);
+        ad.load_available_course_of_teacher(account.getSemidNow(), jTable12);
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void jTable2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable2KeyReleased
@@ -3588,7 +3572,7 @@ public class log_in extends javax.swing.JFrame {
         int hocki = parseInt(model.getValueAt(selectRow, 3).toString());
         int nam = parseInt(model.getValueAt(selectRow, 4).toString());
         int semidcuakhoahoc = account.getSemid(nam, hocki);
-        int semidbaygio = getSemidNow();
+        int semidbaygio = account.getSemidNow();
         if(semidcuakhoahoc <= semidbaygio){
             jLabel19.setText("*Không thể hủy khóa học đã bắt đầu");
             return;
@@ -3605,7 +3589,7 @@ public class log_in extends javax.swing.JFrame {
         model.removeRow(selectRow);
         jButton32.setEnabled(false);
         jTable11.clearSelection();
-        ad.load_available_course_of_teacher(getSemidNow(), jTable12);
+        ad.load_available_course_of_teacher(account.getSemidNow(), jTable12);
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void jTable11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable11MouseClicked
@@ -3637,6 +3621,10 @@ public class log_in extends javax.swing.JFrame {
         
         if (password.equals("") || name.equals("") || dob.equals("") ||  gender.equals("")){
             jLabel50.setText("*Chưa nhập đủ thông tin");
+            return;
+        }
+        else if(!checkMSGV(msgv)){
+            jLabel50.setText("*Mã số giáo viên không đúng quy định");
             return;
         }
         else if(checkID(msgv, jTable2)){
@@ -3694,12 +3682,12 @@ public class log_in extends javax.swing.JFrame {
     private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
        int selectRow = jTable4.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
-        jTextField8.setText(model.getValueAt(selectRow, 0).toString());
-        jTextField45.setText(model.getValueAt(selectRow, 2).toString());
-        jTextField49.setText(model.getValueAt(selectRow, 3).toString());
-        jTextField46.setText(model.getValueAt(selectRow, 4).toString());
-        jTextField48.setText(model.getValueAt(selectRow, 5).toString());
-        jTextField47.setText(model.getValueAt(selectRow, 6).toString());
+        jTextField8.setText(model.getValueAt(selectRow, 0) == null ? "" : model.getValueAt(selectRow, 0).toString());
+        jTextField45.setText(model.getValueAt(selectRow, 2) == null ? "" : model.getValueAt(selectRow, 2).toString());
+        jTextField49.setText(model.getValueAt(selectRow, 3) == null ? "" : model.getValueAt(selectRow, 3).toString());
+        jTextField46.setText(model.getValueAt(selectRow, 4) == null ? "" : model.getValueAt(selectRow, 4).toString());
+        jTextField48.setText(model.getValueAt(selectRow, 5) == null ? "" : model.getValueAt(selectRow, 5).toString());
+        jTextField47.setText(model.getValueAt(selectRow, 6) == null ? "" : model.getValueAt(selectRow, 6).toString());
         String timetable = model.getValueAt(selectRow, 7).toString();
         jTextField60.setText(String.valueOf(timetable.charAt(1)));
         jTextField59.setText(String.valueOf(timetable.charAt(6)));
@@ -3789,6 +3777,10 @@ public class log_in extends javax.swing.JFrame {
             jLabel56.setText("*Số, Học kỳ, Năm học, Thứ, Ca phải là số");
             return;
         }
+        else if (room.length() > 5 ){
+            jLabel56.setText("*Tên phòng học tối đa 5 ký tự");
+            return;
+        }
         int number = parseInt(jTextField45.getText()), semester = parseInt(jTextField49.getText()), year = parseInt(jTextField46.getText());
         int day1 = parseInt(jTextField60.getText()), day2 = parseInt(jTextField61.getText()), ca1 = parseInt(jTextField59.getText()), ca2 = parseInt(jTextField62.getText());
         //ghi thêm mấy cái check điều kiện ở đây nếu đủ thời gian
@@ -3837,11 +3829,46 @@ public class log_in extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton36ActionPerformed
 
     private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
-        // TODO add your handling code here:
+        String course_id = jTextField57.getText();
+        String course_name = jTextField58.getText();
+        if (course_name.equals("")){
+            jLabel57.setText("*Chưa nhập đủ thông tin");
+            return;
+        }
+        else if(!checkMSMH(course_id)){
+            jLabel57.setText("*Mã khóa học không đúng quy định");
+            return;
+        }
+        else if (checkID(course_id, jTable13)){
+            jLabel57.setText("*Mã khóa học đã tồn tại");
+            return;
+        }
+        jLabel57.setText("");
+        
+        DefaultTableModel model = (DefaultTableModel) jTable13.getModel();
+        Object[] row = {course_id, course_name};
+        model.addRow(row);
+        
+        ad.add_titlecourse(course_id, course_name);
+        jTextField57.setText("Mã khóa học");
+        jTextField58.setText("Tên khóa học");
+        jLabel60.setText("");
     }//GEN-LAST:event_jButton37ActionPerformed
 
     private void jTable13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable13MouseClicked
-        // TODO add your handling code here:
+        int selectRow = jTable13.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTable13.getModel();
+        jTextField9.setText(model.getValueAt(selectRow, 0).toString());
+        jTextField56.setText(model.getValueAt(selectRow, 1).toString());
+
+        jTextField9.setEditable(false);
+        jTextField56.setEditable(false); 
+        jButton11.setEnabled(true);
+        jButton40.setEnabled(true);
+        jButton39.setEnabled(false);
+        
+        jLabel9.setText("");
+        jLabel56.setText("");
     }//GEN-LAST:event_jTable13MouseClicked
 
     private void jTable13KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable13KeyReleased
@@ -3877,15 +3904,41 @@ public class log_in extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField58ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+        jTextField56.setEditable(true);
+        jButton39.setEnabled(true);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton39ActionPerformed
-        // TODO add your handling code here:
+        String course_id = jTextField9.getText();
+        String course_name = jTextField56.getText();
+        if (course_name.equals("")){
+            jLabel60.setText("*Chưa nhập đủ thông tin");
+            return;
+        }
+        jLabel60.setText("");
+        DefaultTableModel model = (DefaultTableModel) jTable13.getModel();
+        int selectRow = jTable13.getSelectedRow();
+        model.setValueAt(course_name,  selectRow, 1);
+        
+        ad.edit_titlecourse(course_id, course_name);
+        
+        jTextField9.setEditable(false);
+        jTextField56.setEditable(false);
+        jButton39.setEnabled(false);
+        ad.load_course_list(jTable4);
     }//GEN-LAST:event_jButton39ActionPerformed
 
     private void jButton40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton40ActionPerformed
-        // TODO add your handling code here:
+        String course_id = jTextField9.getText();
+        if(checkID(course_id, jTable4)){
+            jLabel60.setText("*Không thể xóa Tên khóa học đã tồn tại khóa học");
+            return;
+        }
+        jLabel60.setText("");
+        ad.delete_titlecourse(course_id);
+        DefaultTableModel model = (DefaultTableModel) jTable13.getModel();
+        int selectRow = jTable13.getSelectedRow();
+        model.removeRow(selectRow);
     }//GEN-LAST:event_jButton40ActionPerformed
 
     private void jButton41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton41ActionPerformed
@@ -3897,6 +3950,10 @@ public class log_in extends javax.swing.JFrame {
         }
         else if (!checkInteger(jTextField52.getText()) || !checkInteger(jTextField53.getText()) ||!checkInteger(jTextField54.getText()) ||!checkInteger(jTextField72.getText()) ||!checkInteger(jTextField73.getText()) || !checkInteger(jTextField74.getText()) || !checkInteger(jTextField75.getText())){
             jLabel63.setText("*Số, Học kỳ, Năm học, Thứ, Ca phải là số");
+            return;
+        }
+        else if (room.length() > 5 ){
+            jLabel63.setText("*Tên phòng học tối đa 5 ký tự");
             return;
         }
         int number = parseInt(jTextField52.getText()), semester = parseInt(jTextField53.getText()), year = parseInt(jTextField54.getText());
@@ -4199,9 +4256,12 @@ public class log_in extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

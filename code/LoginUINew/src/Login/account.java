@@ -4,6 +4,8 @@ import java.sql.*;
 import java.util.Scanner;
 import java.awt.*;  
 import java.awt.event.*;  
+import java.util.Calendar;
+import java.util.TimeZone;
 import javax.swing.*;
 
 public abstract class account {
@@ -75,6 +77,20 @@ public abstract class account {
         return sem_id;
     }
 
+    public static int getSemidNow(){
+        java.util.Date date = new java.util.Date(); // your date
+        // Choose time zone in which you want to interpret your Date
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int sem;
+        if (month<5) {sem = 2; year--;}
+        else if (month<9) {sem = 3; year--;}
+        else sem=1;
+        return getSemid(year, sem);
+    }
     public static boolean sign_in(String name, String pass) {
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
