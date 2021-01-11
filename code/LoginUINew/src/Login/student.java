@@ -26,7 +26,7 @@ public class student extends account {
     public boolean check_year(int year_temp){
         String temp = String.valueOf(year_temp);
         for(int i = 0 ; i<allyear.size(); i++){
-            System.out.println(allyear.get(i));
+            //System.out.println(allyear.get(i));
             if (allyear.get(i).equals(temp)) {return false;}
         }
         return true;
@@ -48,12 +48,6 @@ public class student extends account {
             }
         }
         return 0.0;
-    }
-    
-    public void search_course(String id, String name, String teacher,JTable table_course){
-        for(int i =0; i<listCourse.size(); i++){
-            //if
-        }
     }
     
     @Override
@@ -91,17 +85,10 @@ public class student extends account {
 
     }
 
-    @Override
-    public void role_menu() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    
     
     public void load_course(JTable table_course, JComboBox year){
         // TODO Auto-generated method stub
-        System.out.println("2");
+        //System.out.println("2");
 
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
@@ -161,7 +148,7 @@ public class student extends account {
         }
     }
     public void load_course_atsem(JTable table_course, int semid){
-        System.out.println("1");
+        //System.out.println("1");
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
         ResultSet rs = null;
@@ -228,7 +215,6 @@ public class student extends account {
             }
         }
     }
-    
     
     public void load_timetable(JTable timetable){
         PreparedStatement stm = null;
@@ -362,13 +348,10 @@ public class student extends account {
         }
         return false;
     }
-    
-    
-    
-    
+       
     public void enroll_course(String courseid, int number, int semid,JTable table_course1, JTable table_course2,JTable table_course3, JComboBox year){
         PreparedStatement stm = null;
-        System.out.println("enroll");
+        //.println("enroll");
 
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String query = "insert into Student_Course values (?, ?, ?, ?, null, null, 0);";
@@ -399,7 +382,7 @@ public class student extends account {
     
     public void cancel_course(String courseid, int number, int semid,JTable table_course1, JTable table_course2,JTable table_course3, JComboBox year){
         PreparedStatement stm = null;
-        System.out.println("delete");
+        //System.out.println("delete");
 
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String query = "delete from Student_Course where student_id = ? and course_id = ? and number= ? and sem_id= ? ;";
@@ -409,7 +392,7 @@ public class student extends account {
             stm.setString(2, courseid);
             stm.setInt(3, number);
             stm.setInt(4, semid);
-            System.out.println(stm.toString());
+            //System.out.println(stm.toString());
             
             stm.executeUpdate(); // thực hiện lệnh delete
             
@@ -454,7 +437,33 @@ public class student extends account {
             stm.setString(3, dob);
             stm.setString(4, gender);
             stm.setString(5, super.username);
-            System.out.println(stm.toString());
+
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("update infor " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+
+    }
+    
+    public void change_pass(String pass){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "update account set pass = ? where username = ?;";
+        String[] namez = {"",""};
+        
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, pass);
+            stm.setString(2, super.username);
 
             stm.executeUpdate(); 
 

@@ -12,7 +12,7 @@ public class professor extends account{
 
     protected String id;
     ArrayList<course> listCourse = null;
-    ArrayList<String> allyear;
+    ArrayList<String> allyear = null;
     professor(String name, String pass){
         super.username = name; //id
         super.password = pass;
@@ -24,8 +24,9 @@ public class professor extends account{
     public boolean check_year(int year_temp){
         String temp = String.valueOf(year_temp);
         for(int i = 0 ; i<allyear.size(); i++){
-            System.out.println(allyear.get(i));
-            if (allyear.get(i).equals(temp)) {return false;}
+            if (allyear.get(i).equals(temp)) {
+                return false;
+            } else {}
         }
         return true;
     }
@@ -79,10 +80,14 @@ public class professor extends account{
             listCourse = new ArrayList<>();
             DefaultTableModel model = (DefaultTableModel) table_course.getModel();
             model.setRowCount(0);
-            allyear = new ArrayList<String>();
+          
             for(int i=year.getItemCount()-1; i>=1 ;i--){
                 year.removeItemAt(i);
             }
+            if(allyear == null){
+                allyear = new ArrayList<String>();
+            }
+            
             while(rs.next()){
                 course temp = new course();
                 temp.id = rs.getString("course_id");
@@ -280,7 +285,7 @@ public class professor extends account{
                     stm.setString(2, listCourse.get(i).id);
                     stm.setInt(3, listCourse.get(i).number);
                     stm.setInt(4, listCourse.get(i).sem_id);
-                    System.out.println(stm.toString());
+                    //System.out.println(stm.toString());
                     
                     stm.executeUpdate(); // thực hiện lệnh delete
                     //load_student_in_course(course_idz,numberz,semidz);
@@ -343,7 +348,7 @@ public class professor extends account{
                     stm.setString(2, listCourse.get(i).id);
                     stm.setInt(3, listCourse.get(i).number);
                     stm.setInt(4, listCourse.get(i).sem_id);
-                    System.out.println(stm.toString());
+                    //System.out.println(stm.toString());
 
 
                     stm.executeUpdate(); // thực hiện lệnh delete
@@ -377,7 +382,7 @@ public class professor extends account{
             stm.setString(3, course_idz);
             stm.setInt(4, numberz);
             stm.setInt(5, semidz);
-            System.out.println(stm.toString());
+            //.println(stm.toString());
 
             stm.executeUpdate(); 
 
@@ -407,7 +412,7 @@ public class professor extends account{
             stm.setString(3, course_idz);
             stm.setInt(4, numberz);
             stm.setInt(5, semidz);
-            System.out.println(stm.toString());
+            //System.out.println(stm.toString());
 
             stm.executeUpdate(); 
 
@@ -447,7 +452,7 @@ public class professor extends account{
             stm.setString(3, dob);
             stm.setString(4, gender);
             stm.setString(5, super.username);
-            System.out.println(stm.toString());
+            //.out.println(stm.toString());
 
             stm.executeUpdate(); 
 
@@ -464,11 +469,32 @@ public class professor extends account{
         }
 
     }
-
-    @Override
-    public void role_menu() {
-        // TODO Auto-generated method stub
+    
+    public void change_pass(String pass){
+        PreparedStatement stm = null;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String query = "update account set pass = ? where username = ?;";
+        String[] namez = {"",""};
         
+        try{
+            stm = conn.prepareStatement(query);
+            stm.setString(1, pass);
+            stm.setString(2, super.username);
+
+            stm.executeUpdate(); 
+
+        } catch(SQLException exp) {
+            System.out.println("update infor " + exp);
+            exp.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+                if (stm != null) stm.close();
+            } catch (SQLException e) {
+            e.printStackTrace();
+            }
+        }
+
     }
 
     

@@ -453,7 +453,7 @@ public class admin extends account{
         try{
             stm = conn.prepareStatement(query);
             stm.setString(1, msgv);
-            System.out.println(stm);
+            //System.out.println(stm);
             stm.executeUpdate();
         } catch(SQLException exp) {
             System.out.println("admin delete_teacher_teacher " + exp);
@@ -534,7 +534,7 @@ public class admin extends account{
         try{
             stm = conn.prepareStatement(query);
             stm.setInt(1, semidNow);
-            System.out.println(stm);
+            //System.out.println(stm);
             rs = stm.executeQuery();
             String course_id, course_name, room;
             Integer semester, year;
@@ -923,12 +923,6 @@ public class admin extends account{
             e.printStackTrace();
             }
         }
-    }
-   
-    @Override
-    public void role_menu() {
-        // TODO Auto-generated method stub
-        System.out.println("day la admin");
     }
 
     @Override
