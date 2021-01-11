@@ -1732,6 +1732,11 @@ public class log_in extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable15MouseClicked(evt);
+            }
+        });
         jScrollPane15.setViewportView(jTable15);
         if (jTable15.getColumnModel().getColumnCount() > 0) {
             jTable15.getColumnModel().getColumn(3).setPreferredWidth(10);
@@ -2834,7 +2839,10 @@ public class log_in extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField37ActionPerformed
 
     private void jTable16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable16MouseClicked
-       
+       jTable15.clearSelection();
+       jTable19.clearSelection();
+       jButton24.setEnabled(false);
+       jButton46.setEnabled(false);
     }//GEN-LAST:event_jTable16MouseClicked
 
     private void jTable16KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable16KeyReleased
@@ -2958,7 +2966,10 @@ public class log_in extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1KeyPressed
 
     private void jTable19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable19MouseClicked
-        // TODO add your handling code here:
+       jTable15.clearSelection();
+       jTable16.clearSelection();
+       jButton24.setEnabled(true);
+       jButton46.setEnabled(false);
     }//GEN-LAST:event_jTable19MouseClicked
 
     private void jTable19KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable19KeyReleased
@@ -3032,12 +3043,12 @@ public class log_in extends javax.swing.JFrame {
             int year = parseInt(query.substring(0,4));
             int semester = parseInt(query.substring(query.length()-1));
             int semid = account.getSemid(year, semester);
-            stu.load_course_atsem(sort, semid);
+            stu.load_course_atsem(sort, semid, jComboBox1);
             System.out.println("change");
 
         }else
         {
-            stu.load_course_atsem(sort, 0);
+            stu.load_course_atsem(sort, 0, jComboBox1);
             System.out.println("change cac");
 
         }
@@ -4050,8 +4061,17 @@ public class log_in extends javax.swing.JFrame {
             jLabel63.setText("*Số > 0, Học kỳ: 1-3, Năm học > 2000");
             return;
         }
+        
+        else if (account.getSemid(year, semester) <= account.getSemidNow()){
+            jLabel63.setText("*Không thể tạo khóa học trong học kỳ cũ");
+            return;
+        }
         else if (day1<2 || day1>7 || day2<2 || day2>7 || ca1<1 || ca1>4 || ca2<1 || ca2>4){
             jLabel63.setText("*Thứ: 2-7, Ca: 1-4");
+            return;
+        }
+        else if (day1 == day2 && ca1 == ca2){
+            jLabel63.setText("*Hai buổi học phải khác nhau");
             return;
         }
         else if (!checkID(course_id, jTable13)){
@@ -4259,6 +4279,12 @@ public class log_in extends javax.swing.JFrame {
         jPasswordField3.setEnabled(false);
         jLabel70.setText("");
     }//GEN-LAST:event_jButton55ActionPerformed
+    private void jTable15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable15MouseClicked
+       jTable16.clearSelection();
+       jTable19.clearSelection();
+       jButton24.setEnabled(false);
+       jButton46.setEnabled(true);
+    }//GEN-LAST:event_jTable15MouseClicked
 
     /**
      * @param args the command line arguments
