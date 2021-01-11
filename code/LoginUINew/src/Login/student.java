@@ -160,17 +160,19 @@ public class student extends account {
             }
         }
     }
-    public void load_course_atsem(JTable table_course, int semid){
-        System.out.println("1");
+    public void load_course_atsem(JTable table_course, int semid, JComboBox year){
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        ResultSet rs = null;
+        ResultSet rs = null;if(semid == 0) {
+            load_course(table_course, year);
+            return;
+        }
+        
         String query = "SELECT stc.course_id, ci.course_name, stc.number, CONCAT(te.lastname,' ',te.firstname) as fullname, te.teacher_id, se.sem_id, se.semester, se.years, co.room, stc.is_studied FROM Student_Course stc join Course co on (stc.course_id = co.course_id and stc.number = co.number and stc.sem_id = co.sem_id)  join Course_info ci on (stc.course_id = ci.course_id)  join teacher te on (co.teacher_id = te.teacher_id) join semester se on (stc.sem_id = se.sem_id) WHERE student_id = ? and co.sem_id = ? order by se.years ASC, se.semester ASC, co.course_id asc, co.number ASC";
         try{
-            if(semid == 0) {query = query.substring(0,query.length()-17);}
             stm = conn.prepareStatement(query);
             stm.setString(1, super.username);
-            if (semid != 0){stm.setInt(2,semid);}
+            stm.setInt(2,semid);
             rs = stm.executeQuery();
             DefaultTableModel model = (DefaultTableModel) table_course.getModel();
             model.setRowCount(0);
