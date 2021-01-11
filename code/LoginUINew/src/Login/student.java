@@ -147,7 +147,7 @@ public class student extends account {
             }
         }
     }
-    public void load_course_atsem(JTable table_course, int semid){
+    public void load_course_atsem(JTable table_course, int semid, JComboBox year){
         //System.out.println("1");
         PreparedStatement stm = null;
         Connection conn = MySQLConnUtils.getMySQLConnection();
@@ -366,7 +366,7 @@ public class student extends account {
             stm.setInt(4, semid);
             stm.executeUpdate();
             
-            load_course(table_course1, new JComboBox());
+            load_course(new JTable(), new JComboBox());
             load_sign_course(table_course2);
             load_available_course(table_course3);
             
@@ -399,7 +399,7 @@ public class student extends account {
             
             stm.executeUpdate(); // thực hiện lệnh delete
             
-            load_course(table_course1,new JComboBox());
+            load_course(new JTable(), new JComboBox());
             load_sign_course(table_course2);
             load_available_course(table_course3);
             

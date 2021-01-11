@@ -291,6 +291,7 @@ public class log_in extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
 
+        jPanel12.setPreferredSize(new java.awt.Dimension(912, 640));
         jPanel12.setLayout(new java.awt.CardLayout());
 
         jPanel3.setLayout(new java.awt.BorderLayout());
@@ -309,7 +310,7 @@ public class log_in extends javax.swing.JFrame {
 
         jLabel5.setForeground(new java.awt.Color(51, 51, 0));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/background-of-school-objects.jpg"))); // NOI18N
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 630));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 550, 650));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -411,7 +412,7 @@ public class log_in extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/black_material_ui_background_by_ministerkraft_dddraqt-fullview.jpg"))); // NOI18N
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(-10, -10, 370, 640);
+        jLabel7.setBounds(0, -10, 380, 660);
 
         jSplitPane2.setRightComponent(jPanel1);
 
@@ -3049,7 +3050,6 @@ public class log_in extends javax.swing.JFrame {
         }else
         {
             stu.load_course_atsem(sort, 0, jComboBox1);
-            System.out.println("change cac");
 
         }
     }  
